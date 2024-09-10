@@ -7,9 +7,6 @@ class ShipStream_Sync {
         add_filter('wc_order_statuses', array(__CLASS__, 'add_custom_order_statuses'));
         add_action('init', array(__CLASS__, 'register_custom_order_statuses'));
 
-        // Add settings.
-        add_action('admin_init', array(__CLASS__, 'register_settings'));
-        
         // Add WooCommerce settings tab.
         add_filter('woocommerce_settings_tabs_array', array(__CLASS__, 'add_settings_tab'), 50);
         add_action('woocommerce_settings_tabs_shipstream_sync', array(__CLASS__, 'settings_tab'));
@@ -17,31 +14,31 @@ class ShipStream_Sync {
     }
 
     public static function add_custom_order_statuses($order_statuses) {
-        $order_statuses['ss-ready-to-ship'] = 'Ready to Ship';
-        $order_statuses['ss-failed-to-submit'] = 'Failed to Submit';
-        $order_statuses['ss-submitted'] = 'Submitted';
+        $order_statuses['wc-ss-ready-to-ship'] = 'Ready to Ship';
+        $order_statuses['wc-ss-failed-to-submit'] = 'Failed to Submit';
+        $order_statuses['wc-ss-submitted'] = 'Submitted';
         return $order_statuses;
     }
 
     public static function register_custom_order_statuses() {
-        register_post_status('ss-ready-to-ship', array(
-            'label' => 'Ready to Ship',
+        register_post_status('wc-ss-ready-to-ship', array(
+            'label' => __('Ready to Ship',  'woocommerce-shipstream-sync'),
             'public' => true,
             'show_in_admin_status_list' => true,
             'show_in_admin_all_list' => true,
             'label_count' => _n_noop('Ready to Ship <span class="count">(%s)</span>', 'Ready to Ship <span class="count">(%s)</span>')
         ));
 
-        register_post_status('ss-failed-to-submit', array(
-            'label' => 'Failed to Submit',
+        register_post_status('wc-ss-failed-to-submit', array(
+            'label' => __('Failed to Submit',  'woocommerce-shipstream-sync'),
             'public' => true,
             'show_in_admin_status_list' => true,
             'show_in_admin_all_list' => true,
             'label_count' => _n_noop('Failed to Submit <span class="count">(%s)</span>', 'Failed to Submit <span class="count">(%s)</span>')
         ));
 
-        register_post_status('ss-submitted', array(
-            'label' => 'Submitted',
+        register_post_status('wc-ss-submitted', array(
+            'label' => __('Submitted',  'woocommerce-shipstream-sync'),
             'public' => true,
             'show_in_admin_status_list' => true,
             'show_in_admin_all_list' => true,
@@ -49,67 +46,9 @@ class ShipStream_Sync {
         ));
     }
 
-    public static function register_settings() {
-        register_setting('shipstream_sync_options', 'enable_real_time_order_sync');
-        register_setting('shipstream_sync_options', 'enable_auto_fulfill_orders');
-        register_setting('shipstream_sync_options', 'send_new_shipment_email');
-
-        add_settings_section(
-            'shipstream_sync_settings',
-            'ShipStream Sync Settings',
-            null,
-            'shipstream-sync'
-        );
-
-        add_settings_field(
-            'enable_real_time_order_sync',
-            'Real-Time Order Sync',
-            array(__CLASS__, 'render_enable_real_time_order_sync'),
-            'shipstream-sync',
-            'shipstream_sync_settings'
-        );
-
-        add_settings_field(
-            'enable_auto_fulfill_orders',
-            'Auto-Fulfill Orders',
-            array(__CLASS__, 'render_enable_auto_fulfill_orders'),
-            'shipstream-sync',
-            'shipstream_sync_settings'
-        );
-
-        add_settings_field(
-            'send_new_shipment_email',
-            'Send New Shipment Email',
-            array(__CLASS__, 'render_send_new_shipment_email'),
-            'shipstream-sync',
-            'shipstream_sync_settings'
-        );
-    }
-
-    public static function render_enable_real_time_order_sync() {
-        $value = get_option('enable_real_time_order_sync', '');
-        echo '<input type="checkbox" id="enable_real_time_order_sync" name="enable_real_time_order_sync" value="1"' . checked(1, $value, false) . '/>';
-    }
-
-    public static function render_enable_auto_fulfill_orders() {
-        $value = get_option('enable_auto_fulfill_orders', '');
-        echo '<input type="checkbox" id="enable_auto_fulfill_orders" name="enable_auto_fulfill_orders" value="1"' . checked(1, $value, false) . '/>';
-    }
-
-    public static function render_send_new_shipment_email() {
-        $value = get_option('send_new_shipment_email', '');
-        echo '<input type="checkbox" id="send_new_shipment_email" name="send_new_shipment_email" value="1"' . checked('yes', $value, false) . '/>';
-    }
-
-    public static function order_save($post_id, $post, $update) {
-        if ($post->post_type != 'shop_order') {
-            return;
-        }
-    }
-
     // Add WooCommerce settings tab
     public static function add_settings_tab($settings_tabs) {
-        $settings_tabs['shipstream_sync'] = 'ShipStream Sync';
+        $settings_tabs['shipstream_sync'] = __('ShipStream Sync', 'woocommerce-shipstream-sync');
         return $settings_tabs;
     }
 
@@ -124,27 +63,27 @@ class ShipStream_Sync {
     public static function get_settings() {
         $settings = array(
             'section_title' => array(
-                'name'     => 'ShipStream Sync Settings',
+                'name'     => __('ShipStream Sync Settings', 'woocommerce-shipstream-sync'),
                 'type'     => 'title',
-                'desc'     => '',
-                'id'       => 'shipstream_sync_section_title'
+                'desc'     => __('The ShipStream Sync plugin provides additional functionality needed for ShipStream to sync orders, tracking and inventory data to and from your WooCommerce store.', 'woocommerce-shipstream-sync'),
+                'id'       => 'shipstream_sync'
             ),
             'enable_real_time_order_sync' => array(
-                'name' => 'Real-Time Order Sync',
+                'name' => __('Real-Time Order Sync', 'woocommerce-shipstream-sync'),
                 'type' => 'checkbox',
-                'desc' => 'Immediately notify ShipStream when an order changes to Ready to Ship.',
+                'desc' => __('Immediately notify ShipStream when an order changes to Ready to Ship.', 'woocommerce-shipstream-sync'),
                 'id'   => 'enable_real_time_order_sync'
             ),
             'enable_auto_fulfill_orders' => array(
-                'name' => 'Auto-Fulfill Orders',
+                'name' => __('Auto-Fulfill Orders', 'woocommerce-shipstream-sync'),
                 'type' => 'checkbox',
-                'desc' => 'Automatically advance orders to Ready to Ship status when they are ready for Processing.',
+                'desc' => __('Automatically advance orders to Ready to Ship status when they are ready for Processing.', 'woocommerce-shipstream-sync'),
                 'id'   => 'enable_auto_fulfill_orders'
             ),
             'send_new_shipment_email' => array(
-                'name' => 'Send New Shipment Email',
+                'name' => __('Send New Shipment Email', 'woocommerce-shipstream-sync'),
                 'type' => 'checkbox',
-                'desc' => 'Send an email when a new shipment is created.',
+                'desc' => __('Send an email to the customer when a new shipment is created by ShipStream.', 'woocommerce-shipstream-sync'),
                 'id'   => 'send_new_shipment_email'
             ),
             'section_end' => array(

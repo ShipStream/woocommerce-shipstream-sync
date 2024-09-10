@@ -4,54 +4,60 @@ class ShipStream_API {
 
     // Initialize the REST API routes
     public static function init() {
-        add_action('rest_api_init', function () {
-            // Register the REST API routes
-            register_rest_route('shipstream/v1', '/info', array(
-                'methods' => 'POST',
-                'callback' => array(__CLASS__, 'get_info'),
-                'permission_callback' => array(__CLASS__, 'authenticate'),
-            ));
-            register_rest_route('shipstream/v1', '/set_config', array(
-                'methods' => 'POST',
-                'callback' => array(__CLASS__, 'set_config'),
-                'permission_callback' => array(__CLASS__, 'authenticate'),
-            ));
-            register_rest_route('shipstream/v1', '/sync_inventory', array(
-                'methods' => 'POST',
-                'callback' => array(__CLASS__, 'sync_inventory'),
-                'permission_callback' => array(__CLASS__, 'authenticate'),
-            ));
-            register_rest_route('shipstream/v1', '/stock_item/adjust', array(
-                'methods' => 'POST',
-                'callback' => array(__CLASS__, 'adjust_stock_item'),
-                'permission_callback' => array(__CLASS__, 'authenticate'),
-            ));
-            register_rest_route('shipstream/v1', '/order_shipment/info', array(
-                'methods' => 'POST',
-                'callback' => array(__CLASS__, 'get_order_shipment_info'),
-                'permission_callback' => array(__CLASS__, 'authenticate'),
-            ));
-            register_rest_route('shipstream/v1', '/order_shipment/create_with_tracking', array(
-                'methods' => 'POST',
-                'callback' => array(__CLASS__, 'create_order_shipment_with_tracking'),
-                'permission_callback' => array(__CLASS__, 'authenticate'),
-            ));
-            register_rest_route('shipstream/v1', '/order/list', array(
-                'methods' => 'POST',
-                'callback' => array(__CLASS__, 'order_list'),
-                'permission_callback' => array(__CLASS__, 'authenticate'),
-            ));
-            register_rest_route('shipstream/v1', '/order/addComment', array(
-                'methods' => 'POST',
-                'callback' => array(__CLASS__, 'add_order_comment'),
-                'permission_callback' => array(__CLASS__, 'authenticate'),
-            ));
-            register_rest_route('shipstream/v1', '/order/status_update', array(
-                'methods' => 'POST',
-                'callback' => array(__CLASS__, 'updateOrderStatus'),
-                'permission_callback' => array(__CLASS__, 'authenticate'),
-            ));
-        });
+        // Register the REST API routes
+        register_rest_route('shipstream/v1', '/info', array(
+            'methods' => 'POST',
+            'callback' => array(__CLASS__, 'get_info'),
+            'permission_callback' => array(__CLASS__, 'authenticate'),
+        ));
+        register_rest_route('shipstream/v1', '/set_config', array(
+            'methods' => 'POST',
+            'callback' => array(__CLASS__, 'set_config'),
+            'permission_callback' => array(__CLASS__, 'authenticate'),
+        ));
+        register_rest_route('shipstream/v1', '/sync_inventory', array(
+            'methods' => 'POST',
+            'callback' => array(__CLASS__, 'sync_inventory'),
+            'permission_callback' => array(__CLASS__, 'authenticate'),
+        ));
+        register_rest_route('shipstream/v1', '/stock_item/adjust', array(
+            'methods' => 'POST',
+            'callback' => array(__CLASS__, 'adjust_stock_item'),
+            'permission_callback' => array(__CLASS__, 'authenticate'),
+        ));
+        register_rest_route('shipstream/v1', '/order_shipment/info', array(
+            'methods' => 'POST',
+            'callback' => array(__CLASS__, 'get_order_shipment_info'),
+            'permission_callback' => array(__CLASS__, 'authenticate'),
+        ));
+        register_rest_route('shipstream/v1', '/order_shipment/create_with_tracking', array(
+            'methods' => 'POST',
+            'callback' => array(__CLASS__, 'create_order_shipment_with_tracking'),
+            'permission_callback' => array(__CLASS__, 'authenticate'),
+        ));
+        register_rest_route('shipstream/v1', '/order/list', array(
+            'methods' => 'POST',
+            'callback' => array(__CLASS__, 'order_list'),
+            'permission_callback' => array(__CLASS__, 'authenticate'),
+        ));
+        register_rest_route('shipstream/v1', '/order/addComment', array(
+            'methods' => 'POST',
+            'callback' => array(__CLASS__, 'add_order_comment'),
+            'permission_callback' => array(__CLASS__, 'authenticate'),
+        ));
+        register_rest_route('shipstream/v1', '/order/status_update', array(
+            'methods' => 'POST',
+            'callback' => array(__CLASS__, 'updateOrderStatus'),
+            'permission_callback' => array(__CLASS__, 'authenticate'),
+        ));
+    }
+
+    public static function logRequest(WP_REST_Request $request) {
+        ShipStream_Sync_Helper::logMessage('Received API request: '
+            . $request->get_method() . ' '
+            . $request->get_route() . ' '
+            . $request->get_body()
+        );
     }
 
     public static function authenticate(WP_REST_Request $request) {
@@ -103,6 +109,7 @@ class ShipStream_API {
 
     // Get information about WordPress, WooCommerce, and plugin versions
     public static function get_info(WP_REST_Request $request) {
+        self::logRequest($request);
         $wc_version = get_option('woocommerce_version', 'N/A');
 
         $plugin_file_path = WP_PLUGIN_DIR . '/woocommerce-shipstream-sync/woocommerce-shipstream-sync.php';
@@ -119,13 +126,28 @@ class ShipStream_API {
             'wordpress_version' => $wp_version,
             'woocommerce_version' => $wc_version,
             'shipstream_sync_version' => $shipstream_sync_version,
+            'tracking_plugins' => [],
         );
 
+        // Detect common shipment tracking extensions and add their versions
+        $tracking_extensions = array(
+            'woocommerce-shipment-tracking/woocommerce-shipment-tracking.php' => 'WooCommerce Shipment Tracking',
+            'woo-advanced-shipment-tracking/woocommerce-advanced-shipment-tracking.php' => 'Advanced Shipment Tracking for WooCommerce',
+            'aftership-woocommerce-tracking/aftership.php' => 'AfterShip WooCommerce Tracking',
+            'woo-orders-tracking/woo-orders-tracking.php' => 'Orders Tracking for WooCommerce'
+        );
+        foreach ($tracking_extensions as $plugin_file => $plugin_name) {
+            if (is_plugin_active($plugin_file)) {
+                $plugin_data = get_plugin_data(WP_PLUGIN_DIR . '/' . $plugin_file);
+                $result['tracking_plugins'][$plugin_name] = $plugin_data['Version'];
+            }
+        }
         return new WP_REST_Response($result, 200);
     }
 
     // Set configuration values
     public static function set_config(WP_REST_Request $request) {
+        self::logRequest($request);
         $path = $request->get_param('path');
         $value = $request->get_param('value');
 
@@ -139,27 +161,31 @@ class ShipStream_API {
 
         $option_name = 'shipstream_' . sanitize_key($path);
         $updated = update_option($option_name, $value);
-
+        
         if ($updated) {
+            ShipStream_Sync_Helper::logMessage("Updated config: $option_name = '$value'");
             return new WP_REST_Response(array('success' => 'Configuration updated'), 200);
         } else {
+            ShipStream_Sync_Helper::logError("Failed to update config: $option_name = '$value'");
             return new WP_REST_Response(array('error' => 'Failed to update configuration'), 500);
         }
     }
 
     // Sync inventory
     public static function sync_inventory(WP_REST_Request $request) {
+        self::logRequest($request);
         try {
             ShipStream_Cron::full_inventory_sync(false);
+            return new WP_REST_Response(array('success' => true,'message' => 'Inventory synced successfully.'), 200);
         } catch (Exception $e) {
-            error_log($e->getMessage());
+            ShipStream_Sync_Helper::logError("Inventory sync failed: $e");
             return new WP_REST_Response(array('success' => false, 'message' => $e->getMessage()), 500);
         }
-        return new WP_REST_Response(array('success' => true,'message' => 'Inventory synced successfully.'), 200);
     }
 
     // Adjust stock item quantity
     public static function adjust_stock_item(WP_REST_Request $request) {
+        self::logRequest($request);
         $product_id = $request->get_param('product_id');
         $delta = $request->get_param('delta');
 
@@ -222,6 +248,7 @@ class ShipStream_API {
 
     // Get order shipment information
     public static function get_order_shipment_info(WP_REST_Request $request) {
+        self::logRequest($request);
         $shipment_id = $request->get_param('shipment_id');
         if (empty($shipment_id)) {
             return new WP_REST_Response(array('error' => 'Shipment ID parameter is required'), 400);
@@ -260,17 +287,12 @@ class ShipStream_API {
             $result['shipping_lines'][] = $shipping_data;
         }
 
-        if (function_exists('wc_st_get_tracking_items')) {
-            $tracks = wc_st_get_tracking_items($order->get_id());
-            $result['tracks'] = $tracks;
-        } else {
-            $result['tracks'] = array();
-        }
-
         return new WP_REST_Response($result, 200);
     }
 
-    public static function create_order_shipment_with_tracking($shipment_data) {
+    public static function create_order_shipment_with_tracking(WP_REST_Request $request) {
+        self::logRequest($request);
+        $shipment_data = $request->get_json_params();
         $order_increment_id = $shipment_data['orderIncrementId'];
         $order_data = $shipment_data['data'];
 
@@ -369,6 +391,7 @@ class ShipStream_API {
      */
     public static function order_list(WP_REST_Request $request)
     {
+        self::logRequest($request);
         global $wpdb;
 
         $cols_select        = ['id', 'date_updated_gmt'];
@@ -434,6 +457,7 @@ class ShipStream_API {
      */
     public static function add_order_comment(WP_REST_Request $request)
     {
+        self::logRequest($request);
         $order_id = $request->get_param('order_id');
         $status = $request->get_param('status');
         $comment = $request->get_param('comment');
@@ -487,6 +511,7 @@ class ShipStream_API {
      */
     public static function updateOrderStatus(WP_REST_Request $request)
     {
+        self::logRequest($request);
         // Get parameters from the request
         $shipstream_id = $request->get_param('shipstreamId');
         $order_id = $request->get_param('orderId');

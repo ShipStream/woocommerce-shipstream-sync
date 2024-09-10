@@ -13,20 +13,22 @@ class ShipStream_Cron {
      * @param bool $sleep Whether to sleep for a random time to avoid server stampede.
      */
     public static function full_inventory_sync($sleep = true) {
-        if (!ShipStream_Sync_Helper_Api::isConfigured()) {
-            return;
+        if (!ShipStream_Sync_Helper::isConfigured()) {
+            ShipStream_Sync_Helper::logError('Cannot sync inventory while not configured.');
+            throw new Exception('ShipStream Sync is not properly registered.');
         }
 
         if ($sleep) {
             sleep(rand(0, 300)); // Avoid stampeding the server
         }
 
-        error_log("Beginning inventory sync\n", 3, self::LOG_FILE);
+        ShipStream_Sync_Helper::logMessage("Starting inventory sync...");
+
         global $wpdb;
 
-        $source = self::getSourceInventory();
-        if (!empty($source) && is_array($source)) {
-            foreach (array_chunk($source, 5000, true) as $source_chunk) {
+        $source = ShipStream_Sync_Helper::callback('inventoryWithLock');
+        if (!empty($source['skus']) && is_array($source['skus'])) {
+            foreach (array_chunk($source['skus'], 5000, true) as $source_chunk) {
                 $wpdb->query('START TRANSACTION');
                 try {
                     $target = self::get_target_inventory(array_keys($source_chunk));
@@ -48,30 +50,18 @@ class ShipStream_Cron {
                             continue;
                         }
 
-                        error_log("SKU: $sku remote qty is $qty and local is $target_qty \n", 3, self::LOG_FILE);
+                        ShipStream_Sync_Helper::logMessage("SKU: $sku remote qty is $qty and local is $target_qty");
                         $product_id = $target[$sku]['product_id'];
                         wc_update_product_stock($product_id, $sync_qty);
                     }
                     $wpdb->query('COMMIT');
                 } catch (Exception $e) {
                     $wpdb->query('ROLLBACK');
+                    ShipStream_Sync_Helper::logError("Aborted inventory sync: $e");
                     throw $e;
                 }
             }
         }
-    }
-
-    /**
-     * Get the source inventory from the API.
-     *
-     * @return array The source inventory data.
-     */
-    protected static function getSourceInventory() {
-        if (ShipStream_Sync_Helper_Api::isConfigured()) {
-            $data = ShipStream_Sync_Helper_Api::callback('inventoryWithLock');
-            return empty($data['skus']) ? [] : $data['skus'];
-        }
-        return [];
     }
 
     /**
@@ -110,7 +100,7 @@ class ShipStream_Cron {
      */
     protected static function get_processing_order_items_qty($skus) {
         global $wpdb;
-        $statuses = ['wc-completed', 'wc-cancelled', 'wc-refunded', 'ss-submitted'];
+        $statuses = ['wc-completed', 'wc-cancelled', 'wc-refunded', 'wc-ss-submitted'];
         $placeholders = implode(',', array_map(function($sku) { return "'" . $sku . "'"; }, $skus));
         $order_statuses = implode(',', array_map(function($status) { return "'" . $status . "'"; }, $statuses));
 

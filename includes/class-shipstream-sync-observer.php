@@ -15,7 +15,8 @@ class ShipStream_Sync_Observer {
      * @param WC_Order $order Order object
      */
     public function salesOrderSaveAfter($order_id, $old_status, $new_status, $order) {
-        
+        ShipStream_Sync_Helper::logMessage("Order status changed for $order_id: $old_status -> $new_status");
+
         if ($new_status === 'ss-ready-to-ship') {
             // Do not sync if the order contains only virtual or downloadable products
             if ($this->isOrderVirtual($order)) {
@@ -23,7 +24,7 @@ class ShipStream_Sync_Observer {
             } else if ($this->isRealtimeSyncEnabled()) {
                 // If real-time sync is enabled and the new status is "Ready to Ship", sync the order with ShipStream
                 try {
-                    ShipStream_Sync_Helper_Api::callback('syncOrders', ['order_number' => $order->get_order_number()]);
+                    ShipStream_Sync_Helper::callback('syncOrder', ['order_number' => $order->get_order_number()]);
                 } catch (Throwable $e) {
                     // Handle potential errors gracefully
                     error_log($e->getMessage());
@@ -31,11 +32,17 @@ class ShipStream_Sync_Observer {
             }
         }
 
-        if ($new_status === 'wc-processing' && $this->isAutoFulfillOrders()) {
+        if ($new_status === 'processing' && $old_status !== 'ss-ready-to-ship' && $this->isAutoFulfillOrders()) {
             // Check if the order is not virtual
             if (!$this->isOrderVirtual($order)) {
-                // Update the order status to 'ss-ready-to-ship'
-                $order->update_status('ss-ready-to-ship', __('Auto-updated to Ready to Ship.'));
+                // Update the order status to 'wc-ss-ready-to-ship'
+                $order->update_status('wc-ss-ready-to-ship', __('Auto-updated to Ready to Ship.'));
+                try {
+                    ShipStream_Sync_Helper::callback('syncOrder', ['order_number' => $order->get_order_number()]);
+                } catch (Throwable $e) {
+                    // Handle potential errors gracefully
+                    error_log($e->getMessage());
+                }
             }
         }
     }

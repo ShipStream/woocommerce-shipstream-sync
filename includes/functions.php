@@ -1,6 +1,30 @@
 <?php
-class ShipStream_Sync_Helper_Api {
-    const LOG_FILE = 'wp-content/plugins/woocommerce-shipstream-sync/includes/shipstream_reqs.log';
+
+class ShipStream_Sync_Helper {
+
+    private static $logFile = null;
+
+    public static function init() {
+        self::$logFile = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'debug_log.txt';
+
+        if ( ! touch(self::$logFile)) {
+            self::$logFile = '/tmp/shipstream-sync.log';
+        }
+        if ( ! touch(self::$logFile)) {
+            error_log('ERROR: Cannot touch ShipStream Sync log file: ' . self::$logFile);
+            self::$logFile = '/dev/stderr';
+        }
+    }
+
+    public static function logMessage(string $message) {
+        if (WP_DEBUG || TRUE) {
+            error_log(date('[Y-m-d H:i:s]') . " INFO $message" . PHP_EOL, 3, self::$logFile);
+        }
+    }
+
+    public static function logError($message) {
+        error_log(date('[Y-m-d H:i:s]') . " ERROR $message" . PHP_EOL, 3, self::$logFile);
+    }
 
     /**
      * Check if the warehouse API is configured.
@@ -32,16 +56,20 @@ class ShipStream_Sync_Helper_Api {
 
         $apiUrl = str_replace('{{method}}', $method, $apiUrl);
         $ch = self::initCurl($apiUrl, 'GET', $data);
-
-        // Log request details
-        self::logRequest($ch, $data);
+        $requestHeaders = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+        self::logMessage("Sending request: $apiUrl");
+        if ($data) {
+            self::logMessage("   Request Data: " . json_encode($data, JSON_PRETTY_PRINT));
+        }
 
         try {
             $response = self::executeCurl($ch);
-            self::logResponse((is_array($response) ? json_encode($response):$response));
+            $requestHeaders = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+            self::logMessage("   Request Headers: " . json_encode($requestHeaders));
+            self::logMessage("   Response:\n" . (is_array($response) ? json_encode($response):$response));
             return $response;
         } catch (Exception $e) {
-            self::logMessage('Response error: '.$e->getMessage());
+            self::logMessage('   Response error: '.$e->getMessage());
             throw $e;
         }
     }
@@ -49,7 +77,7 @@ class ShipStream_Sync_Helper_Api {
     /**
      * Execute a cURL session.
      *
-     * @param resource $ch The cURL handle.
+     * @param CurlHandle $ch The cURL handle.
      * @return array The decoded response data.
      * @throws Exception If the request fails or the response is invalid.
      */
@@ -89,7 +117,7 @@ class ShipStream_Sync_Helper_Api {
      * @param string $url The URL to request.
      * @param string $type The HTTP method (GET, POST, PUT, DELETE).
      * @param array $data The data to send with the request.
-     * @return resource The cURL handle.
+     * @return CurlHandle The cURL handle.
      * @throws Exception If cURL is not installed or the request type is invalid.
      */
     protected static function initCurl($url, $type, array $data = []) {
@@ -130,32 +158,4 @@ class ShipStream_Sync_Helper_Api {
         return $ch;
     }
 
-    /**
-     * Log a message to the log file.
-     *
-     * @param string $message The message to log.
-     */
-    protected static function logMessage($message) {
-        error_log(date('[Y-m-d H:i:s] ') . $message . PHP_EOL, 3, self::LOG_FILE);
-    }
-
-    /**
-     * Log the request details.
-     *
-     * @param resource $ch The cURL handle.
-     */
-    protected static function logRequest($ch, $data) {
-        $requestHeaders = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        self::logMessage("Request Headers:\n" . $requestHeaders);
-        self::logMessage("Request Data:\n" . json_encode($data, JSON_PRETTY_PRINT));
-    }
-
-    /**
-     * Log the response details.
-     *
-     * @param string $response The response from the cURL request.
-     */
-    protected static function logResponse($response) {
-        self::logMessage("Response:\n" . $response);
-    }
 }
