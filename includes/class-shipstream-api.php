@@ -520,6 +520,3 @@ class ShipStream_API {
 
 
 }
-
-// Initialize the ShipStream API
-ShipStream_API::init();

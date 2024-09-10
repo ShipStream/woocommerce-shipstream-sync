@@ -110,7 +110,7 @@ class ShipStream_Cron {
      */
     protected static function get_processing_order_items_qty($skus) {
         global $wpdb;
-        $statuses = ['wc-completed', 'wc-cancelled', 'wc-refunded'];
+        $statuses = ['wc-completed', 'wc-cancelled', 'wc-refunded', 'ss-submitted'];
         $placeholders = implode(',', array_map(function($sku) { return "'" . $sku . "'"; }, $skus));
         $order_statuses = implode(',', array_map(function($status) { return "'" . $status . "'"; }, $statuses));
 

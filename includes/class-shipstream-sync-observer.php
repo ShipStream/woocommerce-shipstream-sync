@@ -16,22 +16,26 @@ class ShipStream_Sync_Observer {
      */
     public function salesOrderSaveAfter($order_id, $old_status, $new_status, $order) {
         
-        // Check if the order contains only virtual or downloadable products
-        $is_virtual = $this->isOrderVirtual($order);
-
-        // If the order is virtual and its status changes to "processing" from "ready to ship" or "submitted", mark it as completed
-        if ($is_virtual && $new_status === 'wc-processing' && ($old_status === 'wc-ready-to-ship' || $old_status === 'wc-submitted')) {
-            $order->update_status('wc-completed', __('Changed order status to "Completed" as the order is virtual.'));
-            return;
+        if ($new_status === 'ss-ready-to-ship') {
+            // Do not sync if the order contains only virtual or downloadable products
+            if ($this->isOrderVirtual($order)) {
+                $order->update_status('wc-completed', __('Changed order status to "Completed" as the order is virtual.'));
+            } else if ($this->isRealtimeSyncEnabled()) {
+                // If real-time sync is enabled and the new status is "Ready to Ship", sync the order with ShipStream
+                try {
+                    ShipStream_Sync_Helper_Api::callback('syncOrders', ['order_number' => $order->get_order_number()]);
+                } catch (Throwable $e) {
+                    // Handle potential errors gracefully
+                    error_log($e->getMessage());
+                }
+            }
         }
 
-        // If real-time sync is enabled and the new status is "Ready to Ship", sync the order with ShipStream
-        if ($this->isRealtimeSyncEnabled() && !$is_virtual && $new_status === 'wc-ready-to-ship') {
-            try {
-                $this->syncOrderToShipStream($order->get_id());
-            } catch (Throwable $e) {
-                // Handle potential errors gracefully
-                error_log($e->getMessage());
+        if ($new_status === 'wc-processing' && $this->isAutoFulfillOrders()) {
+            // Check if the order is not virtual
+            if (!$this->isOrderVirtual($order)) {
+                // Update the order status to 'ss-ready-to-ship'
+                $order->update_status('ss-ready-to-ship', __('Auto-updated to Ready to Ship.'));
             }
         }
     }
@@ -62,16 +66,12 @@ class ShipStream_Sync_Observer {
     }
 
     /**
-     * Sync order to ShipStream
+     * Check if auto-fulfill orders is enabled
      *
-     * @param int $order_id Order ID
+     * @return bool True if auto-fulfill orders is enabled, otherwise false
      */
-    protected function syncOrderToShipStream($order_id) {
-        $order = wc_get_order($order_id);
-        $increment_id = $order->get_order_number();
-        ShipStream_Sync_Helper_Api::callback('syncOrders', ['increment_id' => $increment_id]);
+    protected function isAutoFulfillOrders() {
+        return get_option('enable_auto_fulfill_orders', 'no') === 'yes';
     }
-}
 
-// Initialize the observer
-new ShipStream_Sync_Observer();
+}

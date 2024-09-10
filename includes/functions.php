@@ -3,13 +3,6 @@ class ShipStream_Sync_Helper_Api {
     const LOG_FILE = 'wp-content/plugins/woocommerce-shipstream-sync/includes/shipstream_reqs.log';
 
     /**
-     * Log the start of the inventory sync process.
-     */
-    public static function logStart() {
-        self::logMessage("Beginning inventory sync");
-    }
-
-    /**
      * Check if the warehouse API is configured.
      *
      * @return bool True if the API URL is configured, false otherwise.
@@ -41,14 +34,16 @@ class ShipStream_Sync_Helper_Api {
         $ch = self::initCurl($apiUrl, 'GET', $data);
 
         // Log request details
-        self::logRequest($ch);
+        self::logRequest($ch, $data);
 
-        $response = self::executeCurl($ch);
-
-        // Log response details
-        self::logResponse((is_array($response) ? json_encode($response):$response));
-
-        return $response;
+        try {
+            $response = self::executeCurl($ch);
+            self::logResponse((is_array($response) ? json_encode($response):$response));
+            return $response;
+        } catch (Exception $e) {
+            self::logMessage('Response error: '.$e->getMessage());
+            throw $e;
+        }
     }
 
     /**
@@ -149,9 +144,10 @@ class ShipStream_Sync_Helper_Api {
      *
      * @param resource $ch The cURL handle.
      */
-    protected static function logRequest($ch) {
+    protected static function logRequest($ch, $data) {
         $requestHeaders = curl_getinfo($ch, CURLINFO_HEADER_OUT);
         self::logMessage("Request Headers:\n" . $requestHeaders);
+        self::logMessage("Request Data:\n" . json_encode($data, JSON_PRETTY_PRINT));
     }
 
     /**
