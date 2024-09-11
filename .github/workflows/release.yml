@@ -1,0 +1,25 @@
+name: Zip and Attach Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  zip-and-attach:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the code from the repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Zip the repository contents
+      - name: Zip repo contents
+        run: zip -r woocommerce-shipstream-sync.zip .
+
+      # Upload the zip file as an artifact
+      - name: Attach zip to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: woocommerce-shipstream-sync.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
