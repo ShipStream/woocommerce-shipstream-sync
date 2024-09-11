@@ -17,7 +17,7 @@ class ShipStream_Sync_Helper {
     }
 
     public static function logMessage(string $message) {
-        if (WP_DEBUG || TRUE) {
+        if (WP_DEBUG) {
             error_log(date('[Y-m-d H:i:s]') . " INFO $message" . PHP_EOL, 3, self::$logFile);
         }
     }

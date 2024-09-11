@@ -117,12 +117,6 @@ HTML;
                 'desc' => __('Automatically advance orders to Ready to Ship status when they are ready for Processing.', 'woocommerce-shipstream-sync'),
                 'id'   => 'enable_auto_fulfill_orders'
             ),
-            'send_new_shipment_email' => array(
-                'name' => __('Send New Shipment Email', 'woocommerce-shipstream-sync'),
-                'type' => 'checkbox',
-                'desc' => __('Send an email to the customer when a new shipment is created by ShipStream.', 'woocommerce-shipstream-sync'),
-                'id'   => 'send_new_shipment_email'
-            ),
             'section_end' => array(
                 'type' => 'sectionend',
                 'id'   => 'shipstream_sync_section_end'

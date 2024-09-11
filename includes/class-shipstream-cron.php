@@ -33,7 +33,8 @@ class ShipStream_Cron {
                     $wpdb->query('START TRANSACTION');
                     try {
                         $target = self::get_target_inventory(array_keys($source_chunk));
-                        $processing_qty = self::get_processing_order_items_qty(array_keys($source_chunk));
+                        ShipStream_Sync_Helper::logMessage('Current: '.json_encode($target));
+                        $processing_qty = self::get_processing_order_items_qty(array_keys($target));
                         ShipStream_Sync_Helper::logMessage('Unsubmitted: '.json_encode($processing_qty));
     
                         foreach ($source_chunk as $sku => $qty) {
@@ -52,7 +53,7 @@ class ShipStream_Cron {
                                 continue;
                             }
     
-                            ShipStream_Sync_Helper::logMessage("SKU: $sku remote qty is $qty and local is $target_qty");
+                            ShipStream_Sync_Helper::logMessage("SKU: $sku remote qty is $qty, local is $target_qty and should be $sync_qty");
                             $product_id = $target[$sku]['product_id'];
                             wc_update_product_stock($product_id, $sync_qty);
                         }

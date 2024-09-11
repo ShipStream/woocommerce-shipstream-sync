@@ -42,7 +42,6 @@ register_deactivation_hook(__FILE__, 'shipstream_sync_deactivate');
 function shipstream_sync_activate() {
     update_option('enable_real_time_order_sync', 'yes');
     update_option('enable_auto_fulfill_orders', 'yes');
-    update_option('send_new_shipment_email', 'yes');
     ShipStream_Sync_Helper::logMessage('Activated plugin');
 }
 
