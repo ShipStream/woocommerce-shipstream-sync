@@ -15,14 +15,14 @@ class ShipStream_API {
             'callback' => array(__CLASS__, 'set_config'),
             'permission_callback' => array(__CLASS__, 'authenticate'),
         ));
-        register_rest_route('shipstream/v1', '/sync_inventory', array(
+        register_rest_route('shipstream/v1', '/inventory/sync', array(
             'methods' => 'POST',
             'callback' => array(__CLASS__, 'sync_inventory'),
             'permission_callback' => array(__CLASS__, 'authenticate'),
         ));
-        register_rest_route('shipstream/v1', '/stock_item/adjust', array(
+        register_rest_route('shipstream/v1', '/inventory/adjust', array(
             'methods' => 'POST',
-            'callback' => array(__CLASS__, 'adjust_stock_item'),
+            'callback' => array(__CLASS__, 'adjust_stock'),
             'permission_callback' => array(__CLASS__, 'authenticate'),
         ));
         register_rest_route('shipstream/v1', '/order/info', array(
@@ -184,67 +184,97 @@ class ShipStream_API {
     }
 
     // Adjust stock item quantity
-    public static function adjust_stock_item(WP_REST_Request $request) {
+    public static function adjust_stock(WP_REST_Request $request) {
         self::logRequest($request);
-        $product_id = $request->get_param('product_id');
-        // TODO  Sample request: {"product_id":"142","sku":"VTBBH","external_id":null,"qty_adjust":"100.0000","qty_available":"100.0000","qty_advertised":"100"}
-        $delta = $request->get_param('delta');
+        $changes = $request->get_param('changes');
 
-        if (empty($product_id) || $delta === null) {
-            return new WP_REST_Response(array('error' => 'Product ID and delta parameters are required'), 400);
+        if (empty($changes) || !is_array($changes)) {
+            return new WP_REST_Response(array('error' => 'Changes parameter is required and must be an array'), 400);
         }
 
-        global $wpdb;
+        $results = array();
+
+        foreach ($changes as $change) {
+            $product_id = wc_get_product_id_by_sku($change['sku']);
+            if (!$product_id) {
+                $results[] = array(
+                    'sku' => $change['sku'],
+                    'status' => 'not-found',
+                );
+                continue;
+            }
+            $product_ids[$change['sku']] = $product_id;
+        }
+
+        global $wpdb; /** @var wpdb $wpdb */
 
         $wpdb->query('START TRANSACTION');
 
         try {
-            self::_lock_stock_items($product_id);
+            if ($product_ids) {
+                // Lock the product rows for update
+                $product_ids_string = implode(',', array_map('intval', $product_ids));
+                $wpdb->query("SELECT ID FROM {$wpdb->posts} WHERE ID IN ($product_ids_string) FOR UPDATE");
 
-            $product = wc_get_product($product_id);
-            if (!$product) {
-                $product_id = wc_get_product_id_by_sku($product_id);
-                $product = wc_get_product($product_id);
-                if (!$product) {
-                    throw new Exception('Product does not exist');
+                // Gather unsubmitted amounts for each SKU
+                $unsubmitted_amounts = ShipStream_Cron::get_processing_order_items_qty(array_keys($product_ids));
+
+                // Calculate the final amount and apply the updates
+                foreach ($changes as $change) {
+                    $sku = $change['sku'];
+                    if (empty($product_ids[$sku])) {
+                        continue;
+                    }
+                    $product_id = $product_ids[$sku];
+                    $product = wc_get_product($product_id);
+    
+                    $stock_quantity = $product->get_stock_quantity();
+                    if (isset($change['delta'])) {
+                        $new_stock_quantity = $stock_quantity + $change['delta'];
+                    } else {
+                        $new_stock_quantity = $change['quantity'];
+                        $new_stock_quantity -= $unsubmitted_amounts[$sku] ?? 0;
+                    }
+                    if ($new_stock_quantity == $stock_quantity) {
+                        $results[] = array(
+                            'sku' => $sku,
+                            'product_id' => $product_id,
+                            'old_quantity' => $stock_quantity,
+                            'new_quantity' => $new_stock_quantity,
+                            'unsubmitted' => $unsubmitted_amounts[$sku] ?? 0,
+                            'status' => 'no-change',
+                        );
+                        continue;
+                    }
+                    
+                    $product->set_stock_quantity($new_stock_quantity);
+                    if ($new_stock_quantity > 0 && $product->get_stock_status() === 'outofstock') {
+                        $product->set_stock_status('instock');
+                    } elseif ($new_stock_quantity <= 0 && $product->get_stock_status() === 'instock') {
+                        $product->set_stock_status('outofstock');
+                    }
+                    $product->save();
+    
+                    $results[] = array(
+                        'sku' => $sku,
+                        'product_id' => $product_id,
+                        'old_quantity' => $stock_quantity,
+                        'new_quantity' => $new_stock_quantity,
+                        'unsubmitted' => $unsubmitted_amounts[$sku],
+                        'status' => 'success',
+                    );
                 }
             }
 
-            $stock_quantity = $product->get_stock_quantity();
-            $new_stock_quantity = $stock_quantity + $delta;
-            $product->set_stock_quantity($new_stock_quantity);
-
-            if ($new_stock_quantity > 0 && $product->get_stock_status() === 'outofstock') {
-                $product->set_stock_status('instock');
-            }
-
-            $product->save();
-
             $wpdb->query('COMMIT');
 
-            return new WP_REST_Response(array('success' => true), 200);
+            return new WP_REST_Response(array('success' => true, 'results' => $results), 200);
 
         } catch (Exception $e) {
             $wpdb->query('ROLLBACK');
             error_log($e->getMessage());
             return new WP_REST_Response(array('error' => $e->getMessage()), 500);
         }
-    }
-
-    // Lock stock items for update
-    protected static function _lock_stock_items($product_id = NULL) {
-        global $wpdb;
-
-        if (is_numeric($product_id)) {
-            $query = $wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE ID = %d FOR UPDATE", $product_id);
-        } elseif (is_array($product_id)) {
-            $placeholders = implode(', ', array_fill(0, count($product_id), '%d'));
-            $query = $wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE ID IN ($placeholders) FOR UPDATE", $product_id);
-        } else {
-            return;
-        }
-
-        $wpdb->query($query);
     }
 
     // Get order information
@@ -305,42 +335,38 @@ class ShipStream_API {
         // Add tracking numbers to the order using the Shipment Tracking extension
         foreach ($order_data['packages'] as $package) {
             foreach ($package['tracking_numbers'] as $tracking_number) {
-                self::add_tracking_number_to_order($order->get_id(), $tracking_number, $order_data['carrier']);
+                self::add_tracking_number_to_order($order, $tracking_number, $order_data['carrier']);
             }
         }
 
         // Update the order's line items with shipment info data
-        self::update_order_line_items_with_shipment_info($order->get_id(), $order_data);
+        self::update_order_line_items_with_shipment_info($order, $order_data);
 
         // Check if all items are shipped and mark order as completed
         if ($order_data['status'] == 'packed' && $order_data['order_status'] == 'complete') {
-            self::maybe_mark_order_as_completed($order->get_id(), $order_data);
+            self::maybe_mark_order_as_completed($order, $order_data);
         }
     }
 
-    public static function add_tracking_number_to_order($order_id, $tracking_number, $carrier) {
-        if (!class_exists('WC_Shipment_Tracking')) {
-            return;
+    public static function add_tracking_number_to_order(WC_Order $order, $tracking_number, $carrier) {
+        if (class_exists('WC_Shipment_Tracking')) {
+            $tracking_provider = WC_Shipment_Tracking::get_providers()[$carrier] ?? $carrier;
+    
+            $tracking_data = array(
+                'tracking_provider' => $tracking_provider,
+                'tracking_number'   => $tracking_number,
+                'date_shipped'      => current_time('timestamp'),
+            );
+    
+            $wc_shipment_tracking = new WC_Shipment_Tracking();
+            $wc_shipment_tracking->add_tracking_number($order->get_id(), $tracking_data);
         }
-
-        $tracking_provider = WC_Shipment_Tracking::get_providers()[$carrier] ?? $carrier;
-
-        $tracking_data = array(
-            'tracking_provider' => $tracking_provider,
-            'tracking_number'   => $tracking_number,
-            'date_shipped'      => current_time('timestamp'),
-        );
-
-        $wc_shipment_tracking = new WC_Shipment_Tracking();
-        $wc_shipment_tracking->add_tracking_number($order_id, $tracking_data);
+        else {
+            $order->add_order_note(printf(__('Shipped via %s with tracking number %s.', 'woocommerce-shipstream-sync'), $carrier, $tracking_number), 1);
+        }
     }
 
-    public static function update_order_line_items_with_shipment_info($order_id, $order_data) {
-        $order = wc_get_order($order_id);
-        if (!$order) {
-            return;
-        }
-
+    public static function update_order_line_items_with_shipment_info(WC_Order $order, $order_data) {
         foreach ($order->get_items() as $item_id => $item) {
             $item_sku = $item->get_product()->get_sku();
 
@@ -364,12 +390,7 @@ class ShipStream_API {
         }
     }
 
-    public static function maybe_mark_order_as_completed($order_id, $order_data) {
-        $order = wc_get_order($order_id);
-        if (!$order) {
-            return;
-        }
-
+    public static function maybe_mark_order_as_completed(WC_Order $order, $order_data) {
         $all_items_shipped = true;
 
         foreach ($order->get_items() as $item) {
@@ -469,7 +490,6 @@ class ShipStream_API {
         $status = $request->get_param('status');
         $comment = $request->get_param('comment');
         $apptitle = $request->get_param('apptitle');
-        $shipstreamid = $request->get_param('shipstreamid');
 
         if (empty($order_id) || empty($comment) || empty($status)) {
             return new WP_REST_Response(['error' => 'Order ID, Status, and Comment are required.'], 400);
@@ -479,12 +499,6 @@ class ShipStream_API {
 
         if (!$order) {
             return new WP_REST_Response(['error' => 'Invalid order ID.'], 404);
-        }
-
-        // Check if the order already has a shipstream ID
-        $existing_shipstreamid = $order->get_meta('_shipstream_order_ids');
-        if ($existing_shipstreamid) {
-            return new WP_REST_Response(['error' => 'A new order cannot be created with another order already exists.'], 400);
         }
 
         // Update order status
@@ -503,9 +517,6 @@ class ShipStream_API {
         }
 
         // Add shipstream ID and app title to order meta
-        if ($shipstreamid) {
-            $order->update_meta_data('_shipstream_order_ids', sanitize_text_field($shipstreamid));
-        }
         if ($apptitle) {
             $order->update_meta_data('_apptitle', sanitize_text_field($apptitle));
         }
@@ -530,7 +541,7 @@ class ShipStream_API {
 
         // Check for missing required parameters
         if (empty($shipstream_id) || empty($order_id) || empty($status)) {
-            return new WP_REST_Response(['error' => 'Order ID, Status, and Shipment ID are required.'], 400);
+            return new WP_REST_Response(['error' => 'ShipStream ID, Order ID and Status are required.'], 400);
         }
 
         // Get the order by ID
@@ -546,12 +557,12 @@ class ShipStream_API {
         }
 
         // Update order status and add a comment
-        $order->update_status($sanitized_status, 'Order status updated by ShipStream');
-        $order->delete_meta_data('_shipstream_order_ids');
-        $order->save();
+        if ($status === 'canceled' && $order->get_status() === 'wc-ss-submitted') {
+            $order->update_status('wc-on-hold', 'Corresponding ShipStream order was cancelled.');
+        }
 
         // Return a success response
-        return new WP_REST_Response(['success' => 'Status updated successfully for order #' . $order_id], 200);
+        return new WP_REST_Response(['success' => 'Status updated successfully for order #' . $order->get_order_number()], 200);
     }
 
 

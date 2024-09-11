@@ -34,6 +34,7 @@ class ShipStream_Cron {
                     try {
                         $target = self::get_target_inventory(array_keys($source_chunk));
                         $processing_qty = self::get_processing_order_items_qty(array_keys($source_chunk));
+                        ShipStream_Sync_Helper::logMessage('Unsubmitted: '.json_encode($processing_qty));
     
                         foreach ($source_chunk as $sku => $qty) {
                             if (!isset($target[$sku])) {
@@ -43,7 +44,7 @@ class ShipStream_Cron {
                             $qty = floor(floatval($qty));
                             $sync_qty = $qty;
                             if (isset($processing_qty[$sku])) {
-                                $sync_qty = floor($qty - floatval($processing_qty[$sku]['qty']));
+                                $sync_qty = floor($qty - floatval($processing_qty[$sku]));
                             }
     
                             $target_qty = floatval($target[$sku]['qty']);
@@ -76,13 +77,13 @@ class ShipStream_Cron {
      */
     protected static function get_target_inventory($skus) {
         global $wpdb;
-        $placeholders = implode(',', array_map(function($sku) { return "'" . $sku . "'"; }, $skus));
+        $sku_placeholders = implode(',', array_map(function($sku) { return "'" . $sku . "'"; }, $skus));
         $sql = "
             SELECT p.ID as product_id, p.post_title as name, pm.meta_value as sku, pm2.meta_value as qty
             FROM {$wpdb->posts} p
             JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id AND pm.meta_key = '_sku'
             JOIN {$wpdb->postmeta} pm2 ON p.ID = pm2.post_id AND pm2.meta_key = '_stock'
-            WHERE p.post_type = 'product' AND pm.meta_value IN ($placeholders)
+            WHERE p.post_type = 'product' AND pm.meta_value IN ($sku_placeholders)
         ";
         $results = $wpdb->get_results($wpdb->prepare($sql, $skus), ARRAY_A);
 
@@ -102,32 +103,30 @@ class ShipStream_Cron {
      * @param array $skus The SKUs to get the processing quantities for.
      * @return array The processing quantities data.
      */
-    protected static function get_processing_order_items_qty($skus) {
-        global $wpdb;
-        $statuses = ['wc-completed', 'wc-cancelled', 'wc-refunded', 'wc-ss-submitted'];
-        $placeholders = implode(',', array_map(function($sku) { return "'" . $sku . "'"; }, $skus));
-        $order_statuses = implode(',', array_map(function($status) { return "'" . $status . "'"; }, $statuses));
-
-        $sql = "
-            SELECT pm.meta_value as sku, SUM(oi.meta_value) as qty
-            FROM {$wpdb->prefix}woocommerce_order_items oi
-            JOIN {$wpdb->prefix}woocommerce_order_itemmeta oim ON oi.order_item_id = oim.order_item_id
-            JOIN {$wpdb->postmeta} pm ON pm.post_id = oim.meta_value AND pm.meta_key = '_sku'
-            JOIN {$wpdb->posts} p ON p.ID = oi.order_id
-            WHERE p.post_type = 'shop_order'
-            AND p.post_status NOT IN ($order_statuses)
-            AND pm.meta_value IN ($placeholders)
-            GROUP BY pm.meta_value
-        ";
-        $results = $wpdb->get_results($wpdb->prepare($sql, $skus), ARRAY_A);
-
+    public static function get_processing_order_items_qty($skus) {
+        $excluded_statuses = ['wc-completed', 'wc-cancelled', 'wc-refunded', 'wc-ss-submitted'];
+        $included_statuses = array_diff(array_keys(wc_get_order_statuses()), $excluded_statuses);
+        
+        $orders = wc_get_orders([
+            'status' => array_values($included_statuses),
+            'limit' => -1,
+        ]);
+        
         $processing_qty = [];
-        foreach ($results as $result) {
-            $processing_qty[$result['sku']] = [
-                'sku' => $result['sku'],
-                'qty' => $result['qty']
-            ];
+        $skuMap = array_flip($skus);
+        foreach ($orders as $order) {
+            foreach ($order->get_items() as $item) {
+                $product = $item->get_product();
+                if ($product && array_key_exists($product->get_sku(), $skuMap)) {
+                    $sku = $product->get_sku();
+                    if (!isset($processing_qty[$sku])) {
+                        $processing_qty[$sku] = 0;
+                    }
+                    $processing_qty[$sku] += $item->get_quantity();
+                }
+            }
         }
+
         return $processing_qty;
     }
 }

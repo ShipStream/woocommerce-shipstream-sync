@@ -64,9 +64,7 @@ class ShipStream_Sync_Helper {
 
         try {
             $response = self::executeCurl($ch);
-            $requestHeaders = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-            self::logMessage("   Request Headers: " . json_encode($requestHeaders));
-            self::logMessage("   Response:\n" . (is_array($response) ? json_encode($response):$response));
+            self::logMessage("   Response: " . (is_array($response) ? json_encode($response):$response));
             return $response;
         } catch (Exception $e) {
             self::logMessage('   Response error: '.$e->getMessage());
