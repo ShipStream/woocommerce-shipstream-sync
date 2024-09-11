@@ -1,84 +1,68 @@
-# ShipStream <=> WooCommerce Sync Extension
+# ShipStream Sync for WooCommerce
 
 ## Overview
 
-The ShipStream <=> WooCommerce Sync Extension is a comprehensive tool designed to synchronize inventory, orders, and tracking information between your WooCommerce store and the [ShipStream WooCommerce Plugin](https://github.com/ShipStream/plugin-woocommerce). This extension facilitates efficient management of orders and inventory by providing real-time synchronization and integration capabilities. Please note that this extension will not function until the corresponding ShipStream plugin subscription is properly configured.
+The WooCommece ShipStream Sync plugin is a lightweight companion plugin for Wordpress and WooCommerce designed to 
+facilitate real-time and efficient synchronization of inventory, orders, and tracking information between ShipStream and your WooCommerce store.
+
+Please note that this extension does not provide any functionality alone; the ShipStream Merchant Integration subscription must
+be properly configured for this plugin to do anything. It **is safe** to install this plugin **before** the Merchant Integration is configured.
 
 ## Features
 
-This extension adds the following functionalities to your WooCommerce store:
+This WooCommerce plugin adds the following functionalities to your WooCommerce store:
 
 - **Settings Integration:**
-  - Adds a new settings page under `WooCommerce > Settings > ShipStream Sync` with options to:
-    - **Enable Real-Time Order Sync:** Activate real-time synchronization of orders between WooCommerce and ShipStream.
-    - **Send New Shipment Email:** Configure the extension to send notification emails when new shipments are created.
+  - Adds a new settings tab under `WooCommerce > Settings > ShipStream Sync` with options for:
+    - **Real-Time Order Sync:** Activate real-time synchronization of orders between WooCommerce and ShipStream (in addition to the every 10 minutes).
+    - **Auto-Fulfill Orders:** Automatically advance orders from Processing to Ready to Ship so they are ready to be imported by ShipStream.
 
 - **New Order Statuses:**
   - Introduces three new order statuses to better track the lifecycle of orders:
-    - **Ready to Ship:** Indicates that the order is prepared and ready for shipment.
-    - **Failed to Submit:** Indicates an error occurred while trying to submit the order to the warehouse.
-    - **Submitted:** Indicates that the order has been successfully submitted to the warehouse but is not yet fully shipped.
+    - **Ready to Ship:** Indicates that the order is paid for and ready for fulfillment.
+    - **Failed to Submit:** Indicates an error occurred while trying to submit the order to ShipStream.
+    - **Submitted:** Indicates that the order has been successfully submitted to ShipStream and is awaiting tracking information.
 
 - **API Endpoints:**
-  - Adds several API endpoints for interacting with ShipStream:
+  - Adds several API endpoints for interacting with ShipStream. These use the same authentication mechanism as other authenticated Read/Write WooCommerce API endpoints.
     - `shipstream/v1/info`
     - `shipstream/v1/set_config`
-    - `shipstream/v1/sync_inventory`
-    - `shipstream/v1/stock_item/adjust`
-    - `shipstream/v1/order_shipment/info`
-    - `shipstream/v1/order_shipment/create_with_tracking`
+    - `shipstream/v1/inventory/sync`
+    - `shipstream/v1/inventory/adjust`
+    - `shipstream/v1/order/info`
+    - `shipstream/v1/order/complete_with_tracking`
     - `shipstream/v1/order/list`
     - `shipstream/v1/order/addComment`
+    - `shipstream/v1/order/status_update`
 
 - **Event Observer:**
-  - Adds an event observer for `salesOrderSaveAfter` to trigger synchronization of orders when they are saved.
-
-- **Cron Job:**
-  - Configures a cron job to perform a full inventory synchronization daily at 02:00, including a short random sleep time to distribute server load.
+  - Adds an action observer for `woocommerce_order_status_changed` to trigger synchronization of orders when the status is updated if Real-Time Order Sync is enabled and advancement to Ready to Ship status if Auto-Fulfill Orders is enabled.
 
 - **Configuration Storage:**
-  - Stores the ShipStream remote URL in the `options` table for easy access and configuration.
+  - Stores the ShipStream remote callback URL in the `options` table to facilitate two-way communication.
 
 ## Purpose of New Statuses
 
-The addition of new order statuses provides better visibility into the order processing workflow, ensuring that orders are correctly managed and tracked. The new statuses help distinguish between different stages of order processing:
+The addition of new order statuses provides better visibility into the order processing workflow, ensuring that orders are correctly managed and tracked. The new statuses help distinguish between different stages of order processing and give hte shop owner greater control over when orders
+are submitted to ShipStream:
 
-- **Ready to Ship:** This status can be set manually or programmatically (through custom code) to indicate that an order is ready for shipment. If this status is not needed, you can configure ShipStream to pull orders in the "Processing" status instead.
+- **Ready to Ship:** This status can be set manually or programmatically (through custom code) to indicate that an order is ready for shipment.
   
 - **Failed to Submit:** This status signals that there was an issue when attempting to submit the order to the warehouse.
 
 - **Submitted:** This status indicates that the order has been successfully submitted to the warehouse, but not yet fully shipped. The order status will automatically advance to "Complete" once the shipment is finalized.
 
-**Note:** You can customize the labels of these statuses, but it is crucial to retain the status codes to maintain integration functionality.
-
 If configured to sync orders with the "Ready to Ship" status, the order status progression will follow this workflow:
 
 ![Status State Diagram](https://raw.githubusercontent.com/ShipStream/openmage-sync/master/shipstream-sync.png)
 
-Alternatively, if configured to sync orders with the "Processing" status, the workflow will be:
-
-![Status State Diagram](https://raw.githubusercontent.com/ShipStream/openmage-sync/master/shipstream-sync-processing.png)
-
-Custom workflows can be implemented by adjusting the statuses used for synchronization.
+Custom workflows can be implemented by disabling **Auto-Fulfill Orders** and implementing your own procedure for updating the status to **Ready to Ship**, whether it be manual or automated.
 
 ## Installation
 
-The ShipStream Sync Extension can be installed via modman, zip file, or tar file.
-
-### Installation Methods
-
-#### Using modman
-
-```bash
-$ modman init
-$ modman clone https://github.com/ShipStream/woocommerce-shipstream-sync
-```
-
-#### Using a Zip File
-
-1. Download the latest version of the extension from [GitHub](https://github.com/ShipStream/woocommerce-shipstream-sync).
-2. Extract the contents of the downloaded file to a clean directory.
-3. Move the files from the `wp-content/plugins/woocommerce-shipstream-sync` directory into the root directory of your WordPress installation.
+1. Download the **woocommerce-shipstream-sync.zip** file from the [Releases](https://github.com/ShipStream/woocommerce-shipstream-sync/releases) page.
+2. Upload it to your Wordpress site by clicking Plugins > Add New Plugin > Upload Plugin or use your preferred method of extracting the plugin
+files to your `wp-content/plugins` directory.
 
 ## Setup
 
@@ -86,26 +70,19 @@ After installation, complete the following steps to configure the extension:
 
 1. **Activate the Plugin:**
    - Log in to your WordPress admin panel.
-   - Navigate to `Plugins` and activate the ShipStream Sync Extension.
+   - Navigate to `Plugins` and activate the ShipStream Sync Extension by clicking "Activate".
 
-2. **Create a REST API Key:**
-   - Go to `WooCommerce > Settings > Advanced > REST API`.
-   - Add a new key with the required permissions (Read/Write) and note down the Consumer Key and Consumer Secret.
-
-3. **Configure ShipStream Subscription:**
-   - Set up the plugin subscription in ShipStream by providing the necessary API information and configuration settings.
-
-## Configuration
-
-Adjust the settings in `WooCommerce > Settings > ShipStream Sync` according to your requirements. Ensure that the API URL, Consumer Key, and Consumer Secret are correctly configured.
-
+2. **Configure the plugin:**
+   - Both Real-Time Order Sync and Auto-Fulfill Orders are enabled by default. Change if needed by navigating to
+     WooCommerce > Settings > ShipStream Sync.
+   
 ## ShipStream Setup
 
 The ShipStream plugin requires the following information:
 
-- **REST API URL:** The base URL of your WooCommerce site plus `/wp-json/`.
-- **REST API Consumer Key and Secret:** The keys generated in the previous step.
-- **Order Status for Automatic Import:** Specify the status to use for automatic order import (e.g., "Processing" or "Ready to Ship").
+- **WooCommerce Store URL:** The base URL of your WooCommerce site.
+
+Click **Save** and then click **Connect WooCommerce Store** to begin the authentication. Your password will not be shared with ShipStream in this process.
 
 ## Customization
 
