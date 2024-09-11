@@ -27,40 +27,44 @@ class ShipStream_Cron {
         global $wpdb;
 
         $source = ShipStream_Sync_Helper::callback('inventoryWithLock');
-        if (!empty($source['skus']) && is_array($source['skus'])) {
-            foreach (array_chunk($source['skus'], 5000, true) as $source_chunk) {
-                $wpdb->query('START TRANSACTION');
-                try {
-                    $target = self::get_target_inventory(array_keys($source_chunk));
-                    $processing_qty = self::get_processing_order_items_qty(array_keys($source_chunk));
-
-                    foreach ($source_chunk as $sku => $qty) {
-                        if (!isset($target[$sku])) {
-                            continue;
+        try {
+            if (!empty($source['skus']) && is_array($source['skus'])) {
+                foreach (array_chunk($source['skus'], 5000, true) as $source_chunk) {
+                    $wpdb->query('START TRANSACTION');
+                    try {
+                        $target = self::get_target_inventory(array_keys($source_chunk));
+                        $processing_qty = self::get_processing_order_items_qty(array_keys($source_chunk));
+    
+                        foreach ($source_chunk as $sku => $qty) {
+                            if (!isset($target[$sku])) {
+                                continue;
+                            }
+    
+                            $qty = floor(floatval($qty));
+                            $sync_qty = $qty;
+                            if (isset($processing_qty[$sku])) {
+                                $sync_qty = floor($qty - floatval($processing_qty[$sku]['qty']));
+                            }
+    
+                            $target_qty = floatval($target[$sku]['qty']);
+                            if ($sync_qty == $target_qty) {
+                                continue;
+                            }
+    
+                            ShipStream_Sync_Helper::logMessage("SKU: $sku remote qty is $qty and local is $target_qty");
+                            $product_id = $target[$sku]['product_id'];
+                            wc_update_product_stock($product_id, $sync_qty);
                         }
-
-                        $qty = floor(floatval($qty));
-                        $sync_qty = $qty;
-                        if (isset($processing_qty[$sku])) {
-                            $sync_qty = floor($qty - floatval($processing_qty[$sku]['qty']));
-                        }
-
-                        $target_qty = floatval($target[$sku]['qty']);
-                        if ($sync_qty == $target_qty) {
-                            continue;
-                        }
-
-                        ShipStream_Sync_Helper::logMessage("SKU: $sku remote qty is $qty and local is $target_qty");
-                        $product_id = $target[$sku]['product_id'];
-                        wc_update_product_stock($product_id, $sync_qty);
+                        $wpdb->query('COMMIT');
+                    } catch (Exception $e) {
+                        $wpdb->query('ROLLBACK');
+                        ShipStream_Sync_Helper::logError("Aborted inventory sync: $e");
+                        throw $e;
                     }
-                    $wpdb->query('COMMIT');
-                } catch (Exception $e) {
-                    $wpdb->query('ROLLBACK');
-                    ShipStream_Sync_Helper::logError("Aborted inventory sync: $e");
-                    throw $e;
                 }
             }
+        } finally {
+            ShipStream_Sync_Helper::callback('unlockOrderImport');
         }
     }
 
