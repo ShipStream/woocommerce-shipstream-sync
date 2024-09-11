@@ -446,8 +446,7 @@ class ShipStream_API {
 
         // Prepare the orders data
         foreach ($results as $row) {
-            $order_id = $row['id'];
-            $order = wc_get_order($order_id);
+            $order = wc_get_order($row['id']);
             if ($order) {
                 $order_data = $order->get_data();
                 $filtered_data = array_intersect_key($order_data, array_flip($cols));

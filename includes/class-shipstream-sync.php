@@ -6,6 +6,9 @@ class ShipStream_Sync {
         // Add custom order statuses.
         add_filter('wc_order_statuses', array(__CLASS__, 'add_custom_order_statuses'));
         add_action('init', array(__CLASS__, 'register_custom_order_statuses'));
+        add_filter('woocommerce_get_order_status_labels', array(__CLASS__, 'get_order_status_labels'), 11, 2);
+        add_filter('bulk_actions-woocommerce_page_wc-orders', array(__CLASS__, 'define_bulk_actions') );
+        add_action('admin_head', array(__CLASS__, 'custom_head'), 11);
 
         // Add WooCommerce settings tab.
         add_filter('woocommerce_settings_tabs_array', array(__CLASS__, 'add_settings_tab'), 50);
@@ -15,7 +18,7 @@ class ShipStream_Sync {
 
     public static function add_custom_order_statuses($order_statuses) {
         $order_statuses['wc-ss-ready-to-ship'] = 'Ready to Ship';
-        $order_statuses['wc-ss-failed-to-submit'] = 'Failed to Submit';
+        $order_statuses['wc-ss-failed'] = 'Failed to Submit';
         $order_statuses['wc-ss-submitted'] = 'Submitted';
         return $order_statuses;
     }
@@ -29,7 +32,7 @@ class ShipStream_Sync {
             'label_count' => _n_noop('Ready to Ship <span class="count">(%s)</span>', 'Ready to Ship <span class="count">(%s)</span>')
         ));
 
-        register_post_status('wc-ss-failed-to-submit', array(
+        register_post_status('wc-ss-failed', array(
             'label' => __('Failed to Submit',  'woocommerce-shipstream-sync'),
             'public' => true,
             'show_in_admin_status_list' => true,
@@ -44,6 +47,40 @@ class ShipStream_Sync {
             'show_in_admin_all_list' => true,
             'label_count' => _n_noop('Submitted <span class="count">(%s)</span>', 'Submitted <span class="count">(%s)</span>')
         ));
+    }
+
+    public static function get_order_status_labels($status_names, WC_Order $order) {
+        $status_names['ss-ready-to-ship'] = __( 'Order is ready to be imported automatically by ShipStream.', 'woocommerce-shipstream-sync');
+        $status_names['ss-failed'] = __( 'An error occurred importing the order into ShipStream and requires manual intervention.', 'woocommerce-shipstream-sync');
+        $status_names['ss-submitted'] = __( 'The order was successfully imported into ShipStream.', 'woocommerce-shipstream-sync');
+
+        return $status_names;
+    }
+
+    public static function define_bulk_actions(array $actions) {
+        // WooCommerce automatically handles the action for mark_{status} actions
+        $actions['mark_ss-ready-to-ship'] = __('Change status to Ready to Ship', 'woocommerce-shipstream-sync');
+       
+        return $actions;
+    }
+
+    public static function custom_head() {
+        echo <<<HTML
+<style>
+.order-status.status-ss-ready-to-ship {
+    background: #293b35;
+    color: #9ff2af;
+}
+.order-status.status-ss-failed {
+    background: #e1c8c8;
+    color: #2e4453;
+}
+.order-status.status-ss-submitted {
+    background: #3c4144;
+    color: #9fd0f2;
+}
+</style>
+HTML;
     }
 
     // Add WooCommerce settings tab
