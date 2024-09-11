@@ -29,7 +29,7 @@ class ShipStream_Cron {
         $source = ShipStream_Sync_Helper::callback('inventoryWithLock');
         try {
             if (!empty($source['skus']) && is_array($source['skus'])) {
-                foreach (array_chunk($source['skus'], 5000, true) as $source_chunk) {
+                foreach (array_chunk($source['skus'], 500, true) as $source_chunk) {
                     $wpdb->query('START TRANSACTION');
                     try {
                         $target = self::get_target_inventory(array_keys($source_chunk));
@@ -76,23 +76,18 @@ class ShipStream_Cron {
      * @return array The target inventory data.
      */
     protected static function get_target_inventory($skus) {
-        global $wpdb;
-        $sku_placeholders = implode(',', array_map(function($sku) { return "'" . $sku . "'"; }, $skus));
-        $sql = "
-            SELECT p.ID as product_id, p.post_title as name, pm.meta_value as sku, pm2.meta_value as qty
-            FROM {$wpdb->posts} p
-            JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id AND pm.meta_key = '_sku'
-            JOIN {$wpdb->postmeta} pm2 ON p.ID = pm2.post_id AND pm2.meta_key = '_stock'
-            WHERE p.post_type = 'product' AND pm.meta_value IN ($sku_placeholders)
-        ";
-        $results = $wpdb->get_results($wpdb->prepare($sql, $skus), ARRAY_A);
-
         $target_inventory = [];
-        foreach ($results as $result) {
-            $target_inventory[$result['sku']] = [
-                'product_id' => $result['product_id'],
-                'qty' => $result['qty']
-            ];
+        foreach ($skus as $sku) {
+            $product_id = wc_get_product_id_by_sku($sku);
+            if ($product_id) {
+                $product = wc_get_product($product_id);
+                if ($product && $product->managing_stock()) {
+                    $target_inventory[$sku] = [
+                        'product_id' => $product_id,
+                        'qty' => $product->get_stock_quantity()
+                    ];
+                }
+            }
         }
         return $target_inventory;
     }
