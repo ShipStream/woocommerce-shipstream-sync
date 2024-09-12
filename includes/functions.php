@@ -24,6 +24,7 @@ class ShipStream_Sync_Helper {
 
     public static function logError($message) {
         error_log(date('[Y-m-d H:i:s]') . " ERROR $message" . PHP_EOL, 3, self::$logFile);
+        error_log("ERROR: $message");
     }
 
     /**

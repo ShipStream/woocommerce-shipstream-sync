@@ -2,8 +2,11 @@
 
 class ShipStream_Sync_Observer {
     
+    protected $_deduplicate = [];
+
     public function __construct() {
         add_action('woocommerce_order_status_changed', [$this, 'salesOrderSaveAfter'], 10, 4);
+        add_action('shipstream_ready_to_ship', [$this, 'updateReadyToShip'], 10, 2);
     }
 
     /**
@@ -27,22 +30,29 @@ class ShipStream_Sync_Observer {
                     ShipStream_Sync_Helper::callback('syncOrder', ['order_number' => $order->get_order_number()]);
                 } catch (Throwable $e) {
                     // Handle potential errors gracefully
-                    error_log($e->getMessage());
+                    ShipStream_Sync_Helper::logError($e->getMessage());
                 }
             }
         }
 
         if ($new_status === 'processing' && $old_status !== 'ss-ready-to-ship' && $this->isAutoFulfillOrders()) {
-            // Check if the order is not virtual
-            if (!$this->isOrderVirtual($order)) {
-                // Update the order status to 'wc-ss-ready-to-ship'
-                $order->update_status('wc-ss-ready-to-ship', __('Auto-updated to Ready to Ship.'));
-                try {
-                    ShipStream_Sync_Helper::callback('syncOrder', ['order_number' => $order->get_order_number()]);
-                } catch (Throwable $e) {
-                    // Handle potential errors gracefully
-                    error_log($e->getMessage());
-                }
+            // Update the order status to 'wc-ss-ready-to-ship'
+            try {
+                do_action('shipstream_ready_to_ship', $order, __('Auto-updated to Ready to Ship.', 'woocommerce-shipstream-sync'));
+            } catch (Throwable $e) {
+                // Handle potential errors gracefully
+                ShipStream_Sync_Helper::logError($e->getMessage());
+            }
+        }
+    }
+
+    public function updateReadyToShip(WC_Order $order, ?string $comment) {
+        if (!$this->isOrderVirtual($order)) {
+            $order->update_status('wc-ss-ready-to-ship', $comment);
+            $orderNumber = $order->get_order_number();
+            if ($this->isRealtimeSyncEnabled() && ! isset($this->_deduplicate[(string)$orderNumber])) {
+                ShipStream_Sync_Helper::callback('syncOrder', ['order_number' => $orderNumber]);
+                $this->_deduplicate[(string)$orderNumber];
             }
         }
     }
