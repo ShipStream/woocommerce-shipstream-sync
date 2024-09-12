@@ -1,5 +1,5 @@
 <?php
-
+# THIS IS A TEST - DOES IT DISAPPEAR?
 class ShipStream_Sync_Helper {
 
     private static $logFile = null;
@@ -32,7 +32,14 @@ class ShipStream_Sync_Helper {
      * @return bool True if the API URL is configured, false otherwise.
      */
     public static function isConfigured() {
-        return !empty(get_option('shipstream_warehouse_api_url'));
+        return !empty(get_option('shipstream_callback_url'));
+    }
+
+    /**
+     * @return string The app title of the WMS
+     */
+    public static function getAppTitle() {
+        return get_option('shipstream_app_title', 'ShipStream');
     }
 
     /**
@@ -44,14 +51,14 @@ class ShipStream_Sync_Helper {
      * @throws Exception If the API URL is not configured or the request fails.
      */
     public static function callback($method, $data = []) {
-        $apiUrl = get_option('shipstream_warehouse_api_url');
+        $apiUrl = get_option('shipstream_callback_url');
         if (empty($apiUrl)) {
-            throw new Exception('The warehouse API URL is required.');
+            throw new Exception('The '.self::getAppTitle().' Callback URL is required.');
         }
 
         $apiUrl = urldecode($apiUrl);
         if (strpos($apiUrl, '{{method}}') === false) {
-            throw new Exception('The warehouse API URL format is not valid.');
+            throw new Exception('The '.self::getAppTitle().' Callback URL format is not valid.');
         }
 
         $apiUrl = str_replace('{{method}}', $method, $apiUrl);

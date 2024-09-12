@@ -26,7 +26,7 @@ This WooCommerce plugin adds the following functionalities to your WooCommerce s
 - **API Endpoints:**
   - Adds several API endpoints for interacting with ShipStream. These use the same authentication mechanism as other authenticated Read/Write WooCommerce API endpoints.
     - `shipstream/v1/info`
-    - `shipstream/v1/set_config`
+    - `shipstream/v1/register`
     - `shipstream/v1/inventory/sync`
     - `shipstream/v1/inventory/adjust`
     - `shipstream/v1/order/info`

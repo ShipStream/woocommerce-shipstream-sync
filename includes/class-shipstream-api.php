@@ -10,9 +10,9 @@ class ShipStream_API {
             'callback' => array(__CLASS__, 'get_info'),
             'permission_callback' => array(__CLASS__, 'authenticate'),
         ));
-        register_rest_route('shipstream/v1', '/set_config', array(
+        register_rest_route('shipstream/v1', '/register', array(
             'methods' => 'POST',
-            'callback' => array(__CLASS__, 'set_config'),
+            'callback' => array(__CLASS__, 'register'),
             'permission_callback' => array(__CLASS__, 'authenticate'),
         ));
         register_rest_route('shipstream/v1', '/inventory/sync', array(
@@ -45,9 +45,9 @@ class ShipStream_API {
             'callback' => array(__CLASS__, 'add_order_comment'),
             'permission_callback' => array(__CLASS__, 'authenticate'),
         ));
-        register_rest_route('shipstream/v1', '/order/status_update', array(
+        register_rest_route('shipstream/v1', '/order/canceled', array(
             'methods' => 'POST',
-            'callback' => array(__CLASS__, 'updateOrderStatus'),
+            'callback' => array(__CLASS__, 'order_canceled'),
             'permission_callback' => array(__CLASS__, 'authenticate'),
         ));
     }
@@ -146,27 +146,16 @@ class ShipStream_API {
     }
 
     // Set configuration values
-    public static function set_config(WP_REST_Request $request) {
+    public static function register(WP_REST_Request $request) {
         self::logRequest($request);
-        $path = $request->get_param('path');
-        $value = $request->get_param('value');
-
-        if (empty($path)) {
-            return new WP_REST_Response(array('error' => 'Path parameter is required'), 400);
-        }
-
-        if ($value === null) {
-            return new WP_REST_Response(array('error' => 'Value parameter is required'), 400);
-        }
-
-        $option_name = 'shipstream_' . sanitize_key($path);
-        $updated = update_option($option_name, $value);
+        $updated = update_option('shipstream_callback_url', $request->get_param('callback_url'))
+            && update_option('shipstream_app_title', $request->get_param('app_title'));
         
         if ($updated) {
-            ShipStream_Sync_Helper::logMessage("Updated config: $option_name = '$value'");
+            ShipStream_Sync_Helper::logMessage('Configuration updated');
             return new WP_REST_Response(array('success' => 'Configuration updated'), 200);
         } else {
-            ShipStream_Sync_Helper::logError("Failed to update config: $option_name = '$value'");
+            ShipStream_Sync_Helper::logError('Failed to update configuration');
             return new WP_REST_Response(array('error' => 'Failed to update configuration'), 500);
         }
     }
@@ -291,20 +280,40 @@ class ShipStream_API {
         }
 
         $result = array();
-        $result['order_increment_id'] = $order->get_order_number();
+        $result['order_id'] = $order->get_id();
+        $result['order_number'] = $order->get_order_number();
+        $result['coupon_codes'] = $order->get_coupon_codes();
+        $result['created_via'] = $order->get_created_via();
+        $result['customer_id'] = $order->get_customer_id();
+        $result['customer_note'] = $order->get_customer_note();
+        $result['customer_order_notes'] = $order->get_customer_order_notes();
+        $result['date_created'] = $order->get_date_created()->format('Y-m-d H:i:s');
+        $result['payment_method'] = $order->get_payment_method();
         $result['shipping_address'] = $order->get_address('shipping');
         $result['shipping_method'] = $order->get_shipping_method();
         $result['status'] = $order->get_status();
+        $result['subtotal'] = $order->get_subtotal();
+        $result['total'] = $order->get_total();
 
         $result['items'] = array();
         foreach ($order->get_items() as $item_id => $item) {
-            $product = $item->get_product();
+            $product = $item->get_product(); /** @var WC_Product $product */
+            if ($product->get_virtual() || $product->get_downloadable()) {
+                continue;
+            }
             $item_data = array(
                 'product_id' => $product->get_id(),
                 'sku' => $product->get_sku(),
                 'name' => $product->get_name(),
                 'quantity' => $item->get_quantity(),
                 'product_type' => $product->get_type(),
+                'price' => $product->get_price(),
+                'shipping_class' => $product->get_shipping_class(),
+                'stock_managed_by_id' => $product->get_stock_managed_by_id(),
+                'tag_ids' => $product->get_tag_ids(),
+                'tax_class' => $product->get_tax_class(),
+                'tax_status' => $product->get_tax_status(),
+                'category_ids' => $product->get_category_ids(),
             );
             $result['items'][] = $item_data;
         }
@@ -314,6 +323,7 @@ class ShipStream_API {
             $shipping_data = array(
                 'shipping_method' => $shipping_item->get_method_id(),
                 'shipping_description' => $shipping_item->get_method_title(),
+                'total' => $shipping_item->get_total(),
             );
             $result['shipping_lines'][] = $shipping_data;
         }
@@ -324,7 +334,7 @@ class ShipStream_API {
     public static function complete_order_with_tracking(WP_REST_Request $request) {
         self::logRequest($request);
         $data = $request->get_json_params();
-        $order_data = $data['event_data'];
+        $eventData = $data['event_data'];
 
         // Fetch the order using the increment ID
         $order = wc_get_order($data['order_number']);
@@ -333,24 +343,29 @@ class ShipStream_API {
         }
 
         // Add tracking numbers to the order using the Shipment Tracking extension
-        foreach ($order_data['packages'] as $package) {
+        foreach ($eventData['packages'] as $package) {
             foreach ($package['tracking_numbers'] as $tracking_number) {
-                self::add_tracking_number_to_order($order, $tracking_number, $order_data['carrier']);
+                self::add_tracking_number_to_order(
+                    $order,
+                    $tracking_number,
+                    $eventData['carrier'] ?? $package['manifest_courier'] ?? $eventData['service_description'],
+                    $eventData['service_description'] ?? $package['manifest_courier'] ?? $eventData['carrier']
+                );
             }
         }
 
         // Update the order's line items with shipment info data
-        self::update_order_line_items_with_shipment_info($order, $order_data);
+        self::update_order_line_items_with_shipment_info($order, $eventData);
 
         // Check if all items are shipped and mark order as completed
-        if ($order_data['status'] == 'packed' && $order_data['order_status'] == 'complete') {
-            self::maybe_mark_order_as_completed($order, $order_data);
+        if ($eventData['order_status'] === 'complete') {
+            self::maybe_mark_order_as_completed($order, $eventData);
         }
     }
 
-    public static function add_tracking_number_to_order(WC_Order $order, $tracking_number, $carrier) {
+    public static function add_tracking_number_to_order(WC_Order $order, $tracking_number, $carrierCode, $serviceName) {
         if (class_exists('WC_Shipment_Tracking')) {
-            $tracking_provider = WC_Shipment_Tracking::get_providers()[$carrier] ?? $carrier;
+            $tracking_provider = WC_Shipment_Tracking::get_providers()[$carrierCode] ?? $carrierCode;
     
             $tracking_data = array(
                 'tracking_provider' => $tracking_provider,
@@ -362,15 +377,15 @@ class ShipStream_API {
             $wc_shipment_tracking->add_tracking_number($order->get_id(), $tracking_data);
         }
         else {
-            $order->add_order_note(printf(__('Shipped via %s with tracking number %s.', 'woocommerce-shipstream-sync'), $carrier, $tracking_number), 1);
+            $order->add_order_note(sprintf(__('Shipped via %s with tracking number %s.', 'woocommerce-shipstream-sync'), $serviceName, $tracking_number), 1);
         }
     }
 
-    public static function update_order_line_items_with_shipment_info(WC_Order $order, $order_data) {
+    public static function update_order_line_items_with_shipment_info(WC_Order $order, $eventData) {
         foreach ($order->get_items() as $item_id => $item) {
             $item_sku = $item->get_product()->get_sku();
 
-            foreach ($order_data['items'] as $shipment_item) {
+            foreach ($eventData['items'] as $shipment_item) {
                 if ($shipment_item['sku'] === $item_sku) {
                     //wc_update_order_item_meta($item_id, 'order_item_id', $shipment_item['order_item_id']);
                     if ($shipment_item['sku'] != $item_sku) {
@@ -390,14 +405,14 @@ class ShipStream_API {
         }
     }
 
-    public static function maybe_mark_order_as_completed(WC_Order $order, $order_data) {
+    public static function maybe_mark_order_as_completed(WC_Order $order, $eventData) {
         $all_items_shipped = true;
 
         foreach ($order->get_items() as $item) {
             $item_sku = $item->get_product()->get_sku();
             $order_quantity = $item->get_quantity();
 
-            foreach ($order_data['items'] as $shipment_item) {
+            foreach ($eventData['items'] as $shipment_item) {
                 if ($shipment_item['sku'] === $item_sku) {
                     if ((float)$shipment_item['quantity'] < (float)$order_quantity) {
                         $all_items_shipped = false;
@@ -469,8 +484,8 @@ class ShipStream_API {
         foreach ($results as $row) {
             $order = wc_get_order($row['id']);
             if ($order) {
-                $order_data = $order->get_data();
-                $filtered_data = array_intersect_key($order_data, array_flip($cols));
+                $eventData = $order->get_data();
+                $filtered_data = array_intersect_key($eventData, array_flip($cols));
                 $orders[] = $filtered_data;
             }
         }
@@ -486,16 +501,15 @@ class ShipStream_API {
     public static function add_order_comment(WP_REST_Request $request)
     {
         self::logRequest($request);
-        $order_id = $request->get_param('order_id');
+        $order_number = $request->get_param('order_number');
         $status = $request->get_param('status');
         $comment = $request->get_param('comment');
-        $apptitle = $request->get_param('apptitle');
 
-        if (empty($order_id) || empty($comment) || empty($status)) {
+        if (empty($order_number) || empty($comment) || empty($status)) {
             return new WP_REST_Response(['error' => 'Order ID, Status, and Comment are required.'], 400);
         }
 
-        $order = wc_get_order($order_id);
+        $order = wc_get_order($order_number);
 
         if (!$order) {
             return new WP_REST_Response(['error' => 'Invalid order ID.'], 404);
@@ -516,9 +530,8 @@ class ShipStream_API {
             return new WP_REST_Response(['error' => 'Failed to add comment to order.'], 500);
         }
 
-        // Add shipstream ID and app title to order meta
-        if ($apptitle) {
-            $order->update_meta_data('_apptitle', sanitize_text_field($apptitle));
+        if ($status === 'wc-ss-submitted') {
+            $order->update_meta_data('_apptitle', sanitize_text_field(ShipStream_Sync_Helper::getAppTitle()));
         }
         $order->save();
 
@@ -531,39 +544,31 @@ class ShipStream_API {
      * @param WP_REST_Request $request The REST request object.
      * @return WP_REST_Response The response object.
      */
-    public static function updateOrderStatus(WP_REST_Request $request)
+    public static function order_canceled(WP_REST_Request $request)
     {
         self::logRequest($request);
         // Get parameters from the request
-        $shipstream_id = $request->get_param('shipstreamId');
-        $order_id = $request->get_param('orderId');
-        $status = $request->get_param('status');
+        $order_number = $request->get_param('order_number');
 
         // Check for missing required parameters
-        if (empty($shipstream_id) || empty($order_id) || empty($status)) {
-            return new WP_REST_Response(['error' => 'ShipStream ID, Order ID and Status are required.'], 400);
+        if (empty($order_number)) {
+            return new WP_REST_Response(['error' => 'Order Number is required.'], 400);
         }
 
         // Get the order by ID
-        $order = wc_get_order($order_id);
+        $order = wc_get_order($order_number);
         if (!$order) {
-            return new WP_REST_Response(['error' => 'Invalid order ID.'], 404);
-        }
-
-        // Validate and update the order status
-        $sanitized_status = sanitize_text_field($status);
-        if (empty($sanitized_status)) {
-            return new WP_REST_Response(['error' => 'Invalid status.'], 400);
+            return new WP_REST_Response(['error' => 'Invalid order number.'], 404);
         }
 
         // Update order status and add a comment
-        if ($status === 'canceled' && $order->get_status() === 'wc-ss-submitted') {
-            $order->update_status('wc-on-hold', 'Corresponding ShipStream order was cancelled.');
+        if ($order->get_status() === 'ss-submitted') {
+            $order->update_status('wc-on-hold', sprintf(__('Corresponding %s order was cancelled.', 'woocommerce-shipstream-sync'), ShipStream_Sync_Helper::getAppTitle()));
+            return new WP_REST_Response(['success' => 'Status updated successfully for order #' . $order->get_order_number()], 200);
+        } else {
+            $order->add_order_note(sprintf(__('%s order was cancelled but no changes were applied.', 'woocommerce-shipstream-sync'), ShipStream_Sync_Helper::getAppTitle()));
+            return new WP_REST_Response(['success' => 'No change was made for order #' . $order->get_order_number() . ' with status ' . $order->get_status()], 200);
         }
-
-        // Return a success response
-        return new WP_REST_Response(['success' => 'Status updated successfully for order #' . $order->get_order_number()], 200);
     }
-
 
 }
