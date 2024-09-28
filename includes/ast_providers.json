@@ -1,0 +1,4303 @@
+{
+    "australia-post": {
+      "provider_name": "Australia Post",
+      "provider_url": "https://auspost.com.au/mypost/track/details/%number%",
+      "trackship_supported": "1"
+    },
+    "couriersplease": {
+      "provider_name": "CouriersPlease",
+      "provider_url": "https://www.couriersplease.com.au/tools-track?no=%number%",
+      "trackship_supported": "1"
+    },
+    "dai-post": {
+      "provider_name": "Dai Post",
+      "provider_url": "https://daiglobaltrack.com/tracking.aspx?custtracknbr=%number%",
+      "trackship_supported": "0"
+    },
+    "startrack": {
+      "provider_name": "StarTrack",
+      "provider_url": "https://startrack.com.au/track/details/%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-us": {
+      "provider_name": "DHL US",
+      "provider_url": "https://www.dhl.com/us-en/home/tracking/tracking-express.html?submit=1&tracking-id=%number%",
+      "trackship_supported": "1"
+    },
+    "dpd-at": {
+      "provider_name": "DPD Austria",
+      "provider_url": "http://www.mydpd.at/?f=parcel.load&amp;p=%number%",
+      "trackship_supported": "1"
+    },
+    "post-at": {
+      "provider_name": "post.at",
+      "provider_url": "http://www.post.at/sendungsverfolgung.php?pnum1=%number%",
+      "trackship_supported": "1"
+    },
+    "associated-global-systems": {
+      "provider_name": "Associated Global Systems",
+      "provider_url": "https://app.freightclub.com/Tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-parcel": {
+      "provider_name": "DHL Parcel",
+      "provider_url": "https://www.dhl.com/de/home/tracking/tracking-express.html?submit=1&tracking-id=%number%",
+      "trackship_supported": "1"
+    },
+    "canada-post": {
+      "provider_name": "Canada Post",
+      "provider_url": "https://www.canadapost.ca/track-reperage/en#/search?searchFor=%number%",
+      "trackship_supported": "1"
+    },
+    "canpar": {
+      "provider_name": "Canpar",
+      "provider_url": "https://www.canpar.ca/en/tracking/track.htm?barcode=%number%",
+      "trackship_supported": "1"
+    },
+    "correos-chile": {
+      "provider_name": "Correos Chile",
+      "provider_url": "https://www.correos.cl/web/guest/seguimiento-en-linea?codigos=%number%",
+      "trackship_supported": "0"
+    },
+    "china-post": {
+      "provider_name": "China Post",
+      "provider_url": "https://www.ems.com.cn/english",
+      "trackship_supported": "1"
+    },
+    "ems": {
+      "provider_name": "EMS",
+      "provider_url": "https://www.ems.post/en/global-network/tracking",
+      "trackship_supported": "1"
+    },
+    "tnt": {
+      "provider_name": "TNT",
+      "provider_url": "https://www.tnt.com/express/en_us/site/tracking.html?searchType=con&cons=%number%",
+      "trackship_supported": "1"
+    },
+    "speedex-courier": {
+      "provider_name": "Speedex Courier",
+      "provider_url": "http://www.speedexcourier.com/",
+      "trackship_supported": "1"
+    },
+    "correos-costa-rica": {
+      "provider_name": "Correos Costa Rica",
+      "provider_url": "https://correos.go.cr/rastreo/",
+      "trackship_supported": "0"
+    },
+    "dhl-uk": {
+      "provider_name": "DHL Express UK",
+      "provider_url": "https://www.dhl.com/gb-en/home/tracking/tracking-express.html?submit=1&tracking-id=%number%",
+      "trackship_supported": "1"
+    },
+    "dpd-cz": {
+      "provider_name": "DPD Czech Republic",
+      "provider_url": "https://tracking.dpd.de/parcelstatus?locale=cs_CZ&query=%number%",
+      "trackship_supported": "1"
+    },
+    "chronopost": {
+      "provider_name": "Chronopost",
+      "provider_url": "https://www.chronopost.fr/fr/chrono_suivi_search?listeNumerosLT=%number%",
+      "trackship_supported": "1"
+    },
+    "colis-prive": {
+      "provider_name": "Colis Privé",
+      "provider_url": "https://www.colisprive.com/moncolis/pages/detailColis.aspx?numColis=%number%",
+      "trackship_supported": "1"
+    },
+    "colissimo": {
+      "provider_name": "Colissimo",
+      "provider_url": "https://www.laposte.fr/outils/suivre-vos-envois?code=%number%",
+      "trackship_supported": "1"
+    },
+    "la-poste": {
+      "provider_name": "La Poste",
+      "provider_url": "https://www.laposte.fr/outils/suivre-vos-envois?code=%number%",
+      "trackship_supported": "1"
+    },
+    "mondial-relay": {
+      "provider_name": "Mondial Relay",
+      "provider_url": "https://www.mondialrelay.fr/suivi-de-colis?numeroExpedition=%number%&CodePostal=%postal_code%",
+      "trackship_supported": "1"
+    },
+    "deutsche-post": {
+      "provider_name": "Deutsche Post",
+      "provider_url": "https://www.deutschepost.de/en/s/shipment-tracking.html?piececode=%number%",
+      "trackship_supported": "1"
+    },
+    "tnt-uk": {
+      "provider_name": "TNT UK",
+      "provider_url": "https://www.tnt.com/express/en_gb/site/shipping-tools/tracking.html?searchType=con&cons=%number%",
+      "trackship_supported": "1"
+    },
+    "tnt-reference": {
+      "provider_name": "TNT Reference",
+      "provider_url": "https://www.tnt.com/express/en_gb/site/shipping-tools/tracking.html?searchType=con&cons=%number%",
+      "trackship_supported": "1"
+    },
+    "dpd-de": {
+      "provider_name": "DPD Germany",
+      "provider_url": "https://tracking.dpd.de/parcelstatus?query=%number%&amp;amp;locale=en_DE",
+      "trackship_supported": "1"
+    },
+    "hermes-de": {
+      "provider_name": "Hermes Germany",
+      "provider_url": "https://www.myhermes.de/empfangen/sendungsverfolgung/?suche=%number%",
+      "trackship_supported": "1"
+    },
+    "ups-germany": {
+      "provider_name": "UPS Germany",
+      "provider_url": "https://wwwapps.ups.com/WebTracking/processInputRequest?sort_by=status&tracknums_displayed=1&TypeOfInquiryNumber=T&loc=de_DE&InquiryNumber1=%number%",
+      "trackship_supported": "1"
+    },
+    "hong-kong-post": {
+      "provider_name": "Hong Kong Post",
+      "provider_url": "https://www.hongkongpost.hk/en/mail_tracking/index.html",
+      "trackship_supported": "1"
+    },
+    "abf": {
+      "provider_name": "ABF",
+      "provider_url": "https://arcb.com/tools/tracking.html",
+      "trackship_supported": "1"
+    },
+    "delhivery": {
+      "provider_name": "Delhivery",
+      "provider_url": "https://www.delhivery.com/track/package/%number%",
+      "trackship_supported": "1"
+    },
+    "ukraine-ems": {
+      "provider_name": "Ukraine EMS",
+      "provider_url": "http://dpsz.ua/en/track/ems",
+      "trackship_supported": "1"
+    },
+    "swiss-post": {
+      "provider_name": "Swiss Post",
+      "provider_url": "https://www.post.ch/swisspost-tracking?formattedParcelCodes=%number%",
+      "trackship_supported": "1"
+    },
+    "ecom-express": {
+      "provider_name": "Ecom Express",
+      "provider_url": "https://ecomexpress.in/tracking/?awb_field=%number%",
+      "trackship_supported": "1"
+    },
+    "india-post": {
+      "provider_name": "India Post",
+      "provider_url": "https://www.indiapost.gov.in/_layouts/15/dop.portal.tracking/trackconsignment.aspx",
+      "trackship_supported": "1"
+    },
+    "israel-post": {
+      "provider_name": "Israel Post",
+      "provider_url": "https://mypost.israelpost.co.il/itemtrace?itemcode=%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-se": {
+      "provider_name": "DHL se",
+      "provider_url": "https://www.dhl.com/se-sv/home/tracking/tracking-freight.html?tracking-id=%number%",
+      "trackship_supported": "1"
+    },
+    "jp-post": {
+      "provider_name": "JP Post",
+      "provider_url": "https://trackings.post.japanpost.jp/services/srv/search/direct?reqCodeNo1=%number%&searchKind=S002&locale=ja",
+      "trackship_supported": "1"
+    },
+    "latvijas-pasts": {
+      "provider_name": "Latvia Post",
+      "provider_url": "https://track.pasts.lv/consignment/tracking?type=pasts&ampid=&lttrackid=&gt=&id=%number%&type=pasts&button=Track",
+      "trackship_supported": "1"
+    },
+    "south-african-post-office": {
+      "provider_name": "South African Post Office",
+      "provider_url": "http://www.southafricanpostoffice.post/index.html",
+      "trackship_supported": "1"
+    },
+    "dpd-nl": {
+      "provider_name": "DPD Netherlands",
+      "provider_url": "https://tracking.dpd.de/status/nl_NL/parcel/%number%",
+      "trackship_supported": "1"
+    },
+    "postnl": {
+      "provider_name": "PostNL",
+      "provider_url": "https://tracking.postnl.nl/track-and-trace/%number%-%country_code%-%postal_code%",
+      "trackship_supported": "1"
+    },
+    "dpd-romania": {
+      "provider_name": "DPD Romania",
+      "provider_url": "https://tracking.dpd.ro/?shipmentNumber=%number%&language=ro",
+      "trackship_supported": "1"
+    },
+    "boxberry": {
+      "provider_name": "Boxberry",
+      "provider_url": "https://boxberry.ru/tracking/",
+      "trackship_supported": "1"
+    },
+    "ninja-van": {
+      "provider_name": "Ninja Van",
+      "provider_url": "https://www.ninjavan.co/en-sg/?tracking_id=%number%",
+      "trackship_supported": "1"
+    },
+    "singapore-post": {
+      "provider_name": "Singapore Post",
+      "provider_url": "https://www.singpost.com/track-items?trackingid=%number%",
+      "trackship_supported": "1"
+    },
+    "portugal-post-ctt": {
+      "provider_name": "Portugal Post - CTT",
+      "provider_url": "https://www.ctt.pt/feapl_2/app/open/objectSearch/objectSearch.jspx?objects=%number%",
+      "trackship_supported": "1"
+    },
+    "postnord-sverige-ab": {
+      "provider_name": "PostNord Sverige AB",
+      "provider_url": "https://www.postnord.se/vara-verktyg/spara-brev-paket-och-pall?shipmentId=%number%",
+      "trackship_supported": "1"
+    },
+    "ups-se": {
+      "provider_name": "UPS.se",
+      "provider_url": "https://wwwapps.ups.com/WebTracking/track?track=yes&loc=sv_SE&trackNums=%number%",
+      "trackship_supported": "1"
+    },
+    "aramex-nz": {
+      "provider_name": "Aramex NZ",
+      "provider_url": "https://www.fastway.co.nz/tools/track?l=%number%",
+      "trackship_supported": "1"
+    },
+    "ukrposhta": {
+      "provider_name": "Ukrposhta",
+      "provider_url": "https://track.ukrposhta.ua/tracking_EN.html?barcode=%number%",
+      "trackship_supported": "1"
+    },
+    "arrowxl": {
+      "provider_name": "ArrowXL",
+      "provider_url": "https://askaxl.co.uk/tracking?upi=%number%",
+      "trackship_supported": "1"
+    },
+    "dhlparcel-nl": {
+      "provider_name": "DHLParcel NL",
+      "provider_url": "https://www.dhlparcel.nl/en/follow-your-shipment?tc=%number%&pc=%postal_code%",
+      "trackship_supported": "1"
+    },
+    "dpd-uk": {
+      "provider_name": "DPD UK",
+      "provider_url": "https://www.dpdgroup.com/be/mydpd/my-parcels/search?lang=en&parcelNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "interlink": {
+      "provider_name": "InterLink",
+      "provider_url": "http://www.interlinkexpress.com/apps/tracking/?reference=%number%&postcode=%2$s#results",
+      "trackship_supported": "0"
+    },
+    "parcelforce": {
+      "provider_name": "ParcelForce",
+      "provider_url": "http://www.parcelforce.com/portal/pw/track?trackNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "royal-mail": {
+      "provider_name": "Royal Mail",
+      "provider_url": "https://www.royalmail.com/track-your-item/?trackNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "apc": {
+      "provider_name": "APC",
+      "provider_url": "https://us.mytracking.net/APC/track/TrackDetails.aspx?t=%number%",
+      "trackship_supported": "1"
+    },
+    "deliv": {
+      "provider_name": "Deliv",
+      "provider_url": "https://tracking.deliv.co/",
+      "trackship_supported": "0"
+    },
+    "monaco-ems": {
+      "provider_name": "Monaco EMS",
+      "provider_url": "http://www.lapostemonaco.mc",
+      "trackship_supported": "1"
+    },
+    "fedex": {
+      "provider_name": "FedEx",
+      "provider_url": "https://www.fedex.com/fedextrack/?trknbr=%number%",
+      "trackship_supported": "1"
+    },
+    "fedex-sameday": {
+      "provider_name": "FedEx Sameday",
+      "provider_url": "https://www.fedexsameday.com/fdx_dotracking_ua.aspx?tracknum=%number%",
+      "trackship_supported": "1"
+    },
+    "gso": {
+      "provider_name": "GSO",
+      "provider_url": "https://www.gls-us.com/Trackshipment?TrackingNumbers=%number%",
+      "trackship_supported": "1"
+    },
+    "lasership": {
+      "provider_name": "LaserShip",
+      "provider_url": "https://www.lasership.com/track.php?track_number_input=%number%",
+      "trackship_supported": "1"
+    },
+    "ontrac": {
+      "provider_name": "OnTrac",
+      "provider_url": "https://www.ontrac.com/tracking/?number=%number%",
+      "trackship_supported": "1"
+    },
+    "ups": {
+      "provider_name": "UPS",
+      "provider_url": "https://wwwapps.ups.com/WebTracking/track?track=yes&trackNums=%number%",
+      "trackship_supported": "1"
+    },
+    "usps": {
+      "provider_name": "USPS",
+      "provider_url": "https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=%number%",
+      "trackship_supported": "1"
+    },
+    "direct-link": {
+      "provider_name": "Direct Link",
+      "provider_url": "https://tracking.directlink.com/?itemNumber=%number%",
+      "trackship_supported": "0"
+    },
+    "ec-firstclass": {
+      "provider_name": "EC Firstclass",
+      "provider_url": "http://www.ec-firstclass.org/Details.aspx",
+      "trackship_supported": "1"
+    },
+    "ups-i-parcel": {
+      "provider_name": "UPS i-parcel",
+      "provider_url": "https://tracking.i-parcel.com/?TrackingNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "korea-post": {
+      "provider_name": "Korea Post",
+      "provider_url": "http://service.epost.go.kr/trace.RetrieveRegiPrclDeliv.postal?sid1=%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-express": {
+      "provider_name": "DHL Express",
+      "provider_url": "https://www.dhl.com/en/express/tracking.html?AWB=%number%&brand=DHL",
+      "trackship_supported": "1"
+    },
+    "tnt-italy": {
+      "provider_name": "TNT Italy",
+      "provider_url": "https://www.tnt.it/tracking/getTrack.html?wt=1&consigNos=%number%",
+      "trackship_supported": "1"
+    },
+    "tnt-click": {
+      "provider_name": "TNT Click",
+      "provider_url": "https://www.tnt-click.it/",
+      "trackship_supported": "1"
+    },
+    "dpd-ie": {
+      "provider_name": "DPD Ireland",
+      "provider_url": "https://dpd.ie/tracking?deviceType=5&consignmentNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "an-post": {
+      "provider_name": "An Post",
+      "provider_url": "https://www.anpost.com/Post-Parcels/Track/History?item=%number%",
+      "trackship_supported": "1"
+    },
+    "dtdc": {
+      "provider_name": "DTDC",
+      "provider_url": "https://tracking.dtdc.com/ctbs-tracking/customerInterface.tr?submitName=showCITrackingDetails&cType=Consignment&cnNo=%number%",
+      "trackship_supported": "1"
+    },
+    "dtdc-plus": {
+      "provider_name": "DTDC Plus",
+      "provider_url": "https://tracking.dtdc.com/ctbs-tracking/customerInterface.tr?submitName=showCITrackingDetails&cnNo=%number%&cType=Consignment",
+      "trackship_supported": "1"
+    },
+    "deutsche-post-dhl": {
+      "provider_name": "Deutsche Post DHL",
+      "provider_url": "https://www.deutschepost.de/sendung/simpleQueryResult.html?form.sendungsnummer=%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-de": {
+      "provider_name": "DHL Germany",
+      "provider_url": "https://www.dhl.de/de/privatkunden/pakete-empfangen/verfolgen.html?piececode=%number%",
+      "trackship_supported": "1"
+    },
+    "overseas-territory-fr-ems": {
+      "provider_name": "Overseas Territory FR EMS",
+      "provider_url": "https://www.chronopost.fr/tracking-no-cms/suivi-page?listeNumerosLT=%number%",
+      "trackship_supported": "1"
+    },
+    "tnt-france": {
+      "provider_name": "TNT France",
+      "provider_url": "https://www.tnt.fr/public/suivi_colis/recherche/visubontransport.do",
+      "trackship_supported": "1"
+    },
+    "estonia-post": {
+      "provider_name": "Estonia Post",
+      "provider_url": "https://www.omniva.ee/private/track_and_trace",
+      "trackship_supported": "1"
+    },
+    "denmark-post": {
+      "provider_name": "Denmark Post",
+      "provider_url": "https://www.postnord.dk/en/track-and-trace#dynamicloading=true&shipmentid=%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-cz": {
+      "provider_name": "DHL cz",
+      "provider_url": "https://www.dhl.com/cz-cs/home/tracking.html?tracking-id=%number%&submit=1",
+      "trackship_supported": "1"
+    },
+    "cyprus-post": {
+      "provider_name": "Cyprus Post",
+      "provider_url": "https://ips.cypruspost.gov.cy/ipswebtrack/IPSWeb_item_events.aspx?itemid=%number%",
+      "trackship_supported": "1"
+    },
+    "croatia-post": {
+      "provider_name": "Croatia Post",
+      "provider_url": "https://posiljka.posta.hr/en/tracking/trackingdata?barcode=%number%",
+      "trackship_supported": "1"
+    },
+    "ivory-coast-ems": {
+      "provider_name": "Ivory Coast EMS",
+      "provider_url": "https://laposte.ci.post/tracking-colis?identifiant=%number%",
+      "trackship_supported": "1"
+    },
+    "costa-rica-post": {
+      "provider_name": "Costa Rica Post",
+      "provider_url": "https://correos.go.cr/rastreo/",
+      "trackship_supported": "1"
+    },
+    "colombia-post": {
+      "provider_name": "Colombia Post",
+      "provider_url": "http://www.4-72.com.co/",
+      "trackship_supported": "1"
+    },
+    "epacket": {
+      "provider_name": "ePacket",
+      "provider_url": "https://www.ems.com.cn",
+      "trackship_supported": "1"
+    },
+    "sf-express": {
+      "provider_name": "SF Express",
+      "provider_url": "http://www.sf-express.com/cn/en/dynamic_function/waybill/#search/bill-number/%number%",
+      "trackship_supported": "1"
+    },
+    "brazil-correios": {
+      "provider_name": "Brazil Correios",
+      "provider_url": "https://www2.correios.com.br/sistemas/rastreamento/default.cfm",
+      "trackship_supported": "1"
+    },
+    "belgium-post": {
+      "provider_name": "Bpost",
+      "provider_url": "https://track.bpost.cloud/btr/web/#/search?lang=en&itemCode=%number%&postalCode=%postal_code%",
+      "trackship_supported": "1"
+    },
+    "bangladesh-ems": {
+      "provider_name": "Bangladesh EMS",
+      "provider_url": "http://www.bangladeshpost.gov.bd/tracking.html",
+      "trackship_supported": "1"
+    },
+    "dhl-at": {
+      "provider_name": "DHL at",
+      "provider_url": "https://www.dhl.com/at-en/home/tracking/tracking-parcel.html?submit=1&tracking-id=%number%",
+      "trackship_supported": "1"
+    },
+    "australia-ems": {
+      "provider_name": "Australia EMS",
+      "provider_url": "https://auspost.com.au/mypost/track/details/%number%",
+      "trackship_supported": "1"
+    },
+    "tnt-australia": {
+      "provider_name": "TNT Australia",
+      "provider_url": "https://www.tntexpress.com.au/interaction/Trackntrace.aspx",
+      "trackship_supported": "1"
+    },
+    "cainiao": {
+      "provider_name": "Cainiao",
+      "provider_url": "https://global.cainiao.com/detail.htm?mailNoList=%number%",
+      "trackship_supported": "1"
+    },
+    "sendle": {
+      "provider_name": "Sendle",
+      "provider_url": "https://track.sendle.com/tracking?ref=%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-freight": {
+      "provider_name": "DHL Freight",
+      "provider_url": "https://www.logistics.dhl/global-en/home/tracking/tracking-freight.html?tracking-id=%number%",
+      "trackship_supported": "1"
+    },
+    "deppon": {
+      "provider_name": "Deppon",
+      "provider_url": "https://www.deppon.com/en/toTrack.action",
+      "trackship_supported": "1"
+    },
+    "gls-italy": {
+      "provider_name": "GLS Italy",
+      "provider_url": "https://gls-group.com/IT/it/servizi-online/ricerca-spedizioni.html?match=%number%&type=NAT",
+      "trackship_supported": "1"
+    },
+    "hermes": {
+      "provider_name": "Hermes",
+      "provider_url": "https://new.myhermes.co.uk/track.html#/parcel/%number%/details",
+      "trackship_supported": "1"
+    },
+    "malaysia-post": {
+      "provider_name": "Poslaju National",
+      "provider_url": "https://tracking.pos.com.my/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "yunexpress": {
+      "provider_name": "Yun Express",
+      "provider_url": "https://www.yuntrack.com/parcelTracking?id=%number%",
+      "trackship_supported": "1"
+    },
+    "gls": {
+      "provider_name": "GLS Europe",
+      "provider_url": "https://gls-group.eu/EU/en/parcel-tracking?match=%number%&amp;postalCode=%postal_code%",
+      "trackship_supported": "1"
+    },
+    "postnl-international-3s": {
+      "provider_name": "PostNL International 3S",
+      "provider_url": "https://tracking.postnl.nl/track-and-trace/%number%-%country_code%-%postal_code%",
+      "trackship_supported": "1"
+    },
+    "xpressbees": {
+      "provider_name": "Xpressbees",
+      "provider_url": "https://www.xpressbees.com/shipment/tracking?awbNo=%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-parcel-uk": {
+      "provider_name": "DHL Parcel UK",
+      "provider_url": "https://track.dhlparcel.co.uk/?con=%number%",
+      "trackship_supported": "1"
+    },
+    "yanwen": {
+      "provider_name": "Yanwen",
+      "provider_url": "https://track.yw56.com.cn/en/querydel?nums=%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-ecommerce": {
+      "provider_name": "DHL eCommerce",
+      "provider_url": "https://www.dhl.com/global-en/home/tracking.html?tracking-id=%number%&submit=1",
+      "trackship_supported": "1"
+    },
+    "vietnam-post": {
+      "provider_name": "Vietnam Post",
+      "provider_url": "https://vnpost.vn/ca-nhan/chuyen-phat/chuyen-phat-trong-nuoc?code=%number%",
+      "trackship_supported": "1"
+    },
+    "correos-spain": {
+      "provider_name": "Correos España",
+      "provider_url": "https://www.correos.es/ss/Satellite/site/aplicacion-4000003383089-herramientas_y_apps/detalle_app-sidioma=es_ES?numero=%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-es": {
+      "provider_name": "DHL Spain",
+      "provider_url": "https://www.dhl.com/es-es/home/tracking/tracking-express.html?submit=1&tracking-id=%number%",
+      "trackship_supported": "1"
+    },
+    "redur-es": {
+      "provider_name": "Redur Spain",
+      "provider_url": "https://redur.es/track-trace/",
+      "trackship_supported": "1"
+    },
+    "fedex-uk": {
+      "provider_name": "FedEx UK",
+      "provider_url": "https://www.fedex.com/apps/fedextrack/?action=track&tracknumbers=%number%&locale=en_GB&cntry_code=us",
+      "trackship_supported": "1"
+    },
+    "asendia-uk": {
+      "provider_name": "Asendia UK",
+      "provider_url": "https://tracking.asendia.com/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "fedex-freight": {
+      "provider_name": "FedEx Freight",
+      "provider_url": "https://www.fedex.com/apps/fedextrack/index.html?action=track&amp;tracknumbers=%number%&amp;locale=en_US&amp;cntry_code=en",
+      "trackship_supported": "1"
+    },
+    "fedex-ground": {
+      "provider_name": "FedEx Ground",
+      "provider_url": "https://www.fedex.com/apps/fedextrack/index.html?action=track&amp;tracknumbers=%number%&amp;locale=en_US&amp;cntry_code=en",
+      "trackship_supported": "1"
+    },
+    "bluedart": {
+      "provider_name": "Bluedart",
+      "provider_url": "https://www.bluedart.com/web/guest/trackdartresultthirdparty?trackFor=0&trackNo=%number%",
+      "trackship_supported": "1"
+    },
+    "elta-courier": {
+      "provider_name": "ELTA Courier",
+      "provider_url": "https://www.elta-courier.gr/search?br=%number%",
+      "trackship_supported": "1"
+    },
+    "aramex": {
+      "provider_name": "Aramex",
+      "provider_url": "https://www.aramex.com/us/en/track/shipments?ShipmentNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "4px": {
+      "provider_name": "4px",
+      "provider_url": "http://track.4px.com/query/%number%?locale=en_US",
+      "trackship_supported": "1"
+    },
+    "purolator": {
+      "provider_name": "Purolator",
+      "provider_url": "https://www.purolator.com/en/app-tracker.page?pins=%number%",
+      "trackship_supported": "1"
+    },
+    "turkey-post": {
+      "provider_name": "Turkey Post",
+      "provider_url": "https://track.ptt.gov.tr/Track/Verify?q=%number%",
+      "trackship_supported": "1"
+    },
+    "acs-courier": {
+      "provider_name": "ACS Courier",
+      "provider_url": "https://www.acscourier.net/el/web/greece/track-and-trace?action=getTracking&generalCode=%number%",
+      "trackship_supported": "1"
+    },
+    "the-professional-couriers": {
+      "provider_name": "The Professional Couriers",
+      "provider_url": "https://www.tpcindia.com/Default.aspx",
+      "trackship_supported": "1"
+    },
+    "sda": {
+      "provider_name": "SDA",
+      "provider_url": "https://www.sda.it/wps/portal/Servizi_online/dettaglio-spedizione?locale=it&tracing.letteraVettura=%number%",
+      "trackship_supported": "1"
+    },
+    "laos-post": {
+      "provider_name": "Laos Post",
+      "provider_url": "http://www.laopost.com.la/App_UI/TrackAndTrace/TrackAndTrace.aspx",
+      "trackship_supported": "1"
+    },
+    "courierpost": {
+      "provider_name": "CourierPost",
+      "provider_url": "http://trackandtrace.courierpost.co.nz/search/%number%?tracks",
+      "trackship_supported": "1"
+    },
+    "new-zealand-post": {
+      "provider_name": "New Zealand Post",
+      "provider_url": "https://www.nzpost.co.nz/tools/tracking/item/%number%",
+      "trackship_supported": "1"
+    },
+    "naqel": {
+      "provider_name": "Naqel",
+      "provider_url": "https://www.naqelexpress.com/",
+      "trackship_supported": "1"
+    },
+    "smsa-express": {
+      "provider_name": "SMSA Express",
+      "provider_url": "https://www.smsaexpress.com/sa/trackingdetails?tracknumbers0=%number%",
+      "trackship_supported": "1"
+    },
+    "poste-maroc": {
+      "provider_name": "Poste Maroc",
+      "provider_url": "http://www.poste.ma/wps/portal/GPM/Accueil",
+      "trackship_supported": "0"
+    },
+    "posten-norge": {
+      "provider_name": "Posten Norge",
+      "provider_url": "https://sporing.posten.no/sporing/%number%",
+      "trackship_supported": "1"
+    },
+    "emirates-post": {
+      "provider_name": "Emirates Post",
+      "provider_url": "https://www.emiratespost.ae/all-services/track-a-package/step-two?q=%number%",
+      "trackship_supported": "1"
+    },
+    "qi-eleven": {
+      "provider_name": "7-ELEVEN",
+      "provider_url": "https://eservice.7-11.com.tw/E-Tracking/search.aspx/%number%",
+      "trackship_supported": "1"
+    },
+    "ceska-posta": {
+      "provider_name": "Ceska Posta",
+      "provider_url": "https://www.postaonline.cz/trackandtrace/-/zasilka/cislo?parcelNumbers=%number%",
+      "trackship_supported": "1"
+    },
+    "bring": {
+      "provider_name": "Bring",
+      "provider_url": "https://tracking.bring.com/tracking/%number%?lang=en",
+      "trackship_supported": "1"
+    },
+    "dhl-paket": {
+      "provider_name": "DHL Paket",
+      "provider_url": "https://www.dhl.de/de/privatkunden/pakete-empfangen/verfolgen.html?idc=%number%",
+      "trackship_supported": "1"
+    },
+    "landmark-global": {
+      "provider_name": "Landmark Global",
+      "provider_url": "https://track.landmarkglobal.com/?trck=%number%&Submit=Track",
+      "trackship_supported": "1"
+    },
+    "toll": {
+      "provider_name": "TOLL",
+      "provider_url": "https://www.myteamge.com/web/guest/search-shipment",
+      "trackship_supported": "1"
+    },
+    "loomis-express": {
+      "provider_name": "Loomis Express",
+      "provider_url": "https://www.loomisexpress.com/loomship/Track/TrackStatus?wbs=%number%",
+      "trackship_supported": "1"
+    },
+    "ethiopia-post": {
+      "provider_name": "Ethiopia Post",
+      "provider_url": "http://globaltracktrace.ptc.post/gtt.web/",
+      "trackship_supported": "1"
+    },
+    "apc-overnight": {
+      "provider_name": "APC Overnight",
+      "provider_url": "https://apc-overnight.com/receiving-a-parcel/tracking",
+      "trackship_supported": "0"
+    },
+    "gls-spain": {
+      "provider_name": "GLS Spain",
+      "provider_url": "https://m.gls-spain.es/e/%number%/%postal_code%",
+      "trackship_supported": "1"
+    },
+    "sagawa": {
+      "provider_name": "Sagawa",
+      "provider_url": "https://k2k.sagawa-exp.co.jp/p/web/okurijosearch.do?okurijoNo=%number%",
+      "trackship_supported": "1"
+    },
+    "citi-sprint": {
+      "provider_name": "Citi Sprint",
+      "provider_url": "https://www.citisprint.co.za/track-your-parcel",
+      "trackship_supported": "1"
+    },
+    "collectplus": {
+      "provider_name": "CollectPlus",
+      "provider_url": "https://www.collectplus.co.uk/track-a-parcel",
+      "trackship_supported": "1"
+    },
+    "kerry-logistics": {
+      "provider_name": "Kerry Logistics",
+      "provider_url": "https://www.kerrylogistics.com/",
+      "trackship_supported": "1"
+    },
+    "lietuvos-pasta": {
+      "provider_name": "Lithuania Post",
+      "provider_url": "https://www.post.lt/siuntu-sekimas",
+      "trackship_supported": "1"
+    },
+    "cj-packet": {
+      "provider_name": "CJPacket",
+      "provider_url": "https://cjpacket.com/?trackingNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "trackon": {
+      "provider_name": "Trackon",
+      "provider_url": "https://trackon.in/",
+      "trackship_supported": "1"
+    },
+    "serbia-post": {
+      "provider_name": "Serbia Post",
+      "provider_url": "https://www.posta.rs/cir/alati/pracenje-posiljke.aspx?broj=%number%",
+      "trackship_supported": "1"
+    },
+    "magyar-posta": {
+      "provider_name": "Magyar Posta",
+      "provider_url": "https://www.posta.hu/nyomkovetes/nyitooldal?searchvalue=%number%",
+      "trackship_supported": "1"
+    },
+    "ekart": {
+      "provider_name": "Ekart",
+      "provider_url": "https://www.ekartlogistics.com/shipmenttrack/%number%/",
+      "trackship_supported": "1"
+    },
+    "poste-italiane": {
+      "provider_name": "Poste Italiane",
+      "provider_url": "https://www.poste.it/cerca/index.html#/risultati-spedizioni/%number%",
+      "trackship_supported": "1"
+    },
+    "thailand-post": {
+      "provider_name": "Thailand Post",
+      "provider_url": "https://track.thailandpost.co.th/?trackNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "russian-post": {
+      "provider_name": "Russian Post",
+      "provider_url": "https://www.pochta.ru/tracking#%number%",
+      "trackship_supported": "1"
+    },
+    "spee-dee": {
+      "provider_name": "Spee-Dee",
+      "provider_url": "http://speedeedelivery.com/track-a-shipment/?v=detail&barcode=%number%",
+      "trackship_supported": "1"
+    },
+    "saudi-post": {
+      "provider_name": "Saudi Post",
+      "provider_url": "https://sp.com.sa/ar/tracktrace/?tid=%number%",
+      "trackship_supported": "1"
+    },
+    "brt": {
+      "provider_name": "BRT",
+      "provider_url": "https://services.brt.it/it/tracking?OP=N&CD=%number%",
+      "trackship_supported": "1"
+    },
+    "cj-logistics": {
+      "provider_name": "CJ Logistics",
+      "provider_url": "https://www.doortodoor.co.kr/parcel/doortodoor.do?fsp_action=PARC_ACT_002&fsp_cmd=retrieveInvNoACT&invc_no=%number%",
+      "trackship_supported": "1"
+    },
+    "lion-parcel": {
+      "provider_name": "Lion Parcel",
+      "provider_url": "http://lionparcel.com/track/stt?q=%number%",
+      "trackship_supported": "0"
+    },
+    "shadowfax": {
+      "provider_name": "Shadowfax",
+      "provider_url": "https://track.shadowfax.in/track?order=new&trackingId=%number%",
+      "trackship_supported": "1"
+    },
+    "yodel": {
+      "provider_name": "Yodel",
+      "provider_url": "https://www.yodel.co.uk/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "jcex": {
+      "provider_name": "JCEX",
+      "provider_url": "https://www.jcex.com/EN/Track_DetailNumber_J_%number%.html",
+      "trackship_supported": "1"
+    },
+    "toll-ipec": {
+      "provider_name": "Toll IPEC",
+      "provider_url": "https://www.myteamge.com/web/guest/search-shipment",
+      "trackship_supported": "1"
+    },
+    "ontime": {
+      "provider_name": "Ontime",
+      "provider_url": "http://www.ontime.es/",
+      "trackship_supported": "0"
+    },
+    "spring-gds": {
+      "provider_name": "Spring GDS",
+      "provider_url": "https://www.mailingtechnology.com/tracking/?tn=%number%",
+      "trackship_supported": "1"
+    },
+    "redpack": {
+      "provider_name": "Redpack",
+      "provider_url": "https://www.redpack.com.mx/es/rastreo/?guias=%number%",
+      "trackship_supported": "1"
+    },
+    "dpd-fr": {
+      "provider_name": "DPD France",
+      "provider_url": "https://www.dpd.fr/trace/%number%",
+      "trackship_supported": "1"
+    },
+    "gls-denmark": {
+      "provider_name": "GLS Denmark",
+      "provider_url": "https://gls-group.eu/DK/da/find-pakke.html?match=%number%",
+      "trackship_supported": "1"
+    },
+    "hfd": {
+      "provider_name": "HFD",
+      "provider_url": "https://www.hfd.co.il/",
+      "trackship_supported": "1"
+    },
+    "jne": {
+      "provider_name": "JNE Express",
+      "provider_url": "https://www.jne.co.id/id/tracking/trace",
+      "trackship_supported": "1"
+    },
+    "tiki": {
+      "provider_name": "TIKI",
+      "provider_url": "https://www.tiki.id/id/tracking",
+      "trackship_supported": "1"
+    },
+    "j-t": {
+      "provider_name": "J&T ID",
+      "provider_url": "http://www.jet.co.id/track",
+      "trackship_supported": "1"
+    },
+    "ninja-express": {
+      "provider_name": "Ninja Express",
+      "provider_url": "https://www.ninjaxpress.co/id-id/tracking?id=%number%",
+      "trackship_supported": "1"
+    },
+    "rides": {
+      "provider_name": "Wahana",
+      "provider_url": "https://www.wahana.com/lacak-kiriman?noresi=%number%",
+      "trackship_supported": "1"
+    },
+    "pos-indonesia": {
+      "provider_name": "Pos Indonesia",
+      "provider_url": "https://www.posindonesia.co.id/id/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "sicepat": {
+      "provider_name": "Sicepat",
+      "provider_url": "http://sicepat.com/checkAwb",
+      "trackship_supported": "0"
+    },
+    "jet-express": {
+      "provider_name": "JET Express",
+      "provider_url": "http://www.jetexpress.co.id/",
+      "trackship_supported": "1"
+    },
+    "shree-maruti-courier": {
+      "provider_name": "Shree Maruti Courier",
+      "provider_url": "https://shreemaruti.com/track-shipment",
+      "trackship_supported": "1"
+    },
+    "gig-logistics": {
+      "provider_name": "Gig Logistics",
+      "provider_url": "https://portal.gigagilitysystems.com/public/track",
+      "trackship_supported": "1"
+    },
+    "mrw": {
+      "provider_name": "MRW",
+      "provider_url": "https://mrw.es/seguimiento_envios/MRW_resultados_consultas.asp?modo=nacional&envio=%number%&",
+      "trackship_supported": "1"
+    },
+    "yamato": {
+      "provider_name": "Yamato",
+      "provider_url": "http://jizen.kuronekoyamato.co.jp/jizen/servlet/crjz.b.NQ0010?id=%number%",
+      "trackship_supported": "1"
+    },
+    "luxembourg-post": {
+      "provider_name": "Luxembourg Post",
+      "provider_url": "http://www.trackandtrace.lu/homepage.htm",
+      "trackship_supported": "1"
+    },
+    "shree-tirupati-courier": {
+      "provider_name": "Shree Tirupati Courier",
+      "provider_url": "http://www.shreetirupaticourier.net/Frm_DocTrack.aspx?docno=%number%",
+      "trackship_supported": "1"
+    },
+    "skynet-worldwide-express": {
+      "provider_name": "SkyNet Worldwide Express",
+      "provider_url": "https://sky.skynet.net/public/Tracking.aspx?guide=%number%",
+      "trackship_supported": "1"
+    },
+    "skynet": {
+      "provider_name": "Skynet",
+      "provider_url": "http://www.skynet.com.my/track#TrackingResult",
+      "trackship_supported": "1"
+    },
+    "cne-express": {
+      "provider_name": "CNE Express",
+      "provider_url": "https://www.cne.com/track/?no=%number%",
+      "trackship_supported": "1"
+    },
+    "chit-chats": {
+      "provider_name": "Chit Chats",
+      "provider_url": "https://chitchats.com/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "tip-sa": {
+      "provider_name": "Tipsa",
+      "provider_url": "https://www.tip-sa.com/",
+      "trackship_supported": "1"
+    },
+    "dpd-pt": {
+      "provider_name": "DPD Portugal",
+      "provider_url": "https://dpd.pt/track-and-trace?reference=%number%",
+      "trackship_supported": "1"
+    },
+    "dicom": {
+      "provider_name": "Dicom",
+      "provider_url": "https://www.dicom.com/en/express/tracking",
+      "trackship_supported": "1"
+    },
+    "correos-express": {
+      "provider_name": "Correos Express",
+      "provider_url": "https://s.correosexpress.com/SeguimientoSinCP/search?shippingNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "dotzot": {
+      "provider_name": "Dotzot",
+      "provider_url": "https://dotzot.in/index.php",
+      "trackship_supported": "1"
+    },
+    "gati": {
+      "provider_name": "Gati",
+      "provider_url": "https://www.gati.com/track-by-docket",
+      "trackship_supported": "1"
+    },
+    "nz-couriers": {
+      "provider_name": "NZ Couriers",
+      "provider_url": "https://tools.nzcouriers.co.nz/nzc/servlet/ITNG_TAndTServlet?page=1&VCCA=Enabled&Key_Type=Ticket&product_code=%number2%&serial_number=%number%",
+      "trackship_supported": "1"
+    },
+    "border-express": {
+      "provider_name": "Border Express",
+      "provider_url": "https://bexonline.borderexpress.com.au/bxo/track?consignmentNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "finland-post": {
+      "provider_name": "Finland Post",
+      "provider_url": "https://www.posti.fi/fi/seuranta#/lahetys/%number%",
+      "trackship_supported": "1"
+    },
+    "tnt-sweden": {
+      "provider_name": "TNT Sweden",
+      "provider_url": "https://www.tnt.com/express/sv_se/site/shipping-tools/tracking.html?searchType=con&cons=%number%",
+      "trackship_supported": "1"
+    },
+    "mrw-portugal": {
+      "provider_name": "Mrw Portugal",
+      "provider_url": "https://www.mrw.pt/seguimiento_envios/MRW_paqueteria_nacional_multiple.asp",
+      "trackship_supported": "0"
+    },
+    "nacex": {
+      "provider_name": "Nacex",
+      "provider_url": "https://www.nacex.es/seguimientoFormularioExterno.do?intcli=%number%",
+      "trackship_supported": "1"
+    },
+    "post-haste": {
+      "provider_name": "Post Haste",
+      "provider_url": "https://www.posthaste.co.nz/phl/servlet/ITNG_TAndTServlet?page=1&Key_Type=Ticket&VCCA=Enabled&product_code=%number2%&serial_number=%number%",
+      "trackship_supported": "1"
+    },
+    "castle-parcels": {
+      "provider_name": "Castle Parcels",
+      "provider_url": "https://www.castleparcels.co.nz/cpl/servlet/ITNG_TAndTServlet?page=1&VCCA=Enabled&Key_Type=Ticket&product_code=%number2%&serial_number=%number%",
+      "trackship_supported": "0"
+    },
+    "now-couriers": {
+      "provider_name": "Now Couriers",
+      "provider_url": "https://www.nowcouriers.co.nz/now/servlet/ITNG_TAndTServlet?page=1&VCCA=Enabled&Key_Type=Ticket&product_code=%number2%&serial_number=%number%",
+      "trackship_supported": "0"
+    },
+    "dx-mail": {
+      "provider_name": "Dx Mail",
+      "provider_url": "https://www.dxmail.co.nz/nzdx/servlet/ITNG_TAndTServlet?page=1&Key_Type=Ticket&VCCA=Disabled&product_code=%number2%&serial_number=%number%&Submit=Check+Status",
+      "trackship_supported": "0"
+    },
+    "global-order-tracking": {
+      "provider_name": "Global Order Tracking",
+      "provider_url": "https://global.cainiao.com/detail.htm?mailNoList=%number%",
+      "trackship_supported": "1"
+    },
+    "palletways": {
+      "provider_name": "Palletways",
+      "provider_url": "https://track2.palletways.com/?dc_syscon=%number%",
+      "trackship_supported": "1"
+    },
+    "gls-france": {
+      "provider_name": "GLS France",
+      "provider_url": "https://gls-group.eu/FR/fr/suivi-colis?match=%number%",
+      "trackship_supported": "1"
+    },
+    "dx-delivery": {
+      "provider_name": "DX delivery",
+      "provider_url": "https://www.dxdelivery.com/consumer/my-tracking/",
+      "trackship_supported": "1"
+    },
+    "mail-boxes-etc": {
+      "provider_name": "Mail Boxes Etc.",
+      "provider_url": "https://www.mbe.es/en/tracking?c=%number%",
+      "trackship_supported": "0"
+    },
+    "ubi-smart-parcel": {
+      "provider_name": "UBI Smart Parcel",
+      "provider_url": "https://en.ubismartparcel.com/",
+      "trackship_supported": "1"
+    },
+    "dawn-wing": {
+      "provider_name": "Dawn Wing",
+      "provider_url": "http://www.dawnwing.co.za/business-tools/online-parcel-tracking/",
+      "trackship_supported": "1"
+    },
+    "gls-paket": {
+      "provider_name": "GLS Paket",
+      "provider_url": "https://www.gls-pakete.de/sendungsverfolgung?match=%number%",
+      "trackship_supported": "1"
+    },
+    "fastway-ireland": {
+      "provider_name": "Fastway Ireland",
+      "provider_url": "https://fastway.ie/courier-services/track-your-parcel/?l=%number%",
+      "trackship_supported": "1"
+    },
+    "db-schenker": {
+      "provider_name": "DB Schenker",
+      "provider_url": "https://eschenker.dbschenker.com/app/tracking-public/schenker-search?refNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "raben": {
+      "provider_name": "Raben",
+      "provider_url": "https://myraben.com/link/ShipmentInformation?Language=E01_ENGLISH&ShipmentNumber=%number%",
+      "trackship_supported": "0"
+    },
+    "gls-slovenia": {
+      "provider_name": "GLS Slovenia",
+      "provider_url": "https://gls-group.eu/SI/sl/sledenje-posiljki?match=%number%",
+      "trackship_supported": "1"
+    },
+    "dpd-si": {
+      "provider_name": "DPD Slovenia",
+      "provider_url": "https://tracking.dpd.de/status/sl_SI/parcel/%number%",
+      "trackship_supported": "1"
+    },
+    "bulgaria-post": {
+      "provider_name": "Bulgaria Post",
+      "provider_url": "https://www.bgpost.bg/IPSWebTracking/IPSWeb_item_events.asp?itemid=%number%",
+      "trackship_supported": "1"
+    },
+    "poland-post": {
+      "provider_name": "Poczta Polska",
+      "provider_url": "https://emonitoring.poczta-polska.pl/?numer=%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-pl": {
+      "provider_name": "DHL Poland",
+      "provider_url": "https://www.dhl.com/pl-en/home/tracking/tracking-parcel.html?submit=1&tracking-id=%number%",
+      "trackship_supported": "1"
+    },
+    "fedex-pl": {
+      "provider_name": "FedEx Poland",
+      "provider_url": "https://www.fedex.com/apps/fedextrack/index.html?tracknumbers=%number%&cntry_code=pl",
+      "trackship_supported": "1"
+    },
+    "dpd-pl": {
+      "provider_name": "DPD Poland",
+      "provider_url": "https://tracktrace.dpd.com.pl/parcelDetails?typ=1&p1=%number%",
+      "trackship_supported": "1"
+    },
+    "gls-netherlands": {
+      "provider_name": "GLS Netherlands",
+      "provider_url": "https://www.gls-info.nl/tracking/ttlink?parcelNo=%number%&zipCode=%postal_code%",
+      "trackship_supported": "0"
+    },
+    "yurtici-kargo": {
+      "provider_name": "Yurtiçi Kargo",
+      "provider_url": "https://www.yurticikargo.com/tr/online-servisler/gonderi-sorgula?code=%number%",
+      "trackship_supported": "1"
+    },
+    "aras-kargo": {
+      "provider_name": "Aras Kargo",
+      "provider_url": "https://kargotakip.araskargo.com.tr/mainpage.aspx?code=%number%",
+      "trackship_supported": "1"
+    },
+    "mng-kargo": {
+      "provider_name": "MNG Kargo",
+      "provider_url": "https://kargotakip.mngkargo.com.tr/?takipNo=%number%",
+      "trackship_supported": "0"
+    },
+    "ptt-kargo": {
+      "provider_name": "PTT Kargo",
+      "provider_url": "https://gonderitakip.ptt.gov.tr/Track/Verify?q=%number%",
+      "trackship_supported": "0"
+    },
+    "ptt-posta": {
+      "provider_name": "PTT Posta",
+      "provider_url": "https://track.ptt.gov.tr/Track/Verify?q=%number%",
+      "trackship_supported": "1"
+    },
+    "dellin": {
+      "provider_name": "Dellin",
+      "provider_url": "https://www.dellin.ru/tracker/orders/%number%/",
+      "trackship_supported": "1"
+    },
+    "fastway-za": {
+      "provider_name": "FastWay South Africa",
+      "provider_url": "https://www.fastway.co.za/our-services/track-your-parcel?l=%number%",
+      "trackship_supported": "1"
+    },
+    "dpd-croatia": {
+      "provider_name": "DPD Croatia",
+      "provider_url": "https://tracking.dpd.de/status/en_HR/parcel/%number%",
+      "trackship_supported": "1"
+    },
+    "gls-croatia": {
+      "provider_name": "GLS Croatia",
+      "provider_url": "https://gls-group.eu/HR/en/parcel-tracking?match=%number%",
+      "trackship_supported": "1"
+    },
+    "jadlog": {
+      "provider_name": "Jadlog",
+      "provider_url": "https://www.jadlog.com.br/tracking?cte=%number%",
+      "trackship_supported": "1"
+    },
+    "taxydromiki": {
+      "provider_name": "Geniki Taxydromiki",
+      "provider_url": "https://www.taxydromiki.com/track/%number%",
+      "trackship_supported": "1"
+    },
+    "ninjavan-my": {
+      "provider_name": "Ninja Van Malaysia",
+      "provider_url": "https://www.ninjavan.co/en-my/tracking?id=%number%",
+      "trackship_supported": "1"
+    },
+    "ups-global": {
+      "provider_name": "UPS Global",
+      "provider_url": "https://wwwapps.ups.com/WebTracking/track?track=yes&trackNums=%number%",
+      "trackship_supported": "1"
+    },
+    "seko": {
+      "provider_name": "Seko",
+      "provider_url": "http://harmony.myseko.com/Track/Result/%number%",
+      "trackship_supported": "0"
+    },
+    "lbc-express": {
+      "provider_name": "LBC Express",
+      "provider_url": "https://www.lbcexpress.com",
+      "trackship_supported": "1"
+    },
+    "xpost": {
+      "provider_name": "XPOST",
+      "provider_url": "https://www.xpost.ph/track",
+      "trackship_supported": "1"
+    },
+    "ninjavan-ph": {
+      "provider_name": "Ninja Van Philippines",
+      "provider_url": "https://www.ninjavan.co/en-ph/tracking?id=%number%",
+      "trackship_supported": "1"
+    },
+    "t-cat": {
+      "provider_name": "T Cat",
+      "provider_url": "https://www.t-cat.com.tw/Inquire/TraceDetail.aspx?BillID=%number%&ReturnUrl=Trace.aspx",
+      "trackship_supported": "1"
+    },
+    "asendia-usa": {
+      "provider_name": "Asendia USA",
+      "provider_url": "https://a1.asendiausa.com/tracking/?trackingnumber=%number%",
+      "trackship_supported": "1"
+    },
+    "singapore-speedpost": {
+      "provider_name": "Singapore Speedpost",
+      "provider_url": "https://www.speedpost.com.sg/track-and-trace#t%number%",
+      "trackship_supported": "1"
+    },
+    "servientrega": {
+      "provider_name": "Servientrega",
+      "provider_url": "https://www.servientrega.com/wps/portal/rastreo-envio/detalle?id=%number%",
+      "trackship_supported": "1"
+    },
+    "rpx": {
+      "provider_name": "RPX Indonesia",
+      "provider_url": "https://rpx.co.id/tracking?tracking_number[]=%number%",
+      "trackship_supported": "1"
+    },
+    "direct-freight": {
+      "provider_name": "Direct Freight",
+      "provider_url": "https://www.directfreight.com.au/",
+      "trackship_supported": "0"
+    },
+    "saia": {
+      "provider_name": "Saia",
+      "provider_url": "https://www.saia.com/track/details;pro=%number%",
+      "trackship_supported": "1"
+    },
+    "franch-express": {
+      "provider_name": "Franch Express",
+      "provider_url": "http://erpfranchexpress.com/awb_tracking2.php?keyword=%number%",
+      "trackship_supported": "0"
+    },
+    "st-couriers": {
+      "provider_name": "ST couriers",
+      "provider_url": "https://www.erpstcourier.com/awb_tracking2.php?keyword=%number%",
+      "trackship_supported": "0"
+    },
+    "atlantic-courier": {
+      "provider_name": "Atlantic Courier",
+      "provider_url": "https://atlanticcourier.net/track.php?awbno=%number%&search=A",
+      "trackship_supported": "0"
+    },
+    "tapuz-delivery": {
+      "provider_name": "Tapuz delivery",
+      "provider_url": "https://crm.tapuzdelivery.co.il/Baldar/deliverystatus.aspx",
+      "trackship_supported": "0"
+    },
+    "chita-delivery": {
+      "provider_name": "Chita delivery",
+      "provider_url": "https://chita-il.com/run_public1/",
+      "trackship_supported": "0"
+    },
+    "mylerz": {
+      "provider_name": "mylerz",
+      "provider_url": "https://mylerz.net/trackShipment",
+      "trackship_supported": "1"
+    },
+    "qxpress": {
+      "provider_name": "Qxpress",
+      "provider_url": "http://www.qxpress.net/Customer/PopupTraceParcels?TrackingNo=%number%",
+      "trackship_supported": "1"
+    },
+    "janio": {
+      "provider_name": "Janio",
+      "provider_url": "https://tracker.janio.asia/%number%",
+      "trackship_supported": "1"
+    },
+    "tcs-express": {
+      "provider_name": "TCS express",
+      "provider_url": "https://www.tcsexpress.com/Tracking",
+      "trackship_supported": "1"
+    },
+    "pakistan-post": {
+      "provider_name": "Pakistan Post",
+      "provider_url": "https://ep.gov.pk/emtts/EPTrack_Live.aspx?ArticleIDz=%number%",
+      "trackship_supported": "1"
+    },
+    "shipa": {
+      "provider_name": "Shipa",
+      "provider_url": "https://tracking.shipadelivery.com/?bc=%number%",
+      "trackship_supported": "1"
+    },
+    "inpost-paczkomaty": {
+      "provider_name": "InPost Paczkomaty",
+      "provider_url": "https://inpost.pl/sledzenie-przesylek?number=%number%",
+      "trackship_supported": "1"
+    },
+    "247express": {
+      "provider_name": "247 Express",
+      "provider_url": "https://247express.vn/dinh-vi-buu-pham/%number%?",
+      "trackship_supported": "1"
+    },
+    "hunter-express": {
+      "provider_name": "hunter-express",
+      "provider_url": "https://www.hunterexpress.com.au/tracking",
+      "trackship_supported": "1"
+    },
+    "usky-express": {
+      "provider_name": "Usky express",
+      "provider_url": "http://www.uskyexpress.com/en/track",
+      "trackship_supported": "1"
+    },
+    "rl-carriers": {
+      "provider_name": "RL Carriers",
+      "provider_url": "https://www.rlcarriers.com/freight/shipping/shipment-tracing?pro=%number%&docType=PRO&source=web",
+      "trackship_supported": "1"
+    },
+    "the-courier-guy": {
+      "provider_name": "The Courier Guy",
+      "provider_url": "https://portal.thecourierguy.co.za/track?ref=%number%",
+      "trackship_supported": "1"
+    },
+    "post-nord-denmark": {
+      "provider_name": "PostNord Denmark",
+      "provider_url": "https://www.postnord.dk/varktojer/track-trace?shipmentId=%number%",
+      "trackship_supported": "1"
+    },
+    "estes": {
+      "provider_name": "Estes",
+      "provider_url": "https://www.estes-express.com/myestes/shipment-tracking/?type=PRO&query=%number%",
+      "trackship_supported": "1"
+    },
+    "dsv": {
+      "provider_name": "DSV",
+      "provider_url": "https://mydsv.com/track-shipment?params=7B22searchValue223A22%number7D&state=search",
+      "trackship_supported": "1"
+    },
+    "teleport": {
+      "provider_name": "Teleport",
+      "provider_url": "https://teleport.delivery/track?tracking_number=%number%",
+      "trackship_supported": "1"
+    },
+    "swiship-usa": {
+      "provider_name": "FBA Swiship USA",
+      "provider_url": "https://www.swiship.com/track?id=%number%",
+      "trackship_supported": "1"
+    },
+    "meest": {
+      "provider_name": "Meest",
+      "provider_url": "https://t.meest-group.com/en/%number%",
+      "trackship_supported": "1"
+    },
+    "dpex": {
+      "provider_name": "DPEX",
+      "provider_url": "https://tracking.frontierforce.com/tracking.aspx?stid=dpexwwe&cn=%number%&option=,8,",
+      "trackship_supported": "1"
+    },
+    "ilpost-he": {
+      "provider_name": "Israel Post He",
+      "provider_url": "https://mypost.israelpost.co.il/itemtrace_he?itemcode=%number%",
+      "trackship_supported": "0"
+    },
+    "city-link-express": {
+      "provider_name": "City-Link Express",
+      "provider_url": "https://www.citylinkexpress.com/MY/Tracking.aspx",
+      "trackship_supported": "1"
+    },
+    "fedex-fims": {
+      "provider_name": "FedEx FIMS",
+      "provider_url": "http://mailviewrecipient.fedex.com/recip_package_summary.aspx?PostalID=%number%",
+      "trackship_supported": "1"
+    },
+    "swiship-uk": {
+      "provider_name": "FBA Swiship UK",
+      "provider_url": "https://www.swiship.co.uk/track/?id=%number%",
+      "trackship_supported": "1"
+    },
+    "chilexpress": {
+      "provider_name": "Chilexpress",
+      "provider_url": "https://centrodeayuda.chilexpress.cl/seguimiento/%number%",
+      "trackship_supported": "1"
+    },
+    "boxit": {
+      "provider_name": "BOXIT",
+      "provider_url": "http://portal.fcx.co.il/he/Track?shipmentNumber=%number%",
+      "trackship_supported": "0"
+    },
+    "slovakia-post": {
+      "provider_name": "Slovakia Post",
+      "provider_url": "https://tandt.posta.sk/en/items/%number%",
+      "trackship_supported": "1"
+    },
+    "cdek": {
+      "provider_name": "CDEK",
+      "provider_url": "https://www.cdek.ru/ru/tracking?order_id=%number%",
+      "trackship_supported": "1"
+    },
+    "gdex": {
+      "provider_name": "GDEX",
+      "provider_url": "https://www.gdexpress.com/malaysia/e-tracking/",
+      "trackship_supported": "1"
+    },
+    "speedex-greece": {
+      "provider_name": "Speedex Greece",
+      "provider_url": "http://www.speedex.gr/isapohi.asp?voucher_code=%number%&searcggo=Submit",
+      "trackship_supported": "1"
+    },
+    "jt-express-ph": {
+      "provider_name": "J&T PH",
+      "provider_url": "https://www.jtexpress.ph/index/query/gzquery.html?bills=%number%",
+      "trackship_supported": "1"
+    },
+    "estafeta": {
+      "provider_name": "Estafeta",
+      "provider_url": "https://www.estafeta.com/Herramientas/Rastreo",
+      "trackship_supported": "1"
+    },
+    "nampost": {
+      "provider_name": "Nampost",
+      "provider_url": "http://globaltracktrace.ptc.post/gtt.web/",
+      "trackship_supported": "1"
+    },
+    "envialia": {
+      "provider_name": "ENVIALIA",
+      "provider_url": "https://www.envialia.com/tracking/",
+      "trackship_supported": "1"
+    },
+    "wanbexpress": {
+      "provider_name": "wanbexpress",
+      "provider_url": "https://tracking.wanbexpress.com/?trackingNumbers=%number%",
+      "trackship_supported": "1"
+    },
+    "99minutos": {
+      "provider_name": "99minutos",
+      "provider_url": "https://tracking.99minutos.com/search/%number%",
+      "trackship_supported": "1"
+    },
+    "aaa-cooper": {
+      "provider_name": "AAA Cooper",
+      "provider_url": "https://www.aaacooper.com/Transit/ProTrackResults.aspx?ProNum=%number%&AllAccounts=true",
+      "trackship_supported": "1"
+    },
+    "southeastern": {
+      "provider_name": "Southeastern Freight Lines",
+      "provider_url": "https://www.sefl.com/webconnect/tracing?Type=PN&RefNum1=%number%",
+      "trackship_supported": "1"
+    },
+    "dpd-lv": {
+      "provider_name": "DPD Latvia",
+      "provider_url": "https://tracking.dpd.de/status/lv_LV/parcel/%number%",
+      "trackship_supported": "1"
+    },
+    "gls-us": {
+      "provider_name": "GLS US",
+      "provider_url": "https://www.gls-us.com/Trackshipment?TrackingNumbers=%number%",
+      "trackship_supported": "1"
+    },
+    "asendia": {
+      "provider_name": "Asendia",
+      "provider_url": "https://tracking.asendia.com/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "cargoboard": {
+      "provider_name": "Cargoboard",
+      "provider_url": "https://cargoboard.customer.cepra.de/Track/None?cRef=%number%",
+      "trackship_supported": "0"
+    },
+    "zeleris": {
+      "provider_name": "Zeleris",
+      "provider_url": "https://www.zeleris.com",
+      "trackship_supported": "1"
+    },
+    "taiwan-post": {
+      "provider_name": "Chunghwa Post",
+      "provider_url": "https://postserv.post.gov.tw/pstmail/main_mail.html",
+      "trackship_supported": "1"
+    },
+    "nexive": {
+      "provider_name": "Nexive",
+      "provider_url": "https://tracking.nexive.it/?&b=%number%",
+      "trackship_supported": "1"
+    },
+    "speedy": {
+      "provider_name": "Speedy",
+      "provider_url": "https://www.speedy.bg/en/track-shipment?shipmentNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "geodis": {
+      "provider_name": "GEODIS",
+      "provider_url": "https://espace-client.geodis.com/services/destinataires/#/%number%/home",
+      "trackship_supported": "1"
+    },
+    "old-dominion": {
+      "provider_name": "Old Dominion",
+      "provider_url": "https://www.odfl.com/Trace/standardResult.faces?pro=%number%",
+      "trackship_supported": "1"
+    },
+    "orian": {
+      "provider_name": "Orian",
+      "provider_url": "https://www.orian.com/OrianBarcodeTracking/?barcode=%number%",
+      "trackship_supported": "0"
+    },
+    "sri-lanka-post": {
+      "provider_name": "Sri Lanka Post",
+      "provider_url": "https://globaltracktrace.ptc.post/gtt.web/",
+      "trackship_supported": "1"
+    },
+    "dhl-parcel-se": {
+      "provider_name": "DHL Parcel Spain",
+      "provider_url": "https://clientesparcel.dhl.es/LiveTracking/ModificarEnvio/%number%",
+      "trackship_supported": "1"
+    },
+    "best-my": {
+      "provider_name": "BEST Express",
+      "provider_url": "https://www.best-inc.my/track?bills=%number%",
+      "trackship_supported": "1"
+    },
+    "fetchr": {
+      "provider_name": "Fetchr",
+      "provider_url": "https://track.fetchr.us/track/%number%",
+      "trackship_supported": "1"
+    },
+    "pittohio": {
+      "provider_name": "Pitt Ohio",
+      "provider_url": "https://pittohio.com/myPittOhio/Shipping/LTL/TraceRequest?pro=%number%",
+      "trackship_supported": "1"
+    },
+    "udaan-express": {
+      "provider_name": "Udaan Express",
+      "provider_url": "https://udaanexpress.com/track/%number%",
+      "trackship_supported": "1"
+    },
+    "js-express": {
+      "provider_name": "JS EXPRESS",
+      "provider_url": "http://www.js-exp.com/index.php?page=19",
+      "trackship_supported": "1"
+    },
+    "hct": {
+      "provider_name": "HCT Logistics",
+      "provider_url": "https://www.hct.com.tw/Search/SearchGoods_n.aspx",
+      "trackship_supported": "1"
+    },
+    "kerry-express-th": {
+      "provider_name": "Kerry Express TH",
+      "provider_url": "https://th.kerryexpress.com/en/track/?track=%number%",
+      "trackship_supported": "1"
+    },
+    "kerry-express-vn": {
+      "provider_name": "Kerry Express VN",
+      "provider_url": "https://kerryexpress.com.vn/trang-thai-don-hang?trackingid=%number%",
+      "trackship_supported": "1"
+    },
+    "kerry-ecommerce": {
+      "provider_name": "Kerry eCommerce",
+      "provider_url": "https://kerry-ecommerce.com/track_trace.php",
+      "trackship_supported": "1"
+    },
+    "sunyou": {
+      "provider_name": "Sunyou",
+      "provider_url": "https://www.sypost.net/search?orderNo=%number%",
+      "trackship_supported": "1"
+    },
+    "jt-express-sg": {
+      "provider_name": "J&T SG",
+      "provider_url": "https://www.jtexpress.sg/trackmyparcel",
+      "trackship_supported": "1"
+    },
+    "jt-express-cn": {
+      "provider_name": "J&T CN",
+      "provider_url": "https://www.jtexpress.com.cn/service.html?indexIpt=%number%",
+      "trackship_supported": "1"
+    },
+    "jt-express-th": {
+      "provider_name": "J&T TH",
+      "provider_url": "https://www.jtexpress.co.th/index/query/gzquery.html?bills=%number%",
+      "trackship_supported": "1"
+    },
+    "jt-express-vn": {
+      "provider_name": "J&T VN",
+      "provider_url": "https://jtexpress.vn/track?billcodes=%number%",
+      "trackship_supported": "1"
+    },
+    "sfc-service": {
+      "provider_name": "SFC Service",
+      "provider_url": "https://www.sfcservice.com/track",
+      "trackship_supported": "1"
+    },
+    "royale-international": {
+      "provider_name": "Royale International",
+      "provider_url": "https://royaleinternational.pperfect.com/",
+      "trackship_supported": "0"
+    },
+    "flash-express": {
+      "provider_name": "Flash Express",
+      "provider_url": "https://www.flashexpress.co.th/en/tracking/",
+      "trackship_supported": "1"
+    },
+    "postnord-norge": {
+      "provider_name": "PostNord Norge",
+      "provider_url": "https://www.postnord.no/pakkesporing?shipmentId=%number%",
+      "trackship_supported": "1"
+    },
+    "pgeon": {
+      "provider_name": "Pgeon",
+      "provider_url": "https://www.pgeon.delivery/track-parcel?awb_no=%number%",
+      "trackship_supported": "1"
+    },
+    "yodel-direct": {
+      "provider_name": "Yodel Direct",
+      "provider_url": "https://www.yodeldirect.co.uk/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "overseas-express": {
+      "provider_name": "Overseas Express",
+      "provider_url": "https://is.overseas.hr/tracking/?trackingid=%number%",
+      "trackship_supported": "0"
+    },
+    "rtt-logistics": {
+      "provider_name": "RTT Logistics",
+      "provider_url": "https://www.rtt.co.za/tracking/",
+      "trackship_supported": "1"
+    },
+    "gap-akis-express": {
+      "provider_name": "GAP AKIS EXPRESS",
+      "provider_url": "https://gapakisexpress.com/track-your-packages/?tracking_num=%number%",
+      "trackship_supported": "0"
+    },
+    "cj-logistics-my": {
+      "provider_name": "CJ Logistics Malaysia",
+      "provider_url": "https://mysgnexs.cjlogistics-global.com/web/g_tracking_eng.jsp?slipno=%number%",
+      "trackship_supported": "0"
+    },
+    "envia": {
+      "provider_name": "Envia",
+      "provider_url": "https://envia.co/",
+      "trackship_supported": "1"
+    },
+    "coordinadora": {
+      "provider_name": "Coordinadora",
+      "provider_url": "https://www.coordinadora.com/portafolio-de-servicios/servicios-en-linea/rastrear-guias/",
+      "trackship_supported": "1"
+    },
+    "tcc": {
+      "provider_name": "TCC",
+      "provider_url": "https://tcc.com.co/courier/mensajeria/rastrear-envio/",
+      "trackship_supported": "0"
+    },
+    "gls-ireland": {
+      "provider_name": "GLS Ireland",
+      "provider_url": "https://gls-group.eu/IE/en/parcel-tracking.html?match=%number%",
+      "trackship_supported": "1"
+    },
+    "spoton": {
+      "provider_name": "Spoton",
+      "provider_url": "https://web1.spoton.co.in/spotoncontracker.html",
+      "trackship_supported": "1"
+    },
+    "safexpress": {
+      "provider_name": "Safexpress",
+      "provider_url": "http://www.safexpress.com/index.html",
+      "trackship_supported": "1"
+    },
+    "tci-express": {
+      "provider_name": "TCI Express",
+      "provider_url": "https://www.tciexpress.in/trackingdocket.aspx?trackshipment=%number%&dwb=dwb",
+      "trackship_supported": "1"
+    },
+    "jtexpress-my": {
+      "provider_name": "J&T MY",
+      "provider_url": "https://www.jtexpress.my/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "famiport": {
+      "provider_name": "Famiport",
+      "provider_url": "https://www.famiport.com.tw/Web_Famiport/page/process.aspx",
+      "trackship_supported": "1"
+    },
+    "poslaju": {
+      "provider_name": "PosLaju",
+      "provider_url": "https://tracking.pos.com.my/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "ghn": {
+      "provider_name": "Giao Hàng Nhanh",
+      "provider_url": "https://donhang.ghn.vn/?order_code=%number%",
+      "trackship_supported": "1"
+    },
+    "ups-uk": {
+      "provider_name": "UPS UK",
+      "provider_url": "https://www.ups.com/track?loc=en_GB&tracknum=%number%",
+      "trackship_supported": "1"
+    },
+    "rivigo": {
+      "provider_name": "RIVIGO",
+      "provider_url": "https://zoom-ops.rivigo.com/#/trackconsignment/%number%?redirectedFromRivigo=true",
+      "trackship_supported": "1"
+    },
+    "gojavas": {
+      "provider_name": "GoJavas",
+      "provider_url": "http://gojavas.com/docket_details.php?pop=docno&docno=%number%",
+      "trackship_supported": "1"
+    },
+    "first-flight": {
+      "provider_name": "First Flight",
+      "provider_url": "https://www.firstflight.net/tracking.php",
+      "trackship_supported": "1"
+    },
+    "bombino-express": {
+      "provider_name": "Bombino Express",
+      "provider_url": "https://www.bombinoexp.com/track.aspx?AwbNo=%number%",
+      "trackship_supported": "1"
+    },
+    "overseas-logistics": {
+      "provider_name": "Overseas Logistics",
+      "provider_url": "http://www.overseaslogistics.in/tracking.aspx",
+      "trackship_supported": "1"
+    },
+    "airwings-india": {
+      "provider_name": "Airwings",
+      "provider_url": "http://www.airwingsindia.com/tracking.aspx",
+      "trackship_supported": "1"
+    },
+    "shree-mahabali-express": {
+      "provider_name": "Shree Mahabali Express",
+      "provider_url": "http://www.shreemahabaliexpress.com/Frm_DocTrack.aspx?No=%number%&Tmp=1630996767218",
+      "trackship_supported": "1"
+    },
+    "grand-slam-express": {
+      "provider_name": "Grand Slam Express",
+      "provider_url": "http://grandslamexpress.in/Web/Track?AwbNo=%number%",
+      "trackship_supported": "1"
+    },
+    "sap-express": {
+      "provider_name": "SAP Express",
+      "provider_url": "https://www.sap-express.id/layanan/tracking/track",
+      "trackship_supported": "1"
+    },
+    "v-xpress": {
+      "provider_name": "V-Xpress",
+      "provider_url": "https://www.vxpress.in/track",
+      "trackship_supported": "1"
+    },
+    "lexship": {
+      "provider_name": "Lexship",
+      "provider_url": "https://track.lexship.com/track?tracking_id=%number%",
+      "trackship_supported": "1"
+    },
+    "pushpak-courier": {
+      "provider_name": "Pushpak Courier",
+      "provider_url": "https://www.pushpakcourier.net/query.php?trackcode",
+      "trackship_supported": "1"
+    },
+    "madhur-couriers": {
+      "provider_name": "Madhur Couriers",
+      "provider_url": "https://www.madhurcouriers.in/(S(jfqtmkzwgkgu5gktywfgklws))/CNoteTracking",
+      "trackship_supported": "1"
+    },
+    "bombax": {
+      "provider_name": "Bombax",
+      "provider_url": "https://bombax.in/booking/Tracking?OrderNo=%number%",
+      "trackship_supported": "1"
+    },
+    "ctt-express": {
+      "provider_name": "CTT Express",
+      "provider_url": "https://www.ctt.pt/feapl_2/app/open/objectSearch/objectSearch.jspx?objects=%number%",
+      "trackship_supported": "1"
+    },
+    "amazon-in": {
+      "provider_name": "Amazon IN",
+      "provider_url": "https://track.amazon.in/tracking/%number%?trackingId=%number%",
+      "trackship_supported": "1"
+    },
+    "dpd-sa": {
+      "provider_name": "DPD South Africa",
+      "provider_url": "https://my.dpdl.co.za/quicktrack/%number%",
+      "trackship_supported": "1"
+    },
+    "internet-express": {
+      "provider_name": "Internet Express Couriers",
+      "provider_url": "https://ie.shiplogic.com/track?ref=%number%/1",
+      "trackship_supported": "1"
+    },
+    "dao": {
+      "provider_name": "DAO",
+      "provider_url": "https://www.dao.as/privat/find-din-pakke?stregkode=%number%",
+      "trackship_supported": "1"
+    },
+    "parcel2go": {
+      "provider_name": "parcel2go",
+      "provider_url": "https://www.parcel2go.com/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "zajil-express": {
+      "provider_name": "Zajil Express",
+      "provider_url": "https://zajil-express.com",
+      "trackship_supported": "1"
+    },
+    "cubyn": {
+      "provider_name": "Cubyn",
+      "provider_url": "https://track.cubyn.com/",
+      "trackship_supported": "1"
+    },
+    "iq-fulfillment": {
+      "provider_name": "IQfulfillment",
+      "provider_url": "https://track.iqfulfillment.com/",
+      "trackship_supported": "1"
+    },
+    "jersey-post": {
+      "provider_name": "Jersey Post",
+      "provider_url": "https://www.jerseypost.com/tools/track-trace/",
+      "trackship_supported": "1"
+    },
+    "ubx-express": {
+      "provider_name": "UBX Express",
+      "provider_url": "https://www.ubx.uk.net/tracking/",
+      "trackship_supported": "1"
+    },
+    "dachser": {
+      "provider_name": "Dachser",
+      "provider_url": "https://elogistics.dachser.com/shp2s/ShpApplicationPage?4",
+      "trackship_supported": "1"
+    },
+    "topyou": {
+      "provider_name": "TopYou",
+      "provider_url": "http://track.szty56.com/?track=%number%",
+      "trackship_supported": "1"
+    },
+    "redpack-mexico": {
+      "provider_name": "Redpack Mexico",
+      "provider_url": "https://www.redpack.com.mx/es/rastreo",
+      "trackship_supported": "1"
+    },
+    "xpo-logistics": {
+      "provider_name": "XPO Logistics",
+      "provider_url": "https://app.ltl.xpo.com/appjs/tracking/details/%number%",
+      "trackship_supported": "1"
+    },
+    "360lion": {
+      "provider_name": "360lion Express",
+      "provider_url": "https://customer.360lion.com/track/%number%",
+      "trackship_supported": "1"
+    },
+    "central-transport": {
+      "provider_name": "Central Transport",
+      "provider_url": "https://www.centraltransport.com/tools/track-shipment",
+      "trackship_supported": "1"
+    },
+    "relais-colis": {
+      "provider_name": "Relais Colis",
+      "provider_url": "https://www.relaiscolis.com/suivi-de-colis",
+      "trackship_supported": "0"
+    },
+    "shree-anjani-courier": {
+      "provider_name": "Shree Anjani Courier",
+      "provider_url": "http://shreeanjanicourier.com/awb.php",
+      "trackship_supported": "1"
+    },
+    "paquet": {
+      "provider_name": "Paquet Express",
+      "provider_url": "https://www.paquetexpress.com.mx/rastreo/%number%",
+      "trackship_supported": "1"
+    },
+    "correos-de-cuba": {
+      "provider_name": "Correos de Cuba",
+      "provider_url": "https://www.correos.cu/rastreador-de-envios/",
+      "trackship_supported": "1"
+    },
+    "tforce-freight": {
+      "provider_name": "TForce Freight",
+      "provider_url": "https://www.tforcefreight.com/ltl/apps/Tracking?proNumbers=%number%;",
+      "trackship_supported": "0"
+    },
+    "bh-posta": {
+      "provider_name": "BH Posta",
+      "provider_url": "https://bhpwebout.posta.ba/trackwebapp/",
+      "trackship_supported": "1"
+    },
+    "iceland-post": {
+      "provider_name": "Iceland Post",
+      "provider_url": "https://posturinn.is/en/individuals/receive/track-shipment/?q=%number%",
+      "trackship_supported": "1"
+    },
+    "malta-post": {
+      "provider_name": "Malta Post",
+      "provider_url": "https://www.maltapost.com/tracking#/tracking",
+      "trackship_supported": "1"
+    },
+    "posta-crne-gore": {
+      "provider_name": "Montenegro Post",
+      "provider_url": "https://e-racuni.postacg.me/PracenjePosiljaka/",
+      "trackship_supported": "1"
+    },
+    "gibraltar-post": {
+      "provider_name": "Gibraltar Post",
+      "provider_url": "https://post.gi/",
+      "trackship_supported": "1"
+    },
+    "liechtenstein-post": {
+      "provider_name": "Liechtenstein Post",
+      "provider_url": "https://www.post.li/privatkunden/",
+      "trackship_supported": "1"
+    },
+    "faroe-islands": {
+      "provider_name": "Faroe Islands Post",
+      "provider_url": "https://www.posta.fo/search?cc=%number%",
+      "trackship_supported": "1"
+    },
+    "macedonia-post": {
+      "provider_name": "Macedonia Post",
+      "provider_url": "https://www.posta.com.mk/",
+      "trackship_supported": "1"
+    },
+    "tele-post": {
+      "provider_name": "Greenland Post",
+      "provider_url": "https://www.tusass.gl/en/track-and-trace/#%number%",
+      "trackship_supported": "1"
+    },
+    "kerry-tj": {
+      "provider_name": "Kerry TJ Logistics",
+      "provider_url": "http://www.kerrytj.com/zh/search/search_track.aspx",
+      "trackship_supported": "1"
+    },
+    "ch-express": {
+      "provider_name": "CH EXPRESS",
+      "provider_url": "http://www.hzchgj.com/",
+      "trackship_supported": "1"
+    },
+    "fmx": {
+      "provider_name": "FMX",
+      "provider_url": "http://www.freightmark.com.my/fmx/result/resultdetail.php?conno=%number%",
+      "trackship_supported": "0"
+    },
+    "surat-kargo": {
+      "provider_name": "Sürat Kargo",
+      "provider_url": "http://suratkargo.com.tr/KargoTakip/?kargotakipno=%number%",
+      "trackship_supported": "0"
+    },
+    "amazon-logistics": {
+      "provider_name": "Amazon Logistics",
+      "provider_url": "https://www.swiship.com/track/?id=%number%",
+      "trackship_supported": "1"
+    },
+    "geswl": {
+      "provider_name": "GESWL Express",
+      "provider_url": "https://www.geswl.com/home/en/index.asp",
+      "trackship_supported": "1"
+    },
+    "dpd-hu": {
+      "provider_name": "DPD Hungary",
+      "provider_url": "https://tracking.dpd.de/status/en_EN/parcel/%number%",
+      "trackship_supported": "1"
+    },
+    "dpd-sk": {
+      "provider_name": "DPD Slovakia",
+      "provider_url": "https://tracking.dpd.de/status/sk_SK/parcel/%number%",
+      "trackship_supported": "1"
+    },
+    "swiship-es": {
+      "provider_name": "FBA Swiship ES",
+      "provider_url": "https://www.swiship.es/track?id=%number%",
+      "trackship_supported": "1"
+    },
+    "amazon-uk": {
+      "provider_name": "Amazon UK",
+      "provider_url": "https://track.amazon.co.uk/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "swiship-jp": {
+      "provider_name": "FBA Swiship JP",
+      "provider_url": "https://www.swiship.jp/track",
+      "trackship_supported": "1"
+    },
+    "swiship-ca": {
+      "provider_name": "FBA Swiship CA",
+      "provider_url": "https://www.swiship.ca/track?id=%number%",
+      "trackship_supported": "1"
+    },
+    "swiship-fr": {
+      "provider_name": "FBA Swiship FR",
+      "provider_url": "https://www.swiship.fr/track?id=%number%",
+      "trackship_supported": "1"
+    },
+    "swiship-au": {
+      "provider_name": "FBA Swiship AU",
+      "provider_url": "https://www.swiship.com.au/track?id=%number%",
+      "trackship_supported": "1"
+    },
+    "swiship-it": {
+      "provider_name": "FBA Swiship IT",
+      "provider_url": "https://www.swiship.it/track?id=%number%",
+      "trackship_supported": "1"
+    },
+    "swiship-de": {
+      "provider_name": "FBA Swiship DE",
+      "provider_url": "https://www.swiship.de/track?id=%number%",
+      "trackship_supported": "1"
+    },
+    "yrc": {
+      "provider_name": "YRC",
+      "provider_url": "https://my.yrc.com/tools/track/shipments?referenceNumber=%number%&referenceNumberType=PRO&time=1637673714",
+      "trackship_supported": "1"
+    },
+    "jtexpress-kh": {
+      "provider_name": "J&T KH",
+      "provider_url": "https://www.jtexpress.com.kh/index/query/gzquery.html",
+      "trackship_supported": "0"
+    },
+    "gogo-xpress": {
+      "provider_name": "GOGO Xpress",
+      "provider_url": "https://app.gogoxpress.com/track/%number%",
+      "trackship_supported": "1"
+    },
+    "zip-ph": {
+      "provider_name": "Zip",
+      "provider_url": "https://zip-ph.com/tracking?no=%number%",
+      "trackship_supported": "1"
+    },
+    "raf": {
+      "provider_name": "RAF Philippines",
+      "provider_url": "https://tracking.frontierforce.com/tracking.aspx?stid=raf&cn=%number%",
+      "trackship_supported": "1"
+    },
+    "phlpost": {
+      "provider_name": "PHL Post",
+      "provider_url": "https://www.phlpost.gov.ph/",
+      "trackship_supported": "1"
+    },
+    "airpak-express": {
+      "provider_name": "Airpak Express",
+      "provider_url": "https://tracking.airpak-express.com/tracking.aspx?stid=airpak&cn=%number%",
+      "trackship_supported": "1"
+    },
+    "aramex-au": {
+      "provider_name": "Aramex AU",
+      "provider_url": "https://www.aramex.com.au/tools/track/?l=%number%",
+      "trackship_supported": "1"
+    },
+    "Amalgamated": {
+      "provider_name": "Amalgamated",
+      "provider_url": "https://www.amaldist.com.au/track.php",
+      "trackship_supported": "0"
+    },
+    "city-express": {
+      "provider_name": "City Express",
+      "provider_url": "https://www.cityexpress.rs/pracenje-posiljaka/",
+      "trackship_supported": "1"
+    },
+    "overseas-territory-us-post": {
+      "provider_name": "Overseas Territory US Post",
+      "provider_url": "https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=%number%",
+      "trackship_supported": "1"
+    },
+    "echo": {
+      "provider_name": "Echo",
+      "provider_url": "https://www.echo.com/shipment-tracking?ref=%number%",
+      "trackship_supported": "1"
+    },
+    "expeditors": {
+      "provider_name": "Expeditors",
+      "provider_url": "https://www.expeditors.com/",
+      "trackship_supported": "1"
+    },
+    "mailamericas": {
+      "provider_name": "MailAmericas",
+      "provider_url": "https://mailamericas.com/tracking?tracking=%number%",
+      "trackship_supported": "1"
+    },
+    "yakit": {
+      "provider_name": "yakit",
+      "provider_url": "https://shipping.yakit.com/tracking?yakitId=%number%",
+      "trackship_supported": "1"
+    },
+    "pitney-bowes": {
+      "provider_name": "Pitney Bowes",
+      "provider_url": "https://parceltracking.pb.com/",
+      "trackship_supported": "1"
+    },
+    "ceva-logistics": {
+      "provider_name": "CEVA Logistics",
+      "provider_url": "https://www.cevalogistics.com/en/ceva-trak?transport_mode=all&codes=%number%",
+      "trackship_supported": "1"
+    },
+    "fbb": {
+      "provider_name": "FAST BEE",
+      "provider_url": "https://www.saia.com/track",
+      "trackship_supported": "1"
+    },
+    "orangeds": {
+      "provider_name": "OrangeDS",
+      "provider_url": "https://tracking.orangedsinc.com/",
+      "trackship_supported": "1"
+    },
+    "firstmile": {
+      "provider_name": "FirstMile",
+      "provider_url": "https://track.firstmile.com/",
+      "trackship_supported": "1"
+    },
+    "lso": {
+      "provider_name": "Lone Star Overnight",
+      "provider_url": "https://www.lso.com/",
+      "trackship_supported": "1"
+    },
+    "expresscourierintl": {
+      "provider_name": "Express Courier",
+      "provider_url": "https://expresscourierintl.com/tracking-results/?tracking_id=+%number%",
+      "trackship_supported": "1"
+    },
+    "xlobo": {
+      "provider_name": "Xlobo",
+      "provider_url": "http://www.xlobo.com/Public/QueryBillFlow.aspx?billCode=%number%",
+      "trackship_supported": "1"
+    },
+    "xdp-uk": {
+      "provider_name": "XDP Express",
+      "provider_url": "https://xdp.co.uk",
+      "trackship_supported": "1"
+    },
+    "deltec-courier": {
+      "provider_name": "Deltec Courier",
+      "provider_url": "https://www.deltec-courier.com/delivery-track-and-trace",
+      "trackship_supported": "1"
+    },
+    "wndirect": {
+      "provider_name": "wnDirect",
+      "provider_url": "https://uktracking.asendia.com/tracking.php?ref=%number%&submit=#",
+      "trackship_supported": "1"
+    },
+    "whistl": {
+      "provider_name": "Whistl",
+      "provider_url": "https://trackmyitem.whistl.co.uk/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "ukmail": {
+      "provider_name": "UK Mail",
+      "provider_url": "https://www.ukmail.com",
+      "trackship_supported": "1"
+    },
+    "tuffnells": {
+      "provider_name": "Tuffnells",
+      "provider_url": "https://www.tuffnells.co.uk/track-and-trace",
+      "trackship_supported": "1"
+    },
+    "ocs-worldwide": {
+      "provider_name": "OCS Worldwide",
+      "provider_url": "https://www.ocsworldwide.co.uk/Tracking.aspx",
+      "trackship_supported": "1"
+    },
+    "bluecare": {
+      "provider_name": "Bluecare Express",
+      "provider_url": "https://bluecare.express/Tracking?trackingReference=%number%",
+      "trackship_supported": "1"
+    },
+    "dayross": {
+      "provider_name": "Day & Ross",
+      "provider_url": "https://dayross.com/en/track-shipments",
+      "trackship_supported": "1"
+    },
+    "greyhound": {
+      "provider_name": "Greyhound",
+      "provider_url": "https://greyhound.shiptrackapp.com/view.aspx?tracking=%number%&x=14&y=15&lng=en&company=2addc85e-5a32-4d40-9888-b2dcf53eca56",
+      "trackship_supported": "1"
+    },
+    "zinc": {
+      "provider_name": "Zinc",
+      "provider_url": "https://tracking.link/tracking?tracking_id=%number%",
+      "trackship_supported": "1"
+    },
+    "joeyco": {
+      "provider_name": "JoeyCo",
+      "provider_url": "https://www.joeyco.com/track-order/%number%",
+      "trackship_supported": "1"
+    },
+    "pfcexpress": {
+      "provider_name": "PFC Express",
+      "provider_url": "https://www.pfcexpress.com/Manage/WebManage/Inquire.aspx?txtID=%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-be": {
+      "provider_name": "DHL Benelux",
+      "provider_url": "https://www.dhl.com/nl-nl/home/traceren.html?tracking-id=%number%&submit=1",
+      "trackship_supported": "1"
+    },
+    "postone": {
+      "provider_name": "Post One",
+      "provider_url": "https://postone.eu/track?code=%number%",
+      "trackship_supported": "1"
+    },
+    "czech-post": {
+      "provider_name": "Czech Post",
+      "provider_url": "https://www.postaonline.cz/trackandtrace/-/zasilka/cislo?parcelNumbers=%number%",
+      "trackship_supported": "1"
+    },
+    "ppl-cz": {
+      "provider_name": "PPL CZ",
+      "provider_url": "https://www.ppl.cz/en/track-a-shipment?shipmentId=%number%",
+      "trackship_supported": "1"
+    },
+    "geis-cz": {
+      "provider_name": "Geis CZ",
+      "provider_url": "https://www.geis-group.cz/cs/detail-zasilky?packNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "matkahuolto": {
+      "provider_name": "Matkahuolto",
+      "provider_url": "https://www.matkahuolto.fi/seuranta?parcelNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "asendia-de": {
+      "provider_name": "Asendia Germany",
+      "provider_url": "https://tracking.asendia.com/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "gel-express": {
+      "provider_name": "GEL Express",
+      "provider_url": "https://srv4.thalmaier.de/gel/send/DE-de/Sendungssuche.aspx?snr=%number%",
+      "trackship_supported": "1"
+    },
+    "my-austrianpost": {
+      "provider_name": "GmbH",
+      "provider_url": "https://www.austrianpost.de/suche/?search=%number%&erw_suchbereich=&menuid_search=141",
+      "trackship_supported": "1"
+    },
+    "easy-mail": {
+      "provider_name": "Easy Mail",
+      "provider_url": "https://www.easymail.gr/web-tracking",
+      "trackship_supported": "1"
+    },
+    "cometcourier": {
+      "provider_name": "Comet Hellas",
+      "provider_url": "https://www.comethellas.gr",
+      "trackship_supported": "1"
+    },
+    "nightline": {
+      "provider_name": "Nightline",
+      "provider_url": "https://www.nightline-delivers.com/SmartShip.Online/Tracking/Actions/Default?TrackingNumbers=%number%",
+      "trackship_supported": "1"
+    },
+    "wiseloads": {
+      "provider_name": "Wiseloads",
+      "provider_url": "https://wiseloads.com/",
+      "trackship_supported": "1"
+    },
+    "lpexpress": {
+      "provider_name": "LP Express",
+      "provider_url": "https://www.post.lt/siuntu-sekimas?parcels=%number%",
+      "trackship_supported": "1"
+    },
+    "venipak": {
+      "provider_name": "Venipak",
+      "provider_url": "https://venipak.lt/tracking/track/%number%",
+      "trackship_supported": "1"
+    },
+    "timelytitan": {
+      "provider_name": "Timelytitan",
+      "provider_url": "https://www.timelytitan.com/tracking.html?number=%number%",
+      "trackship_supported": "1"
+    },
+    "allekurier": {
+      "provider_name": "Allekurier",
+      "provider_url": "https://allekurier.pl/sledzenie",
+      "trackship_supported": "1"
+    },
+    "posta-romana": {
+      "provider_name": "Romania Post",
+      "provider_url": "https://www.posta-romana.ro/track-trace.html",
+      "trackship_supported": "1"
+    },
+    "slovenia-post": {
+      "provider_name": "Slovenia Post",
+      "provider_url": "https://www.posta.si/zasebno",
+      "trackship_supported": "1"
+    },
+    "packlink": {
+      "provider_name": "Packlink",
+      "provider_url": "https://www.packlink.es/cms/static/tracking/",
+      "trackship_supported": "1"
+    },
+    "cbl-logistica": {
+      "provider_name": "CBL Logistics",
+      "provider_url": "https://www.cbl-logistica.com/",
+      "trackship_supported": "1"
+    },
+    "szendex": {
+      "provider_name": "Szendex",
+      "provider_url": "https://www.szendex.com/",
+      "trackship_supported": "1"
+    },
+    "mbe": {
+      "provider_name": "Mail Boxed Etc",
+      "provider_url": "https://www.mbe.es/es/tracking?c=%number%",
+      "trackship_supported": "1"
+    },
+    "courier-it": {
+      "provider_name": "Courier IT",
+      "provider_url": "https://www.courierit.co.za/",
+      "trackship_supported": "1"
+    },
+    "interparcel-uk": {
+      "provider_name": "Interparcel Uk",
+      "provider_url": "https://uk.interparcel.com/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "interparcel-au": {
+      "provider_name": "Interparcel Au",
+      "provider_url": "https://au.interparcel.com/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "interparcel-nz": {
+      "provider_name": "Interparcel NZ",
+      "provider_url": "https://nz.interparcel.com/tracking/%number%",
+      "trackship_supported": "0"
+    },
+    "postnet": {
+      "provider_name": "Postnet",
+      "provider_url": "https://www.postnet.co.za/tracker",
+      "trackship_supported": "0"
+    },
+    "dpd-local": {
+      "provider_name": "DPD Local",
+      "provider_url": "https://track.dpdlocal.co.uk/search?reference=%number%",
+      "trackship_supported": "1"
+    },
+    "sf-international": {
+      "provider_name": "SF International",
+      "provider_url": "https://www.sf-international.com/cn/sc/support/querySupport/waybill",
+      "trackship_supported": "1"
+    },
+    "mainfreight": {
+      "provider_name": "Main Freight",
+      "provider_url": "https://www.mainfreight.com/en-nz/tracking?trackingnumber=%number%",
+      "trackship_supported": "1"
+    },
+    "flyt-express": {
+      "provider_name": "Flyt Express",
+      "provider_url": "http://www.flytexpress.com/Home/LogisticsTracking#orderIds",
+      "trackship_supported": "1"
+    },
+    "arco-spedizioni": {
+      "provider_name": "Arco Spedizioni",
+      "provider_url": "https://clienti.arcospedizioni.it/#/trackingDetail/%number%",
+      "trackship_supported": "1"
+    },
+    "alliedexpress": {
+      "provider_name": "Allied Express",
+      "provider_url": "https://neptune.alliedexpress.com.au/iTrack/search.do",
+      "trackship_supported": "1"
+    },
+    "bondscouriers": {
+      "provider_name": "Bonds Couriers",
+      "provider_url": "https://bondscouriers.com.au/",
+      "trackship_supported": "1"
+    },
+    "uds": {
+      "provider_name": "UDS",
+      "provider_url": "https://www.uniteddeliveryservice.com/packageTrack.php",
+      "trackship_supported": "1"
+    },
+    "dpd-lt": {
+      "provider_name": "DPD Lithuania",
+      "provider_url": "https://www.dpdgroup.com/lt/mydpd/my-parcels/incoming?parcelNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "averitt-express": {
+      "provider_name": "Averitt Express",
+      "provider_url": "https://tools.averitt.com/tracking/trackLTLById?toolTab=track&serviceType=LTL&resultsPageTitle=LTL+Tracking+by+PRO+and+BOL&searchType=LTL&trackPro=%number%",
+      "trackship_supported": "1"
+    },
+    "jt-sa": {
+      "provider_name": "J&T SA",
+      "provider_url": "https://www.jtexpress-sa.com/trajectoryQuery?waybillNo=%number%&type=0",
+      "trackship_supported": "0"
+    },
+    "abx-express": {
+      "provider_name": "ABX Express",
+      "provider_url": "https://www.abxexpress.com.my/tracking",
+      "trackship_supported": "1"
+    },
+    "postnord-finland": {
+      "provider_name": "PostNord Finland",
+      "provider_url": "https://www.postnord.fi/tyokalut/lahetysten-seuranta?shipmentId=%number%",
+      "trackship_supported": "1"
+    },
+    "goglobal-post": {
+      "provider_name": "Global Post",
+      "provider_url": "https://www.goglobalpost.com/track-detail/?t=%number%&amp;amp;amp;ref=landing",
+      "trackship_supported": "1"
+    },
+    "sendeo": {
+      "provider_name": "Sendeo",
+      "provider_url": "https://sendeo.com.tr/tracking?q=%number%",
+      "trackship_supported": "0"
+    },
+    "shree-nandan": {
+      "provider_name": "Shree Nandan Courier",
+      "provider_url": "http://www.shreenandancourier.com/TrackingInfo.aspx?cn=%number%",
+      "trackship_supported": "1"
+    },
+    "osmworldwide": {
+      "provider_name": "OSM Worldwide",
+      "provider_url": "https://www.osmworldwide.com/tracking/?trackingNumbers=%number%",
+      "trackship_supported": "1"
+    },
+    "iberomail": {
+      "provider_name": "Iberomail",
+      "provider_url": "https://iberomail.com/pt/localizar-encomenda/",
+      "trackship_supported": "0"
+    },
+    "ltian-exp": {
+      "provider_name": "Ltian Exp",
+      "provider_url": "http://www.ltianexp.com/trajectory",
+      "trackship_supported": "1"
+    },
+    "ydh": {
+      "provider_name": "YDH",
+      "provider_url": "https://www.ydhex.com/tools/inquire?number=%number%",
+      "trackship_supported": "1"
+    },
+    "omniva": {
+      "provider_name": "Omniva Lithuania",
+      "provider_url": "https://mano.omniva.lt/track/%number%",
+      "trackship_supported": "1"
+    },
+    "yht": {
+      "provider_name": "YHT",
+      "provider_url": "https://www.eshippinggateway.com/tracking.html",
+      "trackship_supported": "1"
+    },
+    "evri": {
+      "provider_name": "Evri",
+      "provider_url": "https://www.evri.com/track/#/parcel/%number%/details",
+      "trackship_supported": "1"
+    },
+    "holland-regional": {
+      "provider_name": "Holland Regional",
+      "provider_url": "https://my.hollandregional.com/tools/track/shipments?referenceNumber=%number%&referenceNumberType=PRO&time=1649226809",
+      "trackship_supported": "1"
+    },
+    "econt": {
+      "provider_name": "Econt",
+      "provider_url": "https://www.econt.com/en/services/track-shipment",
+      "trackship_supported": "0"
+    },
+    "mxpress": {
+      "provider_name": "M Xpress",
+      "provider_url": "https://gold.mxpress2u.net/gold/PublicShipmentTracking.aspx",
+      "trackship_supported": "1"
+    },
+    "pallet-network": {
+      "provider_name": "Pallet Network",
+      "provider_url": "http://www.tpnconnect.com/Tracking",
+      "trackship_supported": "0"
+    },
+    "hyper-sku": {
+      "provider_name": "HyperSKU",
+      "provider_url": "https://track.hypersku.com/?set_lang=en&finalNo=%number%",
+      "trackship_supported": "1"
+    },
+    "smartr-logistics": {
+      "provider_name": "Smartr Logistics",
+      "provider_url": "https://smartr.in/tracking?wb=%number%",
+      "trackship_supported": "1"
+    },
+    "forward-air": {
+      "provider_name": "Forward Air",
+      "provider_url": "https://www.forwardair.com/tracking",
+      "trackship_supported": "1"
+    },
+    "hepsi-jet": {
+      "provider_name": "HepsiJet",
+      "provider_url": "https://www.hepsijet.com/gonderi-takibi/%number%",
+      "trackship_supported": "1"
+    },
+    "dt-express-couriers": {
+      "provider_name": "Dt Express Couriers",
+      "provider_url": "https://dtsolutions.pperfect.com/",
+      "trackship_supported": "0"
+    },
+    "dpd-be": {
+      "provider_name": "DPD BE",
+      "provider_url": "https://www.dpdgroup.com/be/mydpd/my-parcels/search?lang=en&parcelNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "courier-center": {
+      "provider_name": "Courier Center",
+      "provider_url": "https://www.courier.gr/track/",
+      "trackship_supported": "1"
+    },
+    "flash-express-my": {
+      "provider_name": "Flash Express MY",
+      "provider_url": "https://www.flashexpress.my/tracking/?se=%number%",
+      "trackship_supported": "1"
+    },
+    "quantium": {
+      "provider_name": "Quantium",
+      "provider_url": "http://track.quantiumsolutions.com/",
+      "trackship_supported": "1"
+    },
+    "imile": {
+      "provider_name": "iMile",
+      "provider_url": "https://www.imile.com/track",
+      "trackship_supported": "1"
+    },
+    "etower": {
+      "provider_name": "eTower",
+      "provider_url": "http://etowertech.com/home",
+      "trackship_supported": "1"
+    },
+    "seino": {
+      "provider_name": "Seino",
+      "provider_url": "https://track.seino.co.jp/cgi-bin/gnpquery.pgm",
+      "trackship_supported": "1"
+    },
+    "nova-poshta-global": {
+      "provider_name": "Nova Poshta Global",
+      "provider_url": "https://novaposhtaglobal.ua/en/track/?Tracking_ID=%number%",
+      "trackship_supported": "1"
+    },
+    "inter-rapidisimo": {
+      "provider_name": "Inter Rapidisimo",
+      "provider_url": "https://interrapidisimo.com/",
+      "trackship_supported": "0"
+    },
+    "xl-express": {
+      "provider_name": "XL Express",
+      "provider_url": "https://xleonline.com.au/tracking/xlexpress/view/%number%",
+      "trackship_supported": "0"
+    },
+    "redx": {
+      "provider_name": "Redx",
+      "provider_url": "https://redx.com.bd/track-global-parcel/?trackingId=%number%",
+      "trackship_supported": "0"
+    },
+    "pathao": {
+      "provider_name": "Pathao",
+      "provider_url": "https://pathao.com/",
+      "trackship_supported": "0"
+    },
+    "paperfly": {
+      "provider_name": "Paperfly",
+      "provider_url": "https://www.paperfly.com.bd/",
+      "trackship_supported": "0"
+    },
+    "logista-parcel": {
+      "provider_name": "Logista Parcel",
+      "provider_url": "https://www.logistaparcel.com/es/home/track-and-trace/shipment-tracking.html",
+      "trackship_supported": "0"
+    },
+    "instabox": {
+      "provider_name": "Instabox",
+      "provider_url": "https://track.instabox.nl/t/%number%/2312KJ",
+      "trackship_supported": "0"
+    },
+    "sundarban-courier": {
+      "provider_name": "Sundarban Courier",
+      "provider_url": "http://103.3.227.172:4040/Default.aspx?Page=SearchByContact",
+      "trackship_supported": "0"
+    },
+    "posstore": {
+      "provider_name": "Posstore",
+      "provider_url": "http://47.250.41.212:8085/DNYInterfaceServer/ztserver/tabOrderBill/query?nu=%number%",
+      "trackship_supported": "1"
+    },
+    "scharff": {
+      "provider_name": "Scharff",
+      "provider_url": "https://wsintegracion.holascharff.com/webpage/trackingweb/Tracking.asp",
+      "trackship_supported": "0"
+    },
+    "shalom": {
+      "provider_name": "Shalom",
+      "provider_url": "https://rastrea.shalom.pe/",
+      "trackship_supported": "0"
+    },
+    "olva-courier": {
+      "provider_name": "Olva courier",
+      "provider_url": "https://tracking.olvaexpress.pe/",
+      "trackship_supported": "0"
+    },
+    "gopack-peru": {
+      "provider_name": "GoPack Peru",
+      "provider_url": "https://gopack-peru.com/vista/verPedido/",
+      "trackship_supported": "0"
+    },
+    "az-express": {
+      "provider_name": "Az Express",
+      "provider_url": "http://azexpress.ddns.net/consulta_dni.php",
+      "trackship_supported": "0"
+    },
+    "cruz-del-sur": {
+      "provider_name": "Cruz del sur",
+      "provider_url": "https://www.cruzdelsurcargo.com.pe/agenciasbuscatuencomienda",
+      "trackship_supported": "0"
+    },
+    "urbano": {
+      "provider_name": "Urbano",
+      "provider_url": "https://www.urbano.com.pe/",
+      "trackship_supported": "0"
+    },
+    "happy-courier": {
+      "provider_name": "Happy Courier",
+      "provider_url": "https://happycourier.extranet4u.com/el/courier/voucher/Voucher.html?r18p01=%number%",
+      "trackship_supported": "0"
+    },
+    "flash-express-ph": {
+      "provider_name": "Flash Express PH",
+      "provider_url": "https://www.flashexpress.ph/tracking/?se=%number%",
+      "trackship_supported": "1"
+    },
+    "nationwide-express": {
+      "provider_name": "Nationwide Express",
+      "provider_url": "http://www.nationwide.com.my/Tracking/Details/N8690523108498",
+      "trackship_supported": "1"
+    },
+    "cdl": {
+      "provider_name": "CDL",
+      "provider_url": "https://ship.cdldelivers.com/Xcelerator/Tracking/Tracking?orderId=%number%",
+      "trackship_supported": "1"
+    },
+    "expressone": {
+      "provider_name": "Express one",
+      "provider_url": "https://tracking.expressone.hu/?plc_number=%number%",
+      "trackship_supported": "1"
+    },
+    "equick": {
+      "provider_name": "Equick",
+      "provider_url": "http://www.equick.cn/en/index.php?m=content&c=index&a=lists&catid=25&code=%number%",
+      "trackship_supported": "1"
+    },
+    "takesend": {
+      "provider_name": "TakeSend",
+      "provider_url": "http://k5.takesend.com:8180/WebTrack?action=list&language=en",
+      "trackship_supported": "1"
+    },
+    "daylight-transport": {
+      "provider_name": "Daylight Transport",
+      "provider_url": "https://mydaylight.dylt.com/external/shipment?probill=%number%",
+      "trackship_supported": "1"
+    },
+    "gls-au": {
+      "provider_name": "GLS Austria",
+      "provider_url": "https://gls-group.eu/EU/en/parcel-tracking?match=%number%&amp;postalCode=%postal_code%",
+      "trackship_supported": "1"
+    },
+    "skynet-south-africa": {
+      "provider_name": "Skynet South Africa",
+      "provider_url": "https://www.skynet.co.za/",
+      "trackship_supported": "1"
+    },
+    "starken": {
+      "provider_name": "Starken",
+      "provider_url": "https://www.starken.cl/seguimiento",
+      "trackship_supported": "1"
+    },
+    "elta-hellenic": {
+      "provider_name": "ELTA Hellenic",
+      "provider_url": "https://elta.gr/en/track?code=%number%",
+      "trackship_supported": "1"
+    },
+    "best-express-th": {
+      "provider_name": "BEST Express",
+      "provider_url": "https://www.best-inc.co.th/track?bills=%number%",
+      "trackship_supported": "1"
+    },
+    "bluex": {
+      "provider_name": "Blues Express",
+      "provider_url": "https://www.blue.cl/seguimiento/?n_seguimiento=%number%",
+      "trackship_supported": "0"
+    },
+    "correos-de-mexico": {
+      "provider_name": "Correos de Mexico",
+      "provider_url": "https://www.correosdemexico.gob.mx/SSLServicios/SeguimientoEnvio/Seguimiento.aspx",
+      "trackship_supported": "1"
+    },
+    "lafasta": {
+      "provider_name": "Lafasta",
+      "provider_url": "https://c.lafasta.sa.com/Track/%number%",
+      "trackship_supported": "1"
+    },
+    "ram": {
+      "provider_name": "Ram",
+      "provider_url": "https://www.ram.co.za/Track/%number%",
+      "trackship_supported": "1"
+    },
+    "etg": {
+      "provider_name": "ETG",
+      "provider_url": "http://www.etg56.com/logistics.html?tab=1",
+      "trackship_supported": "1"
+    },
+    "gls-hungary": {
+      "provider_name": "GLS Hungary",
+      "provider_url": "https://gls-group.eu/HU/en/parcel-tracking?match=%number%",
+      "trackship_supported": "1"
+    },
+    "gls-canada": {
+      "provider_name": "GLS Canada",
+      "provider_url": "https://www.gls-canada.com/en/dicom/tracking",
+      "trackship_supported": "1"
+    },
+    "kuehne": {
+      "provider_name": "Kuehne Nagel",
+      "provider_url": "https://mykn.kuehne-nagel.com/public-tracking/shipments?query=%number%",
+      "trackship_supported": "1"
+    },
+    "roadrunner-freight": {
+      "provider_name": "Roadrunner Freight",
+      "provider_url": "http://tools.rrts.com/LTLTrack/?searchValues=%number%",
+      "trackship_supported": "1"
+    },
+    "jet-international": {
+      "provider_name": "JET International",
+      "provider_url": "https://www.jet-logistics.com/en/track.html",
+      "trackship_supported": "1"
+    },
+    "intelcom": {
+      "provider_name": "Intelcom",
+      "provider_url": "https://intelcom.ca/en/track-your-package/?tracking-id=%number%",
+      "trackship_supported": "1"
+    },
+    "dexpress": {
+      "provider_name": "DExpress",
+      "provider_url": "https://www.dexpress.rs/en/track-and-trace/%number%",
+      "trackship_supported": "1"
+    },
+    "gls-slovakia": {
+      "provider_name": "GLS Slovakia",
+      "provider_url": "https://gls-group.eu/SK/sk/sledovanie-zasielok?match=%number%",
+      "trackship_supported": "1"
+    },
+    "zto-express": {
+      "provider_name": "ZTO Express",
+      "provider_url": "https://www.zto.com/express/expressCheck.html",
+      "trackship_supported": "1"
+    },
+    "freightquote": {
+      "provider_name": "Freightquote",
+      "provider_url": "https://www.freightquote.com/track-shipment/?bol=%number%",
+      "trackship_supported": "1"
+    },
+    "aliexpress-standard-shipping": {
+      "provider_name": "Aliexpress Standard Shipping",
+      "provider_url": "https://global.cainiao.com/detail.htm?mailNoList=%number%",
+      "trackship_supported": "1"
+    },
+    "gls-romania": {
+      "provider_name": "GLS Romania",
+      "provider_url": "https://gls-group.com/RO/ro/urmarire-colet.html?match=%number%",
+      "trackship_supported": "1"
+    },
+    "wel": {
+      "provider_name": "WEL",
+      "provider_url": "http://shgj.rtb56.com/track_query.aspx?type=cp&documentCode=%number%&Submit.x=18&Submit.y=9",
+      "trackship_supported": "1"
+    },
+    "packeta": {
+      "provider_name": "Packeta",
+      "provider_url": "https://tracking.packeta.com/en_GB/?id=%number%",
+      "trackship_supported": "1"
+    },
+    "exelot": {
+      "provider_name": "Exelot",
+      "provider_url": "https://public.exelot.com/tracking/%number%?lang=en",
+      "trackship_supported": "1"
+    },
+    "sana": {
+      "provider_name": "SANA",
+      "provider_url": "http://www.mhafly.com/",
+      "trackship_supported": "0"
+    },
+    "sdh": {
+      "provider_name": "SDH",
+      "provider_url": "https://www.sdh-scm.com/",
+      "trackship_supported": "1"
+    },
+    "collivery": {
+      "provider_name": "Collivery",
+      "provider_url": "https://collivery.net/tracking?waybill=%number%",
+      "trackship_supported": "1"
+    },
+    "bosta": {
+      "provider_name": "Bosta",
+      "provider_url": "https://bosta.co/tracking-shipments?shipment-number=%number%",
+      "trackship_supported": "1"
+    },
+    "am-home-delivery": {
+      "provider_name": "AM Home Delivery",
+      "provider_url": "http://www.amtrucking.com/tracking.php",
+      "trackship_supported": "1"
+    },
+    "pilot": {
+      "provider_name": "Pilot",
+      "provider_url": "https://www.pilotdelivers.com/technology/?currentTab=consumer",
+      "trackship_supported": "1"
+    },
+    "yousheng-international-express": {
+      "provider_name": "Yousheng International Express",
+      "provider_url": "https://www.yoseus.com/ylc/",
+      "trackship_supported": "1"
+    },
+    "tstexp": {
+      "provider_name": "Tstexp",
+      "provider_url": "https://www.tstexp.com/index.php",
+      "trackship_supported": "1"
+    },
+    "saia-ltl-freight": {
+      "provider_name": "Saia LTL Freight",
+      "provider_url": "https://www.saia.com/track",
+      "trackship_supported": "1"
+    },
+    "hound": {
+      "provider_name": "Hound",
+      "provider_url": "https://www.hound-express.com/tracking.html",
+      "trackship_supported": "1"
+    },
+    "boxc-logistics": {
+      "provider_name": "Boxc Logistics",
+      "provider_url": "https://www.boxc.com/track",
+      "trackship_supported": "1"
+    },
+    "2u-express": {
+      "provider_name": "2U Express",
+      "provider_url": "http://www.2uex.com/selectorder/%number%",
+      "trackship_supported": "1"
+    },
+    "shipgce-express": {
+      "provider_name": "Shipgce Express",
+      "provider_url": "https://express.shipgce.com/postcheck.htm?checkvalue=%number%&type=identity",
+      "trackship_supported": "1"
+    },
+    "con-way-freight": {
+      "provider_name": "Con-way Freight",
+      "provider_url": "https://ext-web.ltl-xpo.com/public-app/shipments?referenceNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "imex-global-solutions": {
+      "provider_name": "IMEX Global Solutions",
+      "provider_url": "https://www.imexglobalsolutions.com/search-results?indexCatalogue=sitesearch&searchQuery=%number%&wordsMode=0",
+      "trackship_supported": "1"
+    },
+    "globegistics": {
+      "provider_name": "Globegistics",
+      "provider_url": "https://a1.asendiausa.com/tracking/?trackingnumber=%number%",
+      "trackship_supported": "1"
+    },
+    "newgistics": {
+      "provider_name": "Newgistics",
+      "provider_url": "https://parcelsapp.com/en/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "i-parcel": {
+      "provider_name": "I-parcel",
+      "provider_url": "https://www.i-parcel.com/",
+      "trackship_supported": "1"
+    },
+    "upu": {
+      "provider_name": "UPU",
+      "provider_url": "http://globaltracktrace.ptc.post/gtt.web/",
+      "trackship_supported": "1"
+    },
+    "uruguay-post": {
+      "provider_name": "Uruguay Post",
+      "provider_url": "https://www.correo.com.uy/home",
+      "trackship_supported": "1"
+    },
+    "serpost": {
+      "provider_name": "Serpost",
+      "provider_url": "https://www.serpost.com.pe/Cliente/SegumientoLinea",
+      "trackship_supported": "1"
+    },
+    "jamaica-post": {
+      "provider_name": "Jamaica Post",
+      "provider_url": "https://jamaicapost.gov.jm/track-and-trace/",
+      "trackship_supported": "1"
+    },
+    "el-salvador-post": {
+      "provider_name": "El Salvador Post",
+      "provider_url": "https://www.transparencia.gob.sv/search?utf8=&ft=%number%",
+      "trackship_supported": "1"
+    },
+    "dominican-post": {
+      "provider_name": "Dominican Post",
+      "provider_url": "https://www.inposdom.gob.do/search?q=%number%",
+      "trackship_supported": "1"
+    },
+    "cuba-post": {
+      "provider_name": "Cuba Post",
+      "provider_url": "https://www.correos.cu/rastreador-de-envios/",
+      "trackship_supported": "1"
+    },
+    "bermuda-post": {
+      "provider_name": "Bermuda Post",
+      "provider_url": "https://www.bermudapost.bm/track-your-item/?trackNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "barbados-post": {
+      "provider_name": "Barbados Post",
+      "provider_url": "https://bps.gov.bb/",
+      "trackship_supported": "1"
+    },
+    "aruba-post": {
+      "provider_name": "Aruba Post",
+      "provider_url": "https://cds.postaruba.com/ipswt/IPSWeb_item_events.aspx?itemid=%number%&Submit=Submit",
+      "trackship_supported": "1"
+    },
+    "antilles-post": {
+      "provider_name": "Antilles Post",
+      "provider_url": "https://tracking.cpostinternational.com/#/cpost/tracking",
+      "trackship_supported": "1"
+    },
+    "amsegroup": {
+      "provider_name": "AMSEGROUP",
+      "provider_url": "http://eretail.amservices.net.au:8080/parceltracker.aspx",
+      "trackship_supported": "1"
+    },
+    "beebird-logistics": {
+      "provider_name": "Beebird Logistics",
+      "provider_url": "https://beebird.com.au/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "un-line": {
+      "provider_name": "Un-line",
+      "provider_url": "http://www.un-line.com/tech_Track.asp",
+      "trackship_supported": "1"
+    },
+    "sx-express": {
+      "provider_name": "SX Express",
+      "provider_url": "https://sxexpress.myazstore.com/searchtracking?no=%number%",
+      "trackship_supported": "1"
+    },
+    "ark-express": {
+      "provider_name": "Ark express",
+      "provider_url": "http://en.arkexpress.com.au/searchOrder?orderNo=%number%",
+      "trackship_supported": "1"
+    },
+    "chinz-logistics": {
+      "provider_name": "Chinz Logistics",
+      "provider_url": "http://www.chinz56.co.nz/",
+      "trackship_supported": "1"
+    },
+    "ewe global express": {
+      "provider_name": "EWE Global Express",
+      "provider_url": "https://www.ewe.com.au/",
+      "trackship_supported": "1"
+    },
+    "ausworld express": {
+      "provider_name": "Ausworld Express",
+      "provider_url": "http://www.aus-express.com/Search.aspx",
+      "trackship_supported": "1"
+    },
+    "xdexpress": {
+      "provider_name": "XDEXPRESS",
+      "provider_url": "https://www.xdexpress.com.au/Express.aspx",
+      "trackship_supported": "1"
+    },
+    "efsPost": {
+      "provider_name": "EFSPost",
+      "provider_url": "http://www.efspost.com/index/query_track?postnum=%number%&code=pesu",
+      "trackship_supported": "1"
+    },
+    "euexpress": {
+      "provider_name": "Auexpress",
+      "provider_url": "https://www.auexpress.com/tracking?OrderId=%number%",
+      "trackship_supported": "1"
+    },
+    "ftd-Express": {
+      "provider_name": "FTD Express",
+      "provider_url": "https://www.ftd.nz/query/?code=%number%",
+      "trackship_supported": "1"
+    },
+    "pca": {
+      "provider_name": "PCA",
+      "provider_url": "https://www.pcaexpress.com.au/tracking/?c=%number%",
+      "trackship_supported": "1"
+    },
+    "fastgo": {
+      "provider_name": "Fastgo",
+      "provider_url": "https://www.fastgo.com.au/WaybillQuery",
+      "trackship_supported": "1"
+    },
+    "adaone": {
+      "provider_name": "ADSOne",
+      "provider_url": "https://tracking.icumulus.cloud/",
+      "trackship_supported": "1"
+    },
+    "shiprocket": {
+      "provider_name": "Shiprocket",
+      "provider_url": "https://shiprocket.co/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "pidge": {
+      "provider_name": "Pidge",
+      "provider_url": "https://pidge.in/",
+      "trackship_supported": "1"
+    },
+    "wanmeng": {
+      "provider_name": "Wanmeng",
+      "provider_url": "https://wms.wmycc.com/tracking.aspx",
+      "trackship_supported": "1"
+    },
+    "connectco": {
+      "provider_name": "ConnectCo",
+      "provider_url": "https://connectcoapps.lk/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "bird-system-ltd": {
+      "provider_name": "BIRD SYSTEM LTD",
+      "provider_url": "http://track.birdsystem.com/?ids=%number%",
+      "trackship_supported": "1"
+    },
+    "u-speed-express": {
+      "provider_name": "U-Speed Express",
+      "provider_url": "https://www.u-speedex.com/queryTracks?no=%number%",
+      "trackship_supported": "1"
+    },
+    "spx-id": {
+      "provider_name": "SPX ID",
+      "provider_url": "https://spx.co.id/detail/%number%",
+      "trackship_supported": "1"
+    },
+    "cgs-Express": {
+      "provider_name": "CGS Express",
+      "provider_url": "http://www.cgs-express.com:8082/trackIndex.htm",
+      "trackship_supported": "1"
+    },
+    "scg-express": {
+      "provider_name": "SCG Express",
+      "provider_url": "https://www.scgexpress.co.th/tracking/?fav",
+      "trackship_supported": "1"
+    },
+    "spx-my": {
+      "provider_name": "SPX MY",
+      "provider_url": "https://shopeexpress.com.my/detail/%number%",
+      "trackship_supported": "1"
+    },
+    "morning-express": {
+      "provider_name": "Morning Express",
+      "provider_url": "https://www.mechk.com/guest-order-tracking/",
+      "trackship_supported": "1"
+    },
+    "asyad-express": {
+      "provider_name": "Asyad Express",
+      "provider_url": "https://www.asyadexpress.om/track-trace",
+      "trackship_supported": "1"
+    },
+    "spx-vn": {
+      "provider_name": "SPX VN",
+      "provider_url": "https://spx.vn/",
+      "trackship_supported": "1"
+    },
+    "we-world-express": {
+      "provider_name": "We World Express",
+      "provider_url": "https://www.weworldexpress.com/wwe/track",
+      "trackship_supported": "1"
+    },
+    "Nippon Express": {
+      "provider_name": "Nippon Express",
+      "provider_url": "https://www.nittsu.co.jp/",
+      "trackship_supported": "1"
+    },
+    "taiwan pelican express": {
+      "provider_name": "Taiwan Pelican Express",
+      "provider_url": "https://www.e-can.com.tw/search_Goods.aspx",
+      "trackship_supported": "1"
+    },
+    "fedex-mexico": {
+      "provider_name": "FedEx Mexico",
+      "provider_url": "https://www.fedex.com/fedextrack/no-results-found?trknbr=%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-mx": {
+      "provider_name": "DHL Mexico",
+      "provider_url": "https://www.dhl.com/mx-es/home/rastreo.html?tracking-id=%number%&submit=1",
+      "trackship_supported": "1"
+    },
+    "manitoulin-transport": {
+      "provider_name": "Manitoulin Transport",
+      "provider_url": "https://www.mtdirect.ca/MANITOULIN/pages/PROBILL?probillnum=%number%&output=5",
+      "trackship_supported": "1"
+    },
+    "score-jp": {
+      "provider_name": "Score Jp",
+      "provider_url": "http://www.shuka-scorejp.com/SCJTrace/",
+      "trackship_supported": "1"
+    },
+    "pandu-logistics": {
+      "provider_name": "Pandu Logistics",
+      "provider_url": "https://pandulogistics.com/track/",
+      "trackship_supported": "1"
+    },
+    "rzy-express": {
+      "provider_name": "RZY Express",
+      "provider_url": "https://rzyexpress.com.sg/tracking.php",
+      "trackship_supported": "1"
+    },
+    "sre-korea": {
+      "provider_name": "SRE Korea",
+      "provider_url": "http://www.srekorea.co.kr/home/index.html",
+      "trackship_supported": "1"
+    },
+    "kgm-hub": {
+      "provider_name": "KGM Hub",
+      "provider_url": "http://kgmhub.com/customer/public-tracking",
+      "trackship_supported": "1"
+    },
+    "acommerce": {
+      "provider_name": "ACOMMERCE",
+      "provider_url": "https://tracking.acommerce.asia/?id=%number%",
+      "trackship_supported": "1"
+    },
+    "viettel-post": {
+      "provider_name": "Viettel Post",
+      "provider_url": "https://en.viettelpost.com.vn/#one2",
+      "trackship_supported": "1"
+    },
+    "xend-express": {
+      "provider_name": "Xend Express",
+      "provider_url": "https://xendexpress.com/",
+      "trackship_supported": "1"
+    },
+    "uzbekistan-post": {
+      "provider_name": "Uzbekistan Post",
+      "provider_url": "https://pochta.uz/en/2014-06-09-08-50-39/track-trace.html",
+      "trackship_supported": "1"
+    },
+    "fast-despatch-logistics": {
+      "provider_name": "Fast Despatch Logistics",
+      "provider_url": "https://fastdespatch.com/track/%number%",
+      "trackship_supported": "1"
+    },
+    "ttkeurope": {
+      "provider_name": "Ttkeurope",
+      "provider_url": "https://ttkeurope.com/status",
+      "trackship_supported": "1"
+    },
+    "norsk-global": {
+      "provider_name": "Norsk Global",
+      "provider_url": "https://norsk.global/track-and-trace.html",
+      "trackship_supported": "1"
+    },
+    "emons": {
+      "provider_name": "Emons",
+      "provider_url": "https://www.emons.de/tracking",
+      "trackship_supported": "1"
+    },
+    "bee-express": {
+      "provider_name": "Beexpress",
+      "provider_url": "https://www.beexprss.com/",
+      "trackship_supported": "1"
+    },
+    "solid-logistcs": {
+      "provider_name": "Solid Logistcs",
+      "provider_url": "https://solidlogistics.id/web.solid/aboutus?c=tracking",
+      "trackship_supported": "1"
+    },
+    "flyway-express": {
+      "provider_name": "Flyway Express",
+      "provider_url": "https://flywayexpress.com/",
+      "trackship_supported": "1"
+    },
+    "qexpress": {
+      "provider_name": "QEXPRESS",
+      "provider_url": "https://www.qxpress.net/",
+      "trackship_supported": "1"
+    },
+    "blue-sky-express": {
+      "provider_name": "Blue Sky Express",
+      "provider_url": "https://www.bskyexpress.com/track.php?awb=%number%",
+      "trackship_supported": "1"
+    },
+    "hkd-express": {
+      "provider_name": "HKD Express",
+      "provider_url": "http://www.hkdexpress.net/",
+      "trackship_supported": "1"
+    },
+    "cosco-express": {
+      "provider_name": "Cosco Express",
+      "provider_url": "https://www.zy100-express.com/index.php?c=category&id=5&title=%number%",
+      "trackship_supported": "1"
+    },
+    "cargus": {
+      "provider_name": "Cargus",
+      "provider_url": "https://www.cargus.ro/tracking-romanian/?t=%number%",
+      "trackship_supported": "1"
+    },
+    "ghana-post": {
+      "provider_name": "Ghana Post",
+      "provider_url": "https://tools.v2.ghanapost.com.gh/toolsv1/",
+      "trackship_supported": "1"
+    },
+    "pargo": {
+      "provider_name": "Pargo",
+      "provider_url": "https://pargo.co.za/track-trace/",
+      "trackship_supported": "1"
+    },
+    "roadbull-logistics": {
+      "provider_name": "Roadbull Logistics",
+      "provider_url": "https://cds.roadbull.com/order/track/%number%",
+      "trackship_supported": "1"
+    },
+    "nigeria-post": {
+      "provider_name": "Nigeria Post",
+      "provider_url": "https://www.nipost.gov.ng/Track_Trace",
+      "trackship_supported": "1"
+    },
+    "mauritius-post": {
+      "provider_name": "Mauritius Post",
+      "provider_url": "https://www.mauritiuspost.mu/trackandtrace.php?itemid=%number%",
+      "trackship_supported": "1"
+    },
+    "correios-cabo-verde": {
+      "provider_name": "Correios Cabo Verde",
+      "provider_url": "https://correios.cv/ferramentas/tracking?tracking-ids=%number%",
+      "trackship_supported": "1"
+    },
+    "benin-post": {
+      "provider_name": "Benin Post",
+      "provider_url": "https://laposte.bj/",
+      "trackship_supported": "1"
+    },
+    "bosnia-and-herzegovina-post": {
+      "provider_name": "Bosnia And Herzegovina Post",
+      "provider_url": "https://bhpwebout.posta.ba/trackwebapp/",
+      "trackship_supported": "1"
+    },
+    "belarus-post": {
+      "provider_name": "Belarus Post",
+      "provider_url": "https://belpost.by/Otsleditotpravleniye?number=%number%",
+      "trackship_supported": "1"
+    },
+    "albania-post": {
+      "provider_name": "Albania Post",
+      "provider_url": "https://www.postashqiptare.al/",
+      "trackship_supported": "1"
+    },
+    "zambia post": {
+      "provider_name": "Zambia Post",
+      "provider_url": "http://www.postglobalonline.com/track/zm/track.aspx",
+      "trackship_supported": "1"
+    },
+    "uganda-post": {
+      "provider_name": "Uganda Post",
+      "provider_url": "http://globaltracktrace.ptc.post/gtt.web/",
+      "trackship_supported": "1"
+    },
+    "tanzania-post": {
+      "provider_name": "Tanzania Post",
+      "provider_url": "https://tracking.posta.co.tz/",
+      "trackship_supported": "1"
+    },
+    "tk-kit": {
+      "provider_name": "Tk Kit",
+      "provider_url": "https://spare.tk-kit.ru/",
+      "trackship_supported": "1"
+    },
+    "espost": {
+      "provider_name": "Espost",
+      "provider_url": "https://www.espost.es/track",
+      "trackship_supported": "1"
+    },
+    "sailpost": {
+      "provider_name": "Sailpost",
+      "provider_url": "https://www.sailpost.it/traccia-il-pacco/",
+      "trackship_supported": "1"
+    },
+    "cacesa-postal": {
+      "provider_name": "Cacesa Postal",
+      "provider_url": "https://www.cacesa.com/es/seguimiento?busqueda=%number%",
+      "trackship_supported": "1"
+    },
+    "eurodis": {
+      "provider_name": "Eurodis",
+      "provider_url": "https://eurodis.com/track-trace",
+      "trackship_supported": "1"
+    },
+    "hua-han-logistics": {
+      "provider_name": "Hua Han Logistics",
+      "provider_url": "https://www.hh-exp.cn/WebTrack/CargoTrack.html",
+      "trackship_supported": "1"
+    },
+    "yuema-express": {
+      "provider_name": "Yuema Express",
+      "provider_url": "http://www.yue777.com/",
+      "trackship_supported": "1"
+    },
+    "san-marino-post": {
+      "provider_name": "San Marino Post",
+      "provider_url": "https://www.poste.sm/on-line/home.html",
+      "trackship_supported": "1"
+    },
+    "iml-logistics": {
+      "provider_name": "IML Logistics",
+      "provider_url": "http://www.imlb2c.com/",
+      "trackship_supported": "1"
+    },
+    "pony-express": {
+      "provider_name": "Pony Express",
+      "provider_url": "https://www.ponyexpress.ru/en/support/online-services/track/",
+      "trackship_supported": "1"
+    },
+    "euasia-express": {
+      "provider_name": "Euasia Express",
+      "provider_url": "http://www.euasia.eu/h1.html?%number%",
+      "trackship_supported": "1"
+    },
+    "postal-state-international": {
+      "provider_name": "Postal State International",
+      "provider_url": "http://www.youban.de/CN/track/?expressnum=%number%",
+      "trackship_supported": "1"
+    },
+    "j-net Express": {
+      "provider_name": "J-NET Express",
+      "provider_url": "https://www.j-net.cn/index.php/page/track.html?number=%number%",
+      "trackship_supported": "1"
+    },
+    "happy-post": {
+      "provider_name": "Happy Post",
+      "provider_url": "https://happy-post.com/en/track/",
+      "trackship_supported": "1"
+    },
+    "cargo-international": {
+      "provider_name": "Cargo International",
+      "provider_url": "https://www.cargointernational.de/sendungsverfolgung/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "cosmetics-now": {
+      "provider_name": "Cosmetics Now",
+      "provider_url": "https://www.cosmeticsnow.in/?main_page=account_history_info&track=true&order_id=%number%",
+      "trackship_supported": "1"
+    },
+    "vanuatu-post": {
+      "provider_name": "Vanuatu Post",
+      "provider_url": "https://www.vanuatupost.vu/track-and-trace",
+      "trackship_supported": "1"
+    },
+    "tuvalu-post": {
+      "provider_name": "Tuvalu Post",
+      "provider_url": "http://tuvalupost.tv/Track",
+      "trackship_supported": "1"
+    },
+    "samoa-post": {
+      "provider_name": "Samoa Post",
+      "provider_url": "https://www.samoapost.ws/",
+      "trackship_supported": "1"
+    },
+    "saint-lucia-post": {
+      "provider_name": "Saint Lucia Post",
+      "provider_url": "https://stluciapostal.com/track-and-trace/",
+      "trackship_supported": "1"
+    },
+    "papua-new-guinea-post": {
+      "provider_name": "Papua New Guinea Post",
+      "provider_url": "https://www.postpng.com.pg/track_trace",
+      "trackship_supported": "1"
+    },
+    "parcel-freight-logistics": {
+      "provider_name": "Parcel Freight Logistics",
+      "provider_url": "http://www.pflogistics.com.au/tracking-result",
+      "trackship_supported": "1"
+    },
+    "dd-express": {
+      "provider_name": "DD Express",
+      "provider_url": "https://tracking.dd.express/v2/",
+      "trackship_supported": "1"
+    },
+    "eparcel-korea": {
+      "provider_name": "eParcel Korea",
+      "provider_url": "https://eparcel.kr/Track/Result?mode=0&ids=%number%&branch=00066",
+      "trackship_supported": "1"
+    },
+    "airspeed-international": {
+      "provider_name": "Airspeed International",
+      "provider_url": "https://airspeed.ph/track-cargo/",
+      "trackship_supported": "1"
+    },
+    "maldives-post": {
+      "provider_name": "Maldives Post",
+      "provider_url": "https://www.maldivespost.com/tracker?tracking_number=%number%",
+      "trackship_supported": "1"
+    },
+    "zmc-express": {
+      "provider_name": "ZMC EXPRESS",
+      "provider_url": "https://www.zmcexpress.com/",
+      "trackship_supported": "1"
+    },
+    "ics-courier": {
+      "provider_name": "ICS Courier",
+      "provider_url": "https://www.icscourier.ca/online-services/parcel-tracking.aspx?trackNums=%number%",
+      "trackship_supported": "1"
+    },
+    "georgia-post": {
+      "provider_name": "Georgia Post",
+      "provider_url": "https://www.gpost.ge/main",
+      "trackship_supported": "1"
+    },
+    "ups-italy": {
+      "provider_name": "UPS Italy",
+      "provider_url": "https://www.ups.com/track?loc=en_IT&requester=QUIC&tracknum=%number%/trackdetails",
+      "trackship_supported": "1"
+    },
+    "blexpress": {
+      "provider_name": "Blexpress",
+      "provider_url": "blexpress",
+      "trackship_supported": "1"
+    },
+    "biz-courier": {
+      "provider_name": "Biz Courier",
+      "provider_url": "https://trackit.bizcourier.eu/app/en/%number%",
+      "trackship_supported": "1"
+    },
+    "dhlink": {
+      "provider_name": "Dhlink",
+      "provider_url": "http://www.dhlink.com/trackQuery",
+      "trackship_supported": "1"
+    },
+    "hhy-express": {
+      "provider_name": "HHY Express",
+      "provider_url": "https://www.track718.com/en/detail?nums=%number%",
+      "trackship_supported": "1"
+    },
+    "elog-luxembourg": {
+      "provider_name": "Elog Luxembourg",
+      "provider_url": "https://www.elog-luxembourg.com/tracking?q=%number%",
+      "trackship_supported": "1"
+    },
+    "grupo-ampm": {
+      "provider_name": "Grupo ampm",
+      "provider_url": "http://www.grupoampm.com/rastreador/?tracking-id=%number%",
+      "trackship_supported": "1"
+    },
+    "kaigenlogistics": {
+      "provider_name": "Kaigenlogistics",
+      "provider_url": "https://www.kaigenlogistics.com/",
+      "trackship_supported": "1"
+    },
+    "xin-shu-logistics": {
+      "provider_name": "Xin Shu Logistics",
+      "provider_url": "http://106.52.18.124:8082/trackIndex.htm",
+      "trackship_supported": "1"
+    },
+    "komon-express": {
+      "provider_name": "KOMON EXPRESS",
+      "provider_url": "https://t.17track.net/en#nums=%number%",
+      "trackship_supported": "1"
+    },
+    "yide-international": {
+      "provider_name": "Yide International",
+      "provider_url": "http://www.ydexp.com/",
+      "trackship_supported": "1"
+    },
+    "hua-xi": {
+      "provider_name": "Hua Xi",
+      "provider_url": "http://www.huaxiexpress.com/",
+      "trackship_supported": "1"
+    },
+    "zhi-teng-logistics": {
+      "provider_name": "Zhi Teng Logistics",
+      "provider_url": "http://www.zhiteng.biz:8888/WebTrack",
+      "trackship_supported": "1"
+    },
+    "king-delivery": {
+      "provider_name": "King Delivery",
+      "provider_url": "http://www.kuaidaexp.com/",
+      "trackship_supported": "1"
+    },
+    "hotwms": {
+      "provider_name": "HOTWMS",
+      "provider_url": "http://www.hotwms.com/trace.html",
+      "trackship_supported": "1"
+    },
+    "hjwl": {
+      "provider_name": "HJWL",
+      "provider_url": "http://www.hjwl.ltd/login",
+      "trackship_supported": "1"
+    },
+    "hd-express": {
+      "provider_name": "HD Express",
+      "provider_url": "http://www.hdc-express.com/#/user/login/redirect=",
+      "trackship_supported": "1"
+    },
+    "polar-express": {
+      "provider_name": "Polar Express",
+      "provider_url": "https://www.polarexpress.com.au/zh_cn/web/page/track?sn=%number%",
+      "trackship_supported": "1"
+    },
+    "bridge": {
+      "provider_name": "Bridge",
+      "provider_url": "https://www.bri-ems.com/query",
+      "trackship_supported": "1"
+    },
+    "canada-air-express": {
+      "provider_name": "Canada Air Express",
+      "provider_url": "https://air-gtc.com/WaybillLot.aspx",
+      "trackship_supported": "1"
+    },
+    "longcps": {
+      "provider_name": "LONGCPS",
+      "provider_url": "http://www.longcps.com/select/?num=%number%",
+      "trackship_supported": "1"
+    },
+    "hui-feng-logistics": {
+      "provider_name": "Hui Feng Logistics",
+      "provider_url": "https://www.huif56.com/chaxun.php?act=search",
+      "trackship_supported": "1"
+    },
+    "lf-express": {
+      "provider_name": "LF Express",
+      "provider_url": "https://lf-express.com/",
+      "trackship_supported": "1"
+    },
+    "la-huo-express": {
+      "provider_name": "La Huo Express",
+      "provider_url": "http://www.lahuoex.com/cha/query1.php",
+      "trackship_supported": "1"
+    },
+    "ft-exprss": {
+      "provider_name": "FT Exprss",
+      "provider_url": "http://www.101iex.com/select/?num=%number%",
+      "trackship_supported": "1"
+    },
+    "run bai internation": {
+      "provider_name": "Run Bai Internation",
+      "provider_url": "http://www.runbail.com/dhcx?%number%",
+      "trackship_supported": "1"
+    },
+    "unicon-express-usa": {
+      "provider_name": "UNICON EXPRESS USA",
+      "provider_url": "http://www.lhexpressus.com/index.php?s=/Index/chaxun&sn=%number%",
+      "trackship_supported": "1"
+    },
+    "jiachen-international": {
+      "provider_name": "JIACHEN INTERNATIONAL",
+      "provider_url": "https://www.jiachenexpress.com/select/?num=%number%",
+      "trackship_supported": "1"
+    },
+    "ld-express": {
+      "provider_name": "LD Express",
+      "provider_url": "http://www.leda-express.com/queryexpress.html",
+      "trackship_supported": "1"
+    },
+    "valueway": {
+      "provider_name": "VALUEWAY",
+      "provider_url": "http://www.valueway.net/main.html",
+      "trackship_supported": "1"
+    },
+    "cpszy": {
+      "provider_name": "CPSZY",
+      "provider_url": "http://www.cpszy.com/trace.html?sn=%number%",
+      "trackship_supported": "1"
+    },
+    "go-express": {
+      "provider_name": "Go Express",
+      "provider_url": "http://www.goex.co.nz/cgi-bin/GInfo.dll?DispInfo&w=flywayex&nid=3",
+      "trackship_supported": "1"
+    },
+    "sdt": {
+      "provider_name": "SDT",
+      "provider_url": "http://www.jssdt56.com/webOnline.html",
+      "trackship_supported": "1"
+    },
+    "hua-yu": {
+      "provider_name": "Hua Yu",
+      "provider_url": "http://www.huayu-ex.com/cgi-bin/GInfo.dll?DispInfo&w=huayu-ex&nid=15",
+      "trackship_supported": "1"
+    },
+    "cy-epxress": {
+      "provider_name": "CY Epxress",
+      "provider_url": "http://www.cy-express.com:8082/trackIndex.htm",
+      "trackship_supported": "1"
+    },
+    "lvse-international": {
+      "provider_name": "LvSe International",
+      "provider_url": "http://www.ntlsgj.com/",
+      "trackship_supported": "1"
+    },
+    "speedaf-express": {
+      "provider_name": "Speedaf Express",
+      "provider_url": "https://speedaf.com/cn-cn/send-parcel",
+      "trackship_supported": "1"
+    },
+    "yue-xi-logistics": {
+      "provider_name": "Yue Xi Logistics",
+      "provider_url": "http://www.yxilogistics.com/cn/track-trace/",
+      "trackship_supported": "1"
+    },
+    "yfhex-logistics": {
+      "provider_name": "YFHEX LOGISTICS",
+      "provider_url": "http://www.yfhex.com/",
+      "trackship_supported": "1"
+    },
+    "china-post-e-commerce": {
+      "provider_name": "China Post E-commerce",
+      "provider_url": "http://wuliu.chinapost-cb.com/enquiry/cx",
+      "trackship_supported": "1"
+    },
+    "icumulus-global-express": {
+      "provider_name": "iCumulus Global Express",
+      "provider_url": "https://tracking.icumulus.cloud/%number%",
+      "trackship_supported": "1"
+    },
+    "xun-tian-international": {
+      "provider_name": "Xun Tian International",
+      "provider_url": "https://www.uniment.net/itdida-flash/uniment/waybill-search-result/xtl",
+      "trackship_supported": "1"
+    },
+    "zhongrong-tailong": {
+      "provider_name": "Zhongrong Tailong",
+      "provider_url": "http://www.zrtl.com/search/#num",
+      "trackship_supported": "1"
+    },
+    "china-railway-flying-leopard": {
+      "provider_name": "China Railway Flying Leopard",
+      "provider_url": "http://www.fb56.com/GoodsTrace/indexNew?funcid=14&companyid=1&code=&word=%number%",
+      "trackship_supported": "1"
+    },
+    "skr-international": {
+      "provider_name": "SKR InterNational",
+      "provider_url": "http://www.skr56.com/",
+      "trackship_supported": "1"
+    },
+    "yi-long-exp": {
+      "provider_name": "Yi Long Exp",
+      "provider_url": "http://open.ylexp.com/ylexp/6/d.htm",
+      "trackship_supported": "1"
+    },
+    "axlehire": {
+      "provider_name": "AxleHire",
+      "provider_url": "https://tracking.axlehire.com/%number%",
+      "trackship_supported": "1"
+    },
+    "cloud-mail-cross-border-express": {
+      "provider_name": "Cloud mail cross border Express",
+      "provider_url": "http://www.hkems.cn/",
+      "trackship_supported": "1"
+    },
+    "act-logistic": {
+      "provider_name": "ACT logistic",
+      "provider_url": "https://actlogistics.pperfect.com/view/waybill",
+      "trackship_supported": "1"
+    },
+    "youhai-international-express": {
+      "provider_name": "Youhai International Express",
+      "provider_url": "http://www.uhiexpress.com/Track/Index?trackcodes=%number%",
+      "trackship_supported": "1"
+    },
+    "bjytsywl": {
+      "provider_name": "BJYTSYWL",
+      "provider_url": "http://www.bjytsywl.com/?c=article&a=wuliuinfo",
+      "trackship_supported": "1"
+    },
+    "slicity": {
+      "provider_name": "SLICITY",
+      "provider_url": "http://www.yz-ex.com/",
+      "trackship_supported": "1"
+    },
+    "ant-eparcel": {
+      "provider_name": "Ant Eparcel",
+      "provider_url": "https://www.anteparcel.com/track?num=%number%",
+      "trackship_supported": "1"
+    },
+    "yjs-china": {
+      "provider_name": "Yjs-China",
+      "provider_url": "http://www.yjs-china.com/Home/QueryOrder",
+      "trackship_supported": "1"
+    },
+    "yadex": {
+      "provider_name": "Yadex",
+      "provider_url": "http://www.yadex.com.cn/index/waybill?nu=%number%",
+      "trackship_supported": "1"
+    },
+    "qhxyyg": {
+      "provider_name": "Qhxyyg",
+      "provider_url": "http://www.qhxyyg.com/",
+      "trackship_supported": "1"
+    },
+    "armenia-post": {
+      "provider_name": "Armenia Post",
+      "provider_url": "https://www.haypost.am/am/track-trace#%number%",
+      "trackship_supported": "1"
+    },
+    "azerbaijan-post": {
+      "provider_name": "Azerbaijan Post",
+      "provider_url": "http://www.azerpost.az/az/tracking",
+      "trackship_supported": "1"
+    },
+    "cambodia-post": {
+      "provider_name": "Cambodia Post",
+      "provider_url": "https://www.cambodiapost.com.kh/global-track",
+      "trackship_supported": "1"
+    },
+    "namibia-post": {
+      "provider_name": "Namibia Post",
+      "provider_url": "https://www.nampost.com.na/",
+      "trackship_supported": "1"
+    },
+    "matdespatch": {
+      "provider_name": "Matdespatch",
+      "provider_url": "https://matdespatch-my.delyva.app/customer/strack?trackingNo=%number%",
+      "trackship_supported": "1"
+    },
+    "early-bird": {
+      "provider_name": "Early Bird",
+      "provider_url": "https://earlybird.se/tracking/",
+      "trackship_supported": "1"
+    },
+    "urvaam": {
+      "provider_name": "Urvaam",
+      "provider_url": "https://www.urvaam.es/track/result?no=%number%",
+      "trackship_supported": "1"
+    },
+    "postaplus": {
+      "provider_name": "PostaPlus",
+      "provider_url": "https://www.postaplus.com/?trackid=%number%&trackby=awb",
+      "trackship_supported": "1"
+    },
+    "royal-shipments": {
+      "provider_name": "Royal Shipments",
+      "provider_url": "https://royalshipments.com/tt/%number%",
+      "trackship_supported": "1"
+    },
+    "ninja-van-vietnam": {
+      "provider_name": "Ninja Van Vietnam",
+      "provider_url": "https://www.ninjavan.co/en-sg/tracking?id=%number%",
+      "trackship_supported": "1"
+    },
+    "rpx-online": {
+      "provider_name": "RPX Online",
+      "provider_url": "http://tracking.linexsolutions.com/Shipment/TrackingList?Type=R",
+      "trackship_supported": "1"
+    },
+    "kazakhstan-post": {
+      "provider_name": "Kazakhstan Post",
+      "provider_url": "https://post.kz/services/postal/%number%",
+      "trackship_supported": "1"
+    },
+    "smart-delivery": {
+      "provider_name": "Smart Delivery",
+      "provider_url": "https://www.smartdelivery.kz/index.php?lang=ru#track",
+      "trackship_supported": "1"
+    },
+    "togo-post": {
+      "provider_name": "Togo Post",
+      "provider_url": "https://www.laposte.tg/suivi-envois",
+      "trackship_supported": "1"
+    },
+    "the-lorry": {
+      "provider_name": "The Lorry",
+      "provider_url": "https://bookings.thelorry.com/my/web/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "courant": {
+      "provider_name": "Courant",
+      "provider_url": "https://courant.plus/",
+      "trackship_supported": "1"
+    },
+    "sdk-express": {
+      "provider_name": "SDK Express",
+      "provider_url": "http://www.sdk-express.cn/track.aspx",
+      "trackship_supported": "1"
+    },
+    "pickupp": {
+      "provider_name": "Pickupp",
+      "provider_url": "https://my.pickupp.io/en/tracking",
+      "trackship_supported": "1"
+    },
+    "sendex": {
+      "provider_name": "Sendex",
+      "provider_url": "http://www.sendex.mx/Rastreo/Rastreo/",
+      "trackship_supported": "1"
+    },
+    "superb-express": {
+      "provider_name": "Superb Express",
+      "provider_url": "http://www.superb-express.com/site/searchview?tracking_code=%number%",
+      "trackship_supported": "1"
+    },
+    "better-trucks": {
+      "provider_name": "Better Trucks",
+      "provider_url": "https://www.bettertrucks.com/",
+      "trackship_supported": "1"
+    },
+    "pasamar": {
+      "provider_name": "Pasamar",
+      "provider_url": "https://pasamar.com.co/historial-guia/%number%",
+      "trackship_supported": "1"
+    },
+    "ctc-express": {
+      "provider_name": "CTC Express",
+      "provider_url": "http://www.ctc-express.com.tw/",
+      "trackship_supported": "1"
+    },
+    "skybox": {
+      "provider_name": "Skybox",
+      "provider_url": "https://get.attskybox.com/tracking",
+      "trackship_supported": "1"
+    },
+    "xde-logistics": {
+      "provider_name": "XDE Logistics",
+      "provider_url": "https://www.xdelogistics.com/",
+      "trackship_supported": "1"
+    },
+    "parcelport": {
+      "provider_name": "Parcelport",
+      "provider_url": "https://freight.payport.co.nz/home/track_wp/%number%",
+      "trackship_supported": "1"
+    },
+    "crazy-express": {
+      "provider_name": "Crazy Express",
+      "provider_url": "http://www.crazyexpress.ca/Track",
+      "trackship_supported": "1"
+    },
+    "janco-express": {
+      "provider_name": "Janco Express",
+      "provider_url": "https://www.jancoexpress.com/",
+      "trackship_supported": "1"
+    },
+    "neway": {
+      "provider_name": "Neway",
+      "provider_url": "https://newaytransport.com/",
+      "trackship_supported": "1"
+    },
+    "intexpress": {
+      "provider_name": "Intexpress",
+      "provider_url": "https://www.internetexpress.co.za/",
+      "trackship_supported": "1"
+    },
+    "flysman": {
+      "provider_name": "FLYSMAN",
+      "provider_url": "http://www.flysman.com/",
+      "trackship_supported": "1"
+    },
+    "taoplus": {
+      "provider_name": "Taoplus",
+      "provider_url": "http://www.taoplus.cc/LogisticsSearch/waybill?number=%number%",
+      "trackship_supported": "1"
+    },
+    "rr-donnelley": {
+      "provider_name": "RR Donnelley",
+      "provider_url": "https://portal.epgshipping.com/ParcelTracker/HomePageTracker",
+      "trackship_supported": "1"
+    },
+    "kwai-bon": {
+      "provider_name": "Kwai Bon",
+      "provider_url": "http://oms-sz.kwaibon.com:8082/en/trackIndex.htm",
+      "trackship_supported": "1"
+    },
+    "pts": {
+      "provider_name": "PTS",
+      "provider_url": "https://wp.pts.net/en/track-your-parcel",
+      "trackship_supported": "1"
+    },
+    "sameday": {
+      "provider_name": "Sameday",
+      "provider_url": "https://sameday.ro/?lang=en#awb=%number%",
+      "trackship_supported": "1"
+    },
+    "uniuni": {
+      "provider_name": "UniUni",
+      "provider_url": "https://www.uniuni.com/tracking/",
+      "trackship_supported": "1"
+    },
+    "leopard-courier": {
+      "provider_name": "Leopard Courier",
+      "provider_url": "https://www.leopardscourier.com/leopards-tracking",
+      "trackship_supported": "1"
+    },
+    "ait-worldwide": {
+      "provider_name": "AIT Worldwide",
+      "provider_url": "https://www.aitworldwide.com/",
+      "trackship_supported": "1"
+    },
+    "logen": {
+      "provider_name": "LOGEN",
+      "provider_url": "http://www.ilogen.com/d2d/delivery/invoice_search_popup.jsp?viewType=type2&invoiceNum=%number%",
+      "trackship_supported": "1"
+    },
+    "fujie-express": {
+      "provider_name": "FUJIE Express",
+      "provider_url": "http://www.fujexp.com/",
+      "trackship_supported": "1"
+    },
+    "gta-gsm": {
+      "provider_name": "GTA GSM",
+      "provider_url": "https://tracking.gtagsm.com/Tracking/Details/%number%",
+      "trackship_supported": "1"
+    },
+    "p2p-trackpak": {
+      "provider_name": "P2P TrakPak",
+      "provider_url": "https://fcbtracking.fedex.com/?MyFICNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "sequoia-logistica": {
+      "provider_name": "Sequoia Logistica",
+      "provider_url": "https://rastreio.frenet.com.br/SEQ/%number%",
+      "trackship_supported": "1"
+    },
+    "geis-poland": {
+      "provider_name": "Geis Poland",
+      "provider_url": "https://www.geis.pl/en/detail-of-cargo?packNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "yto-express": {
+      "provider_name": "YTO Express",
+      "provider_url": "https://www.yto.net.cn/tracesimple.html/?orders=%number%",
+      "trackship_supported": "1"
+    },
+    "dhl-global-mail": {
+      "provider_name": "DHL Global Mail",
+      "provider_url": "https://webtrack.dhlglobalmail.com/orders?trackingNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "tas-courier": {
+      "provider_name": "TAS COURIER",
+      "provider_url": "https://www.tascourier.gr/track?v=%number%",
+      "trackship_supported": "1"
+    },
+    "anjun": {
+      "provider_name": "Anjun",
+      "provider_url": "https://pu.anjuntrack.com/trackQuery?t=%number%",
+      "trackship_supported": "1"
+    },
+    "frontier": {
+      "provider_name": "Frontier",
+      "provider_url": "https://www.frontierscs.com/business-shipment-tracking/",
+      "trackship_supported": "1"
+    },
+    "custom-companies": {
+      "provider_name": "Custom Companies",
+      "provider_url": "https://www.customco.com/scripts/cgiip.exe/facts.htm",
+      "trackship_supported": "1"
+    },
+    "intertown-transport": {
+      "provider_name": "Intertown Transport",
+      "provider_url": "https://www.intertown.co.za/",
+      "trackship_supported": "1"
+    },
+    "ecms-express": {
+      "provider_name": "ECMS Express",
+      "provider_url": "https://www.ecmsglobal.com/en-us/index.html",
+      "trackship_supported": "1"
+    },
+    "ctt-express-spain": {
+      "provider_name": "CTT Express Spain",
+      "provider_url": "https://www.cttexpress.com/localizador-de-envios/?sc=%number%&amp;button=Localiza+tu+envo",
+      "trackship_supported": "1"
+    },
+    "gls-serbia": {
+      "provider_name": "GLS Serbia",
+      "provider_url": "https://gls-group.com/RS/en/parcel-tracking?match=%number%",
+      "trackship_supported": "1"
+    },
+    "cargo-expreso": {
+      "provider_name": "Cargo Expreso",
+      "provider_url": "https://www.cargoexpreso.com/tracking/?guia=%number%",
+      "trackship_supported": "1"
+    },
+    "team-global-express": {
+      "provider_name": "Team Global Express",
+      "provider_url": "https://www.myteamge.com/web/guest/",
+      "trackship_supported": "1"
+    },
+    "fleetoptics": {
+      "provider_name": "FleetOptics",
+      "provider_url": "https://fleetopticsinc.ca/",
+      "trackship_supported": "1"
+    },
+    "shopeexpress": {
+      "provider_name": "Shopee Xpress",
+      "provider_url": "https://spx.co.th/detail/%number%",
+      "trackship_supported": "1"
+    },
+    "swe": {
+      "provider_name": "SWE",
+      "provider_url": "https://swe.pperfect.com/",
+      "trackship_supported": "1"
+    },
+    "inpost": {
+      "provider_name": "InPost",
+      "provider_url": "https://inpost.it/trova-il-tuo-pacco?number=%number%",
+      "trackship_supported": "1"
+    },
+    "ydm": {
+      "provider_name": "YDM",
+      "provider_url": "https://connect.datalogics.co.il/shipping/ydm3/?shipment_id=%number%",
+      "trackship_supported": "1"
+    },
+    "timisc": {
+      "provider_name": "TIMISC",
+      "provider_url": "http://www.timisc.com/track.htm",
+      "trackship_supported": "1"
+    },
+    "epost-global": {
+      "provider_name": "ePost Global",
+      "provider_url": "https://epgtrack.com/",
+      "trackship_supported": "1"
+    },
+    "mahavir": {
+      "provider_name": "Mahavir",
+      "provider_url": "http://www.shreemahavircourier.com/index.aspx",
+      "trackship_supported": "1"
+    },
+    "dpd-switzerland": {
+      "provider_name": "DPD Switzerland",
+      "provider_url": "https://tracking.dpd.de/status/de_CH/parcel/%number%",
+      "trackship_supported": "1"
+    },
+    "sfyd-express": {
+      "provider_name": "SFYD Express",
+      "provider_url": "http://www.sfydexpress.com/track.html?c=%number%",
+      "trackship_supported": "1"
+    },
+    "ed-post": {
+      "provider_name": "ED Post",
+      "provider_url": "http://www.666post.com/track",
+      "trackship_supported": "1"
+    },
+    "xys-logistics": {
+      "provider_name": "XYS Logistics",
+      "provider_url": "http://xyslogistics.com/track.html?c=%number%",
+      "trackship_supported": "1"
+    },
+    "ajex": {
+      "provider_name": "AJEX",
+      "provider_url": "https://www.aj-ex.com.cn/tracking?tracking_number=%number%",
+      "trackship_supported": "1"
+    },
+    "ninja-van-international": {
+      "provider_name": "Ninja Van International",
+      "provider_url": "https://www.ninjavan.co/en-sg/international/tracking?id=%number%",
+      "trackship_supported": "1"
+    },
+    "roadlogistics": {
+      "provider_name": "Road Logistics",
+      "provider_url": "https://my.road-logistics.com/track",
+      "trackship_supported": "1"
+    },
+    "call-courier": {
+      "provider_name": "Call Courier",
+      "provider_url": "https://callcourier.com.pk/tracking/?tc=%number%",
+      "trackship_supported": "1"
+    },
+    "swyftlogistics": {
+      "provider_name": "Swyft Logistics",
+      "provider_url": "https://parceltracking.swyftlogistics.com/?%number%",
+      "trackship_supported": "1"
+    },
+    "gls-czech": {
+      "provider_name": "GLS Czech",
+      "provider_url": "https://gls-group.eu/CZ/cs/sledovani-zasilek/?match=%number%",
+      "trackship_supported": "1"
+    },
+    "ecoscooting": {
+      "provider_name": "EcoScooting",
+      "provider_url": "https://www.ecoscooting.com/",
+      "trackship_supported": "1"
+    },
+    "jps": {
+      "provider_name": "JPS",
+      "provider_url": "http://jpsgjwl.com/search_order.aspx?trackNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "ups-france": {
+      "provider_name": "UPS France",
+      "provider_url": "https://www.ups.com/track?loc=fr_FR&requester=QUIC&tracknum=%number%/trackdetails",
+      "trackship_supported": "1"
+    },
+    "shippit": {
+      "provider_name": "Shippit",
+      "provider_url": "https://app.shippit.com/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "latam-you": {
+      "provider_name": "Latam You",
+      "provider_url": "https://latamyou.com/#/",
+      "trackship_supported": "1"
+    },
+    "dealfy": {
+      "provider_name": "Dealfy",
+      "provider_url": "https://track.dealfy.com/#/track-order?trackingStr=%number%",
+      "trackship_supported": "1"
+    },
+    "starlinks": {
+      "provider_name": "Starlinks",
+      "provider_url": "https://starlinks.app/track",
+      "trackship_supported": "1"
+    },
+    "quiqup": {
+      "provider_name": "Quiqup",
+      "provider_url": "https://www.ups.com/track?loc=en_CA&requester=QUIC&tracknum=%number%/trackdetails",
+      "trackship_supported": "1"
+    },
+    "danske-fragtmænd": {
+      "provider_name": "Danske Fragtmænd",
+      "provider_url": "https://trace.fragt.dk/#/trackTrace/%number%",
+      "trackship_supported": "1"
+    },
+    "skynet-worldwide": {
+      "provider_name": "SkyNet Worldwide",
+      "provider_url": "https://tracking.skynetexpress.com/tracking.aspx?stid=skynet&cn=%number%",
+      "trackship_supported": "0"
+    },
+    "sameday-hungary": {
+      "provider_name": "Sameday Hungary",
+      "provider_url": "https://sameday.hu/?lang=en#awb=%number%",
+      "trackship_supported": "1"
+    },
+    "globalpost": {
+      "provider_name": "GlobalPost",
+      "provider_url": "https://www.goglobalpost.com/track-detail/?t=%number%&amp;amp;ref=landing",
+      "trackship_supported": "1"
+    },
+    "a-duie-pyle": {
+      "provider_name": "A. Duie Pyle",
+      "provider_url": "https://www.aduiepyle.com/LTL/ShipmentTracking?Pro=%number%",
+      "trackship_supported": "1"
+    },
+    "ward-transport": {
+      "provider_name": "Ward Transport",
+      "provider_url": "https://wardtlctools.com/wardtrucking/traceshipment/create",
+      "trackship_supported": "1"
+    },
+    "packs": {
+      "provider_name": "PACKS",
+      "provider_url": "https://www.packs.nl/track-trace/",
+      "trackship_supported": "1"
+    },
+    "sunson": {
+      "provider_name": "Sunson",
+      "provider_url": "http://111.230.206.59:8082/trackIndex.htm",
+      "trackship_supported": "1"
+    },
+    "bgy": {
+      "provider_name": "BGY",
+      "provider_url": "http://www.bgygyl.com/track.aspx",
+      "trackship_supported": "1"
+    },
+    "orlen-paczka": {
+      "provider_name": "Orlen paczka",
+      "provider_url": "https://www.orlenpaczka.pl/sledz-paczke/?numer=%number%",
+      "trackship_supported": "1"
+    },
+    "itella": {
+      "provider_name": "Itella",
+      "provider_url": "https://itella.ee/en/private-customer/parcel-tracking/",
+      "trackship_supported": "1"
+    },
+    "diamond-line-delivery": {
+      "provider_name": "Diamond Line Delivery",
+      "provider_url": "https://tracking.carrierlogistics.com/scripts/dlds.pol/protrace.htm?seskey=&language=&nav=top",
+      "trackship_supported": "1"
+    },
+    "lotte-logistics": {
+      "provider_name": "Lotte Global Logistics",
+      "provider_url": "https://www.lotteglogis.com/mobile/reservation/tracking/linkView?InvNo=%number%",
+      "trackship_supported": "1"
+    },
+    "liccardi-express": {
+      "provider_name": "LICCARDI EXPRESS",
+      "provider_url": "https://my.liccarditrasporti.com/segui",
+      "trackship_supported": "1"
+    },
+    "box-now": {
+      "provider_name": "BOX NOW",
+      "provider_url": "https://boxnow.gr/?track=%number%",
+      "trackship_supported": "1"
+    },
+    "mark-express": {
+      "provider_name": "Mark Express",
+      "provider_url": "https://markexpress.co.in/",
+      "trackship_supported": "1"
+    },
+    "taxydema": {
+      "provider_name": "Taxydema",
+      "provider_url": "https://taxydema.gr/",
+      "trackship_supported": "1"
+    },
+    "pullman-cargo": {
+      "provider_name": "Pullman Cargo",
+      "provider_url": "https://www.pullmango.cl/",
+      "trackship_supported": "1"
+    },
+    "followmont-transport": {
+      "provider_name": "Followmont Transport",
+      "provider_url": "https://www.followmont.com.au/?page=fmt_template&fmt_template=track-trace&track-trace=track-trace-start-unsecured-user",
+      "trackship_supported": "1"
+    },
+    "peninsula-truck-lines": {
+      "provider_name": "Peninsula Truck Lines",
+      "provider_url": "https://peninsulatruck.com/track/?pro_number=%number%",
+      "trackship_supported": "1"
+    },
+    "northline": {
+      "provider_name": "Northline",
+      "provider_url": "https://www.northline.com.au/",
+      "trackship_supported": "1"
+    },
+    "postNord-sweden": {
+      "provider_name": "PostNord Sweden",
+      "provider_url": "https://www.postnord.se/vara-verktyg/spara-brev-paket-och-pall/?shipmentId=%number%",
+      "trackship_supported": "1"
+    },
+    "fan-courier": {
+      "provider_name": "Fan Courier",
+      "provider_url": "https://www.fancourier.ro/awb-tracking/?tracking=%number%",
+      "trackship_supported": "1"
+    },
+    "team-global-express-nz": {
+      "provider_name": "Team Global Express NZ",
+      "provider_url": "https://fasttracker.teamglobalexp.co.nz/fast-tracker.aspx?fasttracker_action=findmostrecent&ConsignmentNumber=%number%",
+      "trackship_supported": "1"
+    },
+    "postex": {
+      "provider_name": "PostEx",
+      "provider_url": "https://merchant.postex.pk/?cn=%number%",
+      "trackship_supported": "1"
+    },
+    "jiayou": {
+      "provider_name": "Jiayou",
+      "provider_url": "http://www.jiayouexp.com/inquire.html?key=%number%",
+      "trackship_supported": "1"
+    },
+    "moran-transportation": {
+      "provider_name": "Moran Transportation",
+      "provider_url": "https://tracking.carrierlogistics.com/scripts/mor.pol/protrace.htm?seskey=&language=ENGLISH&nav=top",
+      "trackship_supported": "1"
+    },
+    "dpd-et": {
+      "provider_name": "DPD Estonia",
+      "provider_url": "https://tracking.dpd.de/status/et_EE/parcel/%number%",
+      "trackship_supported": "1"
+    },
+    "piggyship": {
+      "provider_name": "Piggyship",
+      "provider_url": "https://dsp-tracking.piggyship.com/?tracking=%number%",
+      "trackship_supported": "1"
+    },
+    "quiken": {
+      "provider_name": "Quiken",
+      "provider_url": "https://quiken.mx/rastreo/%number%",
+      "trackship_supported": "1"
+    },
+    "mailplus": {
+      "provider_name": "MailPlus",
+      "provider_url": "https://track.mailplus.com.au/%number%",
+      "trackship_supported": "1"
+    },
+    "pmm": {
+      "provider_name": "PMM",
+      "provider_url": "https://pmm.com.mx/",
+      "trackship_supported": "1"
+    },
+    "deliveright": {
+      "provider_name": "Deliveright",
+      "provider_url": "https://api.deliveright.com/public/tracking/%number%",
+      "trackship_supported": "1"
+    },
+    "cirro": {
+      "provider_name": "Cirro",
+      "provider_url": "https://cirrotrack.com/parcelTracking?id=%number%",
+      "trackship_supported": "1"
+    },
+    "zajel": {
+      "provider_name": "ZAJEL",
+      "provider_url": "https://www.zajel.com/tracking?query=%number%",
+      "trackship_supported": "1"
+    },
+    "omniva-latvia": {
+      "provider_name": "Omniva Latvia",
+      "provider_url": "https://mano.omniva.lv/track/%number%",
+      "trackship_supported": "1"
+    }
+  }
+  
