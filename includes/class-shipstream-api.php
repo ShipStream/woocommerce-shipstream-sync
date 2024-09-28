@@ -344,13 +344,16 @@ class ShipStream_API {
 
         // Add tracking numbers to the order using the Shipment Tracking extension
         foreach ($eventData['packages'] as $package) {
+            $i = 0;
             foreach ($package['tracking_numbers'] as $tracking_number) {
                 self::add_tracking_number_to_order(
                     $order,
                     $tracking_number,
                     $eventData['carrier'] ?? $package['manifest_courier'] ?? $eventData['service_description'],
-                    $eventData['service_description'] ?? $package['manifest_courier'] ?? $eventData['carrier']
+                    $eventData['service_description'] ?? $package['manifest_courier'] ?? $eventData['carrier'],
+                    $package['tracking_urls'][$i] ?? null
                 );
+                $i++;
             }
         }
 
@@ -363,7 +366,31 @@ class ShipStream_API {
         }
     }
 
-    public static function add_tracking_number_to_order(WC_Order $order, $tracking_number, $carrierCode, $serviceName) {
+    public static function add_tracking_number_to_order(WC_Order $order, $tracking_number, $carrierCode, $serviceName, $url) {
+        // Ensure that the function exists (confirm AST is active)
+        if (function_exists('ast_insert_tracking_number')) {
+            $actions = new WC_Advanced_Shipment_Tracking_Actions();
+            $providers  = $actions->get_providers();
+            if (isset($providers[$carrierCode])) {
+                $tracking_provider = $providers[$carrierCode]['provider_name'];
+            } else {
+                foreach ($providers as $code => $providerData) {
+                    if (strtolower($providerData['provider_name']) === strtolower($carrierCode)) {
+                        $tracking_provider = $providerData['provider_name'];
+                        break;
+                    }
+                }
+                if (empty($tracking_provider)) {
+                    foreach ($providers as $code => $providerData) {
+                        if (strpos(strtolower($providerData['provider_name']), strtolower($carrierCode)) !== false) {
+                            $tracking_provider = $providerData['provider_name'];
+                            break;
+                        }
+                    }
+                }
+            }
+            ast_insert_tracking_number($order->get_id(), $tracking_number, $tracking_provider, date('Y-m-d'), $url);
+        }
         if (class_exists('WC_Shipment_Tracking')) {
             $tracking_provider = WC_Shipment_Tracking::get_providers()[$carrierCode] ?? $carrierCode;
     

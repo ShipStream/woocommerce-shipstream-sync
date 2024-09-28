@@ -14,6 +14,27 @@ class ShipStream_Sync {
         add_filter('woocommerce_settings_tabs_array', array(__CLASS__, 'add_settings_tab'), 50);
         add_action('woocommerce_settings_tabs_shipstream_sync', array(__CLASS__, 'settings_tab'));
         add_action('woocommerce_update_options_shipstream_sync', array(__CLASS__, 'update_settings'));
+
+        // Test code, not for production!
+        // Visit /wp-json/my-custom-api/v1/run-code/
+/*
+add_action('rest_api_init', function () {
+    register_rest_route('my-custom-api/v1', '/run-code/', array(
+        'methods'  => 'GET',
+        'callback' => function() {
+try {
+    $actions = new WC_Advanced_Shipment_Tracking_Actions();
+    $providers  = $actions->get_providers();
+    return new WP_REST_Response($providers, 200);
+} catch (Throwable $e) {
+    return new WP_REST_Response('Caught error: '.$e, 200);
+}
+        },
+        'permission_callback' => '__return_true', // Allow public access; change this for security.
+    ));
+});
+*/
+
     }
 
     public static function add_custom_order_statuses($order_statuses) {
