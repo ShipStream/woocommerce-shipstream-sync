@@ -290,6 +290,7 @@ class ShipStream_API {
         $result['date_created'] = $order->get_date_created()->format('Y-m-d H:i:s');
         $result['payment_method'] = $order->get_payment_method();
         $result['shipping_address'] = $order->get_address('shipping');
+        $result['billing_address'] = $order->get_address('billing');
         $result['shipping_method'] = $order->get_shipping_method();
         $result['status'] = $order->get_status();
         $result['subtotal'] = $order->get_subtotal();
