@@ -3,7 +3,7 @@ Contributors: colinshipstream
 Tags: wms, oms, fulfillment, woocommerce, tracking, inventory, shipping
 Requires at least: 6.3
 Tested up to: 6.6
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 Requires PHP: 7.4
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,10 @@ For support and troubleshooting, please contact your 3PL or [ShipStream Support]
 an issue on the [GitHub project page](https://github.com/ShipStream/woocommerce-shipstream-sync).
 
 ### Changelog
+
+#### 1.0.4
+
+- Fix authentication to piggy-back WooCommerce REST API authentication properly.
 
 #### 1.0.3
 
