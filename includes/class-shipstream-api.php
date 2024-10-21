@@ -4,6 +4,9 @@ class ShipStream_API {
 
     // Initialize the REST API routes
     public static function init() {
+        // Identify ShipStream REST endpoints as WooCommerce REST endpoints
+        add_filter('woocommerce_rest_is_request_to_rest_api', array(__CLASS__, 'woocommerce_rest_is_request_to_rest_api'));
+
         // Register the REST API routes
         register_rest_route('shipstream/v1', '/info', array(
             'methods' => 'POST',
@@ -60,49 +63,30 @@ class ShipStream_API {
         );
     }
 
+    public static function woocommerce_rest_is_request_to_rest_api($isWoo) {
+        if ($isWoo) {
+            return true;
+        }
+        $rest_prefix = trailingslashit( rest_get_url_prefix() );
+        $request_uri = esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) );
+        return false !== strpos( $request_uri, $rest_prefix . 'shipstream/' );
+    }
+
     public static function authenticate(WP_REST_Request $request) {
-        // Get headers from the request
-        $headers = $request->get_headers();
-
-        // Check if the authorization header is set
-        if (!isset($headers['authorization'][0])) {
-            return false;
+        if ( ! wp_get_current_user() ) {
+            return new WP_Error(
+                'shipstream_permission',
+                __( 'Authentication required.', 'woocommerce-shipstream-sync' ),
+                array( 'status' => rest_authorization_required_code() )
+            );
         }
-
-        // Get the authorization header value
-        $auth_header = $headers['authorization'][0];
-
-        // Check if the authorization method is Basic
-        if (strpos($auth_header, 'Basic ') !== 0) {
-            return false;
+        if ( ! current_user_can( 'edit_products' ) || ! current_user_can( 'edit_shop_orders' ) ) {
+            return new WP_Error(
+                'shipstream_permission',
+                __( 'You must have edit products and edit shop orders permission.', 'woocommerce-shipstream-sync' ),
+                array( 'status' => rest_authorization_required_code() )
+            );
         }
-
-        // Decode the Base64 encoded authorization value
-        $auth_value = base64_decode(substr($auth_header, 6));
-
-        // Split the decoded value into consumer key and consumer secret
-        list($consumer_key, $consumer_secret) = explode(':', $auth_value);
-
-        // Sanitize and hash the consumer key
-        $consumer_key = wc_api_hash(sanitize_text_field($consumer_key));
-
-        // Access the global $wpdb object for database operations
-        global $wpdb;
-
-        // Query the database to retrieve the user information based on the hashed consumer key
-        $user = $wpdb->get_row(
-            $wpdb->prepare(
-                "SELECT key_id, user_id, permissions, consumer_key, consumer_secret, nonces FROM {$wpdb->prefix}woocommerce_api_keys WHERE consumer_key = %s",
-                $consumer_key
-            )
-        );
-
-        // Check if the user exists and if the hashed consumer secret matches the stored value
-        if (empty($user) || !hash_equals($user->consumer_secret, $consumer_secret)) {
-            return false;
-        }
-
-        // Authentication successful
         return true;
     }
 
