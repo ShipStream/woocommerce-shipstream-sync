@@ -132,6 +132,8 @@ class ShipStream_API {
     // Set configuration values
     public static function register(WP_REST_Request $request) {
         self::logRequest($request);
+        delete_option('shipstream_callback_url');
+        delete_option('shipstream_app_title');
         $updated = update_option('shipstream_callback_url', $request->get_param('callback_url'))
             && update_option('shipstream_app_title', $request->get_param('app_title'));
         

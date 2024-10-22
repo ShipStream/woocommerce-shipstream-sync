@@ -3,6 +3,8 @@
 class ShipStream_Sync {
 
     public static function init() {
+        add_filter('plugin_row_meta', array(__CLASS__, 'plugin_row_meta'), 10, 2);
+        
         // Add custom order statuses.
         add_filter('wc_order_statuses', array(__CLASS__, 'add_custom_order_statuses'));
         add_action('init', array(__CLASS__, 'register_custom_order_statuses'));
@@ -36,6 +38,17 @@ try {
 */
 
     }
+
+    public static function plugin_row_meta( $links, $file ) {
+        if ( plugin_basename( SHIPSTREAM_PLUGIN_FILE ) !== $file ) {
+            return $links;
+        }
+        $row_meta = array(
+            'support' => '<a href="' . esc_url( 'https://github.com/ShipStream/woocommerce-shipstream-sync/issues' ) . '" aria-label="' . esc_attr__( 'Report an issue', 'woocommerce-shipstream-sync' ) . '">' . esc_html__( 'Report an issue', 'woocommerce-shipstream-sync' ) . '</a>',
+        );
+
+        return array_merge( $links, $row_meta );
+}
 
     public static function add_custom_order_statuses($order_statuses) {
         $order_statuses['wc-ss-ready-to-ship'] = 'Ready to Ship';

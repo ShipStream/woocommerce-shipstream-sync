@@ -2,7 +2,7 @@
 /*
 Plugin Name: WooCommerce ShipStream Sync
 Description: Companion plugin to sync WooCommerce with the ShipStream WMS/OMS.
-Version: 1.0.4
+Version: 1.0.5
 Author: ShipStream, LLC
 Author URI: https://shipstream.io
 Text Domain: woocommerce-shipstream-sync
@@ -11,6 +11,10 @@ Text Domain: woocommerce-shipstream-sync
 // Exit if accessed directly.
 if (!defined('ABSPATH')) {
     exit;
+}
+
+if ( ! defined( 'SHIPSTREAM_PLUGIN_FILE' ) ) {
+    define( 'SHIPSTREAM_PLUGIN_FILE', __FILE__ );
 }
 
 // Include required files.
