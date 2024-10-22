@@ -96,9 +96,8 @@ class ShipStream_API {
         self::logRequest($request);
         $wc_version = get_option('woocommerce_version', 'N/A');
 
-        $plugin_file_path = WP_PLUGIN_DIR . '/woocommerce-shipstream-sync/woocommerce-shipstream-sync.php';
-        if (file_exists($plugin_file_path)) {
-            $plugin_data = get_file_data($plugin_file_path, array('Version' => 'Version'), false);
+        if (file_exists(SHIPSTREAM_PLUGIN_FILE)) {
+            $plugin_data = get_file_data(SHIPSTREAM_PLUGIN_FILE, array('Version' => 'Version'), false);
             $shipstream_sync_version = $plugin_data['Version'];
         } else {
             $shipstream_sync_version = 'N/A';
