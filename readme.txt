@@ -46,6 +46,12 @@ an issue on the [GitHub project page](https://github.com/ShipStream/woocommerce-
 
 ### Changelog
 
+#### 1.0.6
+
+- Improve debug logging, show last lines of debug log on settings tab.
+- Add weekly cron task to clean debug log.
+- Fix plugin version detection if directory name is not default.
+
 #### 1.0.5
 
 - Fixed error when updating configuration after plugin was previously registered.
