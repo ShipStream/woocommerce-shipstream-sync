@@ -15,7 +15,7 @@ class ShipStream_Sync {
 
         // Add WooCommerce settings tab.
         add_filter('woocommerce_settings_tabs_array', array(__CLASS__, 'add_settings_tab'), 50);
-        add_action('woocommerce_settings_shipstream_sync', array(__CLASS__, 'settings_tab'));
+        add_action('woocommerce_settings_tabs_shipstream_sync', array(__CLASS__, 'settings_tab'));
         add_action('woocommerce_after_settings_shipstream_sync', array(__CLASS__, 'after_settings'));
         add_action('woocommerce_update_options_shipstream_sync', array(__CLASS__, 'update_settings'));
 
