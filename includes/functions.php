@@ -1,30 +1,39 @@
 <?php
-# THIS IS A TEST - DOES IT DISAPPEAR?
+
 class ShipStream_Sync_Helper {
 
-    private static $logFile = null;
+    public static $logFile = null;
 
     public static function init() {
         self::$logFile = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'debug_log.txt';
 
         if ( ! touch(self::$logFile)) {
-            self::$logFile = '/tmp/shipstream-sync.log';
+            self::$logFile = get_temp_dir() . 'shipstream-sync.log';
         }
         if ( ! touch(self::$logFile)) {
             error_log('ERROR: Cannot touch ShipStream Sync log file: ' . self::$logFile);
-            self::$logFile = '/dev/stderr';
+            if (is_writable('/dev/stderr')) {
+                self::$logFile = '/dev/stderr';
+            } else {
+                self::$logFile = null;
+            }
         }
     }
 
     public static function logMessage(string $message) {
-        if (WP_DEBUG) {
+        if (self::$logFile) {
             error_log(date('[Y-m-d H:i:s]') . " INFO $message" . PHP_EOL, 3, self::$logFile);
+        }
+        if (WP_DEBUG) {
+            error_log("ShipStream Sync INFO: $message");
         }
     }
 
     public static function logError($message) {
-        error_log(date('[Y-m-d H:i:s]') . " ERROR $message" . PHP_EOL, 3, self::$logFile);
-        error_log("ERROR: $message");
+        if (self::$logFile) {
+            error_log(date('[Y-m-d H:i:s]') . " ERROR $message" . PHP_EOL, 3, self::$logFile);
+        }
+        error_log("ShipStream Sync ERROR: $message");
     }
 
     /**

@@ -59,8 +59,17 @@ class ShipStream_API {
         ShipStream_Sync_Helper::logMessage('Received API request: '
             . $request->get_method() . ' '
             . $request->get_route() . ' '
-            . $request->get_body()
+            . substr($request->get_body(), 0, 200)
         );
+    }
+
+    public static function doResponse($body, $status = 200, $headers = array()): WP_REST_Response {
+        $response = new WP_REST_Response($body, $status, $headers);
+        ShipStream_Sync_Helper::logMessage('Sent API response: '
+            . $response->get_status() . ' '
+            . substr(json_encode($response->get_data()), 0, 200)
+        );
+        return $response;
     }
 
     public static function woocommerce_rest_is_request_to_rest_api($isWoo) {
@@ -74,6 +83,7 @@ class ShipStream_API {
 
     public static function authenticate(WP_REST_Request $request) {
         if ( ! wp_get_current_user() ) {
+            ShipStream_Sync_Helper::logError('API Authentication failed: no user');
             return new WP_Error(
                 'shipstream_permission',
                 __( 'Authentication required.', 'woocommerce-shipstream-sync' ),
@@ -81,6 +91,7 @@ class ShipStream_API {
             );
         }
         if ( ! current_user_can( 'edit_products' ) || ! current_user_can( 'edit_shop_orders' ) ) {
+            ShipStream_Sync_Helper::logError('API Authentication failed: lacking permissions');
             return new WP_Error(
                 'shipstream_permission',
                 __( 'You must have edit products and edit shop orders permission.', 'woocommerce-shipstream-sync' ),
@@ -125,7 +136,7 @@ class ShipStream_API {
                 $result['tracking_plugins'][$plugin_name] = $plugin_data['Version'];
             }
         }
-        return new WP_REST_Response($result, 200);
+        return self::doResponse($result, 200);
     }
 
     // Set configuration values
@@ -138,10 +149,10 @@ class ShipStream_API {
         
         if ($updated) {
             ShipStream_Sync_Helper::logMessage('Configuration updated');
-            return new WP_REST_Response(array('success' => 'Configuration updated'), 200);
+            return self::doResponse(array('success' => 'Configuration updated'), 200);
         } else {
             ShipStream_Sync_Helper::logError('Failed to update configuration');
-            return new WP_REST_Response(array('error' => 'Failed to update configuration'), 500);
+            return self::doResponse(array('error' => 'Failed to update configuration'), 500);
         }
     }
 
@@ -150,10 +161,10 @@ class ShipStream_API {
         self::logRequest($request);
         try {
             ShipStream_Cron::full_inventory_sync(false);
-            return new WP_REST_Response(array('success' => true,'message' => 'Inventory synced successfully.'), 200);
+            return self::doResponse(array('success' => true,'message' => 'Inventory synced successfully.'), 200);
         } catch (Exception $e) {
             ShipStream_Sync_Helper::logError("Inventory sync failed: $e");
-            return new WP_REST_Response(array('success' => false, 'message' => $e->getMessage()), 500);
+            return self::doResponse(array('success' => false, 'message' => $e->getMessage()), 500);
         }
     }
 
@@ -163,7 +174,7 @@ class ShipStream_API {
         $changes = $request->get_param('changes');
 
         if (empty($changes) || !is_array($changes)) {
-            return new WP_REST_Response(array('error' => 'Changes parameter is required and must be an array'), 400);
+            return self::doResponse(array('error' => 'Changes parameter is required and must be an array'), 400);
         }
 
         $results = array();
@@ -242,12 +253,12 @@ class ShipStream_API {
 
             $wpdb->query('COMMIT');
 
-            return new WP_REST_Response(array('success' => true, 'results' => $results), 200);
+            return self::doResponse(array('success' => true, 'results' => $results), 200);
 
         } catch (Exception $e) {
             $wpdb->query('ROLLBACK');
             error_log($e->getMessage());
-            return new WP_REST_Response(array('error' => $e->getMessage()), 500);
+            return self::doResponse(array('error' => $e->getMessage()), 500);
         }
     }
 
@@ -256,12 +267,12 @@ class ShipStream_API {
         self::logRequest($request);
         $order_number = $request->get_param('order_number');
         if (empty($order_number)) {
-            return new WP_REST_Response(array('error' => 'Order Number parameter is required'), 400);
+            return self::doResponse(array('error' => 'Order Number parameter is required'), 400);
         }
 
         $order = wc_get_order($order_number);
         if (!$order) {
-            return new WP_REST_Response(array('error' => 'Order does not exist'), 404);
+            return self::doResponse(array('error' => 'Order does not exist'), 404);
         }
 
         $result = array();
@@ -314,7 +325,7 @@ class ShipStream_API {
             $result['shipping_lines'][] = $shipping_data;
         }
 
-        return new WP_REST_Response($result, 200);
+        return self::doResponse($result, 200);
     }
 
     public static function complete_order_with_tracking(WP_REST_Request $request) {
@@ -490,7 +501,7 @@ class ShipStream_API {
 
         // Handle query errors
         if ($wpdb->last_error) {
-            return new WP_REST_Response(['error' => $wpdb->last_error], 500);
+            return self::doResponse(['error' => $wpdb->last_error], 500);
         }
 
         // Prepare the orders data
@@ -503,7 +514,7 @@ class ShipStream_API {
             }
         }
 
-        return new WP_REST_Response($orders, 200);
+        return self::doResponse($orders, 200);
     }
 
     /**
@@ -519,13 +530,13 @@ class ShipStream_API {
         $comment = $request->get_param('comment');
 
         if (empty($order_number) || empty($comment) || empty($status)) {
-            return new WP_REST_Response(['error' => 'Order ID, Status, and Comment are required.'], 400);
+            return self::doResponse(['error' => 'Order ID, Status, and Comment are required.'], 400);
         }
 
         $order = wc_get_order($order_number);
 
         if (!$order) {
-            return new WP_REST_Response(['error' => 'Invalid order ID.'], 404);
+            return self::doResponse(['error' => 'Invalid order ID.'], 404);
         }
 
         // Update order status
@@ -540,7 +551,7 @@ class ShipStream_API {
         );
 
         if (!$comment_id) {
-            return new WP_REST_Response(['error' => 'Failed to add comment to order.'], 500);
+            return self::doResponse(['error' => 'Failed to add comment to order.'], 500);
         }
 
         if ($status === 'wc-ss-submitted') {
@@ -548,7 +559,7 @@ class ShipStream_API {
         }
         $order->save();
 
-        return new WP_REST_Response(['success' => 'Comment added to order.', 'comment_id' => $comment_id], 200);
+        return self::doResponse(['success' => 'Comment added to order.', 'comment_id' => $comment_id], 200);
     }
 
     /**
@@ -565,22 +576,22 @@ class ShipStream_API {
 
         // Check for missing required parameters
         if (empty($order_number)) {
-            return new WP_REST_Response(['error' => 'Order Number is required.'], 400);
+            return self::doResponse(['error' => 'Order Number is required.'], 400);
         }
 
         // Get the order by ID
         $order = wc_get_order($order_number);
         if (!$order) {
-            return new WP_REST_Response(['error' => 'Invalid order number.'], 404);
+            return self::doResponse(['error' => 'Invalid order number.'], 404);
         }
 
         // Update order status and add a comment
         if ($order->get_status() === 'ss-submitted') {
             $order->update_status('wc-on-hold', sprintf(__('Corresponding %s order was cancelled.', 'woocommerce-shipstream-sync'), ShipStream_Sync_Helper::getAppTitle()));
-            return new WP_REST_Response(['success' => 'Status updated successfully for order #' . $order->get_order_number()], 200);
+            return self::doResponse(['success' => 'Status updated successfully for order #' . $order->get_order_number()], 200);
         } else {
             $order->add_order_note(sprintf(__('%s order was cancelled but no changes were applied.', 'woocommerce-shipstream-sync'), ShipStream_Sync_Helper::getAppTitle()));
-            return new WP_REST_Response(['success' => 'No change was made for order #' . $order->get_order_number() . ' with status ' . $order->get_status()], 200);
+            return self::doResponse(['success' => 'No change was made for order #' . $order->get_order_number() . ' with status ' . $order->get_status()], 200);
         }
     }
 

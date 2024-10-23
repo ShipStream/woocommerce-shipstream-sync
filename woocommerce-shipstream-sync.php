@@ -46,6 +46,9 @@ register_deactivation_hook(__FILE__, 'shipstream_sync_deactivate');
 function shipstream_sync_activate() {
     update_option('enable_real_time_order_sync', 'yes');
     update_option('enable_auto_fulfill_orders', 'yes');
+    if ( ! wp_next_scheduled ( 'shipstream_sync_clean_log' )) {
+        wp_schedule_event(strtotime('next Sunday at 2am'), 'weekly', 'shipstream_sync_clean_log');
+    }
     ShipStream_Sync_Helper::logMessage('Activated plugin');
 }
 

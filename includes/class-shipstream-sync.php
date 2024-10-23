@@ -4,6 +4,7 @@ class ShipStream_Sync {
 
     public static function init() {
         add_filter('plugin_row_meta', array(__CLASS__, 'plugin_row_meta'), 10, 2);
+        add_action('shipstream_sync_clean_log', array('ShipStream_Cron', 'clean_log'));
         
         // Add custom order statuses.
         add_filter('wc_order_statuses', array(__CLASS__, 'add_custom_order_statuses'));
@@ -14,7 +15,8 @@ class ShipStream_Sync {
 
         // Add WooCommerce settings tab.
         add_filter('woocommerce_settings_tabs_array', array(__CLASS__, 'add_settings_tab'), 50);
-        add_action('woocommerce_settings_tabs_shipstream_sync', array(__CLASS__, 'settings_tab'));
+        add_action('woocommerce_settings_shipstream_sync', array(__CLASS__, 'settings_tab'));
+        add_action('woocommerce_after_settings_shipstream_sync', array(__CLASS__, 'after_settings'));
         add_action('woocommerce_update_options_shipstream_sync', array(__CLASS__, 'update_settings'));
 
         // Test code, not for production!
@@ -125,6 +127,35 @@ HTML;
 
     public static function settings_tab() {
         woocommerce_admin_fields(self::get_settings());
+    }
+
+    // Add a section to display the last 50 lines of the error log
+    public static function after_settings() {
+        $log_file = ShipStream_Sync_Helper::$logFile;
+        if (file_exists($log_file) && is_readable($log_file) && '/dev/stderr' !== $log_file) {
+            // Read the last 1mb of the log file
+            $file = fopen($log_file, 'r');
+            fseek($file, -1048576, SEEK_END);
+            $log_content = fread($file, 1048576);
+            fclose($file);
+            $last_lines = array_filter(explode("\n", $log_content));
+            if (count($last_lines) > 50) {
+                $last_lines = array_slice($last_lines, -50);
+            }
+            echo '<hr>';
+            if ($last_lines) {
+                echo '<h3>' . __('ShipStream Sync Log (last up to 50 entries)', 'woocommerce-shipstream-sync') . '</h3>';
+                echo '<pre style="background-color: #f0f0f0; padding: 10px; max-height: 300px; overflow-y: auto;">';
+                foreach ($last_lines as $line) {
+                    echo htmlspecialchars($line) . "\n";
+                }
+                echo '</pre>';
+            } else {
+                echo '<p>' . __('Log file is empty.', 'woocommerce-shipstream-sync') . '</p>';
+            }
+        } else {
+            echo '<p>' . __('Unable to read the log file.', 'woocommerce-shipstream-sync') . '</p>';
+        }
     }
 
     public static function update_settings() {

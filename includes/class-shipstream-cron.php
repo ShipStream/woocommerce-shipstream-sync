@@ -5,7 +5,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class ShipStream_Cron {
-    const LOG_FILE = 'wp-content/plugins/woocommerce-shipstream-sync/includes/shipstream_cron.log';
+
+    public static function clean_log() {
+        if (file_exists(ShipStream_Sync_Helper::$logFile)
+            && is_writable(ShipStream_Sync_Helper::$logFile)
+        && '/dev/stderr' !== ShipStream_Sync_Helper::$logFile
+        ) {
+            file_put_contents(ShipStream_Sync_Helper::$logFile, '');
+            ShipStream_Sync_Helper::logMessage('Cleaned log file.');
+        }
+    }
 
     /**
      * Perform a full inventory synchronization.
