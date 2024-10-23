@@ -60,7 +60,7 @@ function shipstream_sync_deactivate() {
         try {
             ShipStream_Sync_Helper::callback('deactivatePlugin');
         } catch (Exception $e) {
-            error_log('Error notifying ShipStream of plugin deactivation: ' . $e->getMessage());
+            ShipStream_Sync_Helper::logError('Error notifying ShipStream of plugin deactivation: ' . $e->getMessage());
         }
     }
     ShipStream_Sync_Helper::logMessage('Deactivated plugin');
